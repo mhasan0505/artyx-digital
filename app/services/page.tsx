@@ -2,6 +2,7 @@ import { CTASection } from "@/components/sections/cta-section";
 import { AnimatedText } from "@/components/ui/animated-text";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { TechIcon } from "@/components/ui/tech-icon";
 import {
   ArrowRight,
   CheckCircle2,
@@ -254,8 +255,11 @@ export default function ServicesHubPage() {
                       {service.tech.map((tech) => (
                         <span
                           key={tech}
-                          className="px-3 py-1 rounded-full bg-gray-100 border border-gray-200 text-gray-500 text-xs"
+                          className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-100 border border-gray-200 text-gray-500 text-xs hover:border-artyx-brand/30 hover:text-artyx-brand transition-colors cursor-default"
                         >
+                          <div className="w-3.5 h-3.5 flex items-center justify-center shrink-0">
+                            <TechIcon name={tech} />
+                          </div>
                           {tech}
                         </span>
                       ))}

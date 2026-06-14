@@ -67,11 +67,11 @@ export function PortfolioShowcase() {
                       src={project.image}
                       alt={project.title}
                       fill
-                      className="object-contain p-6 transition-all duration-700 ease-out group-hover:scale-110 group-hover:rotate-[2deg]"
+                      className="object-contain p-6 transition-all duration-700 ease-out group-hover:scale-110 group-hover:rotate-2"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                     {/* Diagonal gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-tr from-artyx-brand/95 via-artyx-brand/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                    <div className="absolute inset-0 bg-linear-to-tr from-artyx-brand/95 via-artyx-brand/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
 
                     {/* Slide-up content */}
                     <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-6 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-75">

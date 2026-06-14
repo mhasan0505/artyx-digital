@@ -1,6 +1,7 @@
 import { AnimatedText } from "@/components/ui/animated-text";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { TechIcon } from "@/components/ui/tech-icon";
 import {
   ArrowRight,
   CheckCircle2,
@@ -704,8 +705,11 @@ export default async function ServiceDetailPage({
               {service.tech.map((tech) => (
                 <span
                   key={tech}
-                  className="px-4 py-2 rounded-full bg-gray-100 border border-gray-200 text-gray-600 text-sm hover:border-artyx-brand/30 hover:text-artyx-brand transition-all"
+                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 border border-gray-200 text-gray-600 text-sm hover:border-artyx-brand/30 hover:text-artyx-brand transition-all cursor-default"
                 >
+                  <div className="w-4 h-4 flex items-center justify-center shrink-0">
+                    <TechIcon name={tech} />
+                  </div>
                   {tech}
                 </span>
               ))}

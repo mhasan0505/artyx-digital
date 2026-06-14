@@ -1,18 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  ArrowUpRight,
-  Camera,
-  Globe,
-  Link2,
-  Mail,
-  MapPin,
-  Phone,
-  Send,
-} from "lucide-react";
+import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import github from "../../public/github-sign.png";
+import instagram from "../../public/instagram.png";
+import linkedin from "../../public/linkedin.png";
+import facebook from "../../public/social.png";
 
 const footerLinks = {
   services: [
@@ -33,10 +28,10 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { icon: Link2, href: "#", label: "LinkedIn" },
-  { icon: Camera, href: "#", label: "Instagram" },
-  { icon: Send, href: "#", label: "Twitter" },
-  { icon: Globe, href: "#", label: "GitHub" },
+  { icon: linkedin, href: "#", label: "LinkedIn" },
+  { icon: instagram, href: "#", label: "Instagram" },
+  { icon: facebook, href: "#", label: "Facebook" },
+  { icon: github, href: "#", label: "GitHub" },
 ];
 
 export function Footer() {
@@ -79,7 +74,13 @@ export function Footer() {
                   className="w-10 h-10 rounded-lg bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-500 hover:text-artyx-brand hover:border-artyx-brand/30 transition-colors"
                   aria-label={social.label}
                 >
-                  <social.icon className="w-4 h-4" />
+                  <Image
+                    src={social.icon}
+                    alt={social.label}
+                    width={16}
+                    height={16}
+                    className="w-4 h-4 object-contain"
+                  />
                 </motion.a>
               ))}
             </div>
@@ -131,14 +132,14 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3 text-gray-600 text-sm">
                 <Phone className="w-4 h-4 mt-0.5 text-artyx-brand shrink-0" />
-                <span>+1 (555) 123-4567</span>
+                <span>+880 1732-549551</span>
               </li>
               <li className="flex items-start gap-3 text-gray-600 text-sm">
                 <MapPin className="w-4 h-4 mt-0.5 text-artyx-brand shrink-0" />
                 <span>
-                  123 Digital Avenue
+                  18/3 Jahurabad,Mirpur
                   <br />
-                  Tech City, TC 10001
+                  Dhaka-1216, Bangladesh
                 </span>
               </li>
             </ul>

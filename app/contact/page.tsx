@@ -17,13 +17,13 @@ const contactInfo = [
   {
     icon: Phone,
     label: "Phone",
-    value: "+1 (555) 123-4567",
-    href: "tel:+15551234567",
+    value: "+880 1732-549551",
+    href: "tel:+8801732549551",
   },
   {
     icon: MapPin,
     label: "Location",
-    value: "123 Digital Avenue, Tech City, TC 10001",
+    value: "18/3 Jahurabad,Mirpur,Dhaka-1216, Bangladesh",
     href: "#",
   },
   { icon: Clock, label: "Hours", value: "Mon - Fri: 9AM - 6PM EST", href: "#" },
@@ -267,16 +267,16 @@ export default function ContactPage() {
                             Select budget
                           </option>
                           <option value="5k-10k" className="bg-white">
-                            $5,000 - $10,000
+                            5k - 10k
                           </option>
                           <option value="10k-25k" className="bg-white">
-                            $10,000 - $25,000
+                            10k - 25k
                           </option>
                           <option value="25k-50k" className="bg-white">
-                            $25,000 - $50,000
+                            25k - 50k
                           </option>
                           <option value="50k+" className="bg-white">
-                            $50,000+
+                            50k+
                           </option>
                         </select>
                       </div>
