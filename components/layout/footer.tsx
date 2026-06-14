@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import github from "../../public/github-sign.png";
-import instagram from "../../public/instagram.png";
-import linkedin from "../../public/linkedin.png";
-import facebook from "../../public/social.png";
+import github from "../../github-sign.png";
+import instagram from "../../instagram.png";
+import linkedin from "../../linkedin.png";
+import facebook from "../../social.png";
 
 const footerLinks = {
   services: [
