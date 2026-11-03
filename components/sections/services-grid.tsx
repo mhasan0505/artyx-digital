@@ -1,174 +1,172 @@
 "use client";
 
-import { ScrollReveal } from "@/components/ui/scroll-reveal";
-import { TiltCard } from "@/components/ui/tilt-card";
+import Link from "next/link";
 import {
   ArrowRight,
-  Code,
   Globe,
-  Megaphone,
-  Palette,
-  ShoppingCart,
+  ShoppingBag,
+  Cpu,
+  Layers,
   TrendingUp,
+  Palette,
+  CheckCircle2,
 } from "lucide-react";
-import Link from "next/link";
+import { THREE_BUSINESS_PILLARS } from "@/lib/content/company";
+import { getAllServices } from "@/lib/content/services";
+import type { ServiceSlug } from "@/lib/validation/lead";
+import { TiltCard } from "@/components/motion/tilt-card";
+import { StaggerReveal } from "@/components/motion/stagger-reveal";
 
-const services = [
-  {
-    icon: Globe,
-    title: "Web Development",
-    description:
-      "Custom websites and web applications built with cutting-edge technology for blazing performance and stunning design.",
-    href: "/services/web-development",
-    gradient: "from-artyx-brand/20 to-artyx-cyan/20",
-    iconColor: "text-artyx-brand",
-  },
-  {
-    icon: TrendingUp,
-    title: "Digital Marketing",
-    description:
-      "Data-driven campaigns that amplify your reach, boost conversions, and deliver measurable ROI across all channels.",
-    href: "/services/digital-marketing",
-    gradient: "from-artyx-gold/20 to-artyx-rose/20",
-    iconColor: "text-artyx-gold",
-  },
-  {
-    icon: Palette,
-    title: "Content Creation",
-    description:
-      "Compelling visual and written content that tells your brand story and engages your audience across platforms.",
-    href: "/services/content-creation",
-    gradient: "from-artyx-purple/20 to-artyx-rose/20",
-    iconColor: "text-artyx-purple",
-  },
-  {
-    icon: Megaphone,
-    title: "Branding & Identity",
-    description:
-      "Strategic brand development that creates lasting impressions and builds trust with your target audience.",
-    href: "/services/branding",
-    gradient: "from-artyx-emerald/20 to-artyx-brand/20",
-    iconColor: "text-artyx-emerald",
-  },
-  {
-    icon: Code,
-    title: "SaaS Development",
-    description:
-      "Scalable software-as-a-service platforms engineered for performance, security, and seamless user experience.",
-    href: "/services/saas-development",
-    gradient: "from-artyx-cyan/20 to-artyx-purple/20",
-    iconColor: "text-artyx-cyan",
-  },
-  {
-    icon: ShoppingCart,
-    title: "POS Software",
-    description:
-      "Intelligent point-of-sale systems that streamline operations, manage inventory, and accelerate your business growth.",
-    href: "/services/pos-software",
-    gradient: "from-artyx-rose/20 to-artyx-gold/20",
-    iconColor: "text-artyx-rose",
-  },
-];
+const SERVICE_ICONS: Record<ServiceSlug, typeof Globe> = {
+  "web-development": Globe,
+  "ecommerce-website-development": ShoppingBag,
+  "custom-software": Cpu,
+  "saas-development": Layers,
+  "digital-marketing": TrendingUp,
+  branding: Palette,
+};
 
 export function ServicesGrid() {
+  const services = getAllServices();
+
   return (
-    <section className="relative py-32 overflow-hidden bg-gray-50">
-      {/* Abstract background patterns */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-40 h-40 opacity-5">
-          <svg viewBox="0 0 200 200" className="w-full h-full">
-            <rect
-              x="20"
-              y="20"
-              width="160"
-              height="160"
-              fill="none"
-              stroke="#0078d7"
-              strokeWidth="2"
-              transform="rotate(45 100 100)"
-            />
-            <rect
-              x="40"
-              y="40"
-              width="120"
-              height="120"
-              fill="none"
-              stroke="#0078d7"
-              strokeWidth="1.5"
-              transform="rotate(45 100 100)"
-            />
-          </svg>
-        </div>
-        <div className="absolute bottom-20 right-10 w-32 h-32 opacity-5">
-          <svg viewBox="0 0 200 200" className="w-full h-full">
-            <circle
-              cx="100"
-              cy="100"
-              r="80"
-              fill="none"
-              stroke="#0078d7"
-              strokeWidth="2"
-            />
-            <circle
-              cx="100"
-              cy="100"
-              r="50"
-              fill="none"
-              stroke="#0078d7"
-              strokeWidth="1.5"
-            />
-          </svg>
-        </div>
+    <section className="bg-[#050814] py-24 text-white lg:py-28 relative overflow-hidden">
+      {/* Background ambient lighting */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/3 -left-40 h-[500px] w-[500px] rounded-full bg-cyan-500/10 blur-[130px]" />
+        <div className="absolute bottom-1/4 -right-40 h-[500px] w-[500px] rounded-full bg-purple-500/10 blur-[130px]" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Section Header */}
-        <ScrollReveal className="text-center mb-20">
-          <span className="inline-block px-4 py-1.5 rounded-full border border-artyx-brand/20 bg-artyx-brand/5 text-artyx-brand text-sm font-medium mb-6">
-            What We Do
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+        {/* Part 1: Three Business Pillars */}
+        <div className="mx-auto max-w-3xl text-center">
+          <span className="inline-flex items-center rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-wider text-cyan-300">
+            Three Connected Business Pillars
           </span>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-            Services That <span className="gradient-text">Drive Results</span>
+          <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+            One Technology &amp; Growth Partner Across Your Entire Business
           </h2>
-          <p className="max-w-2xl mx-auto text-gray-600 text-lg">
-            End-to-end digital solutions crafted with precision, creativity, and
-            a relentless focus on your success.
+          <p className="mt-4 text-lg leading-relaxed text-[#CBD5E1]">
+            We bring agency web engineering, owned operational software, and search
+            acquisition under one roof so your website, internal workflow, and marketing
+            reinforce one another.
           </p>
-        </ScrollReveal>
+        </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, i) => (
-            <ScrollReveal key={service.title} delay={i * 0.1}>
-              <TiltCard className="h-full">
+        {/* 3 Pillar Tilt Cards */}
+        <StaggerReveal className="mt-14 grid grid-cols-1 gap-8 lg:grid-cols-3" itemSelector=".pillar-card">
+          {THREE_BUSINESS_PILLARS.map((pillar) => (
+            <TiltCard
+              key={pillar.id}
+              maxTilt={7}
+              glowColor={
+                pillar.id === "experiences"
+                  ? "rgba(0, 229, 255, 0.18)"
+                  : pillar.id === "technology"
+                  ? "rgba(168, 85, 247, 0.18)"
+                  : "rgba(16, 185, 129, 0.18)"
+              }
+              className="pillar-card flex flex-col justify-between rounded-3xl border border-slate-800 bg-[#0C1326]/90 p-8 shadow-2xl backdrop-blur-md transition hover:border-slate-700 sm:p-9"
+            >
+              <div>
+                <div
+                  className="mb-5 inline-block h-2 w-14 rounded-full shadow-md"
+                  style={{ backgroundColor: pillar.accentColor }}
+                />
+                <h3 className="font-display text-2xl font-bold text-white">
+                  {pillar.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-[#CBD5E1]">
+                  {pillar.summary}
+                </p>
+
+                <ul className="mt-6 space-y-2.5 border-t border-slate-800/80 pt-5">
+                  {pillar.offerings.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-2.5 text-sm font-medium text-slate-200"
+                    >
+                      <CheckCircle2
+                        className="mt-0.5 h-4 w-4 shrink-0"
+                        style={{ color: pillar.accentColor }}
+                      />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="mt-8 border-t border-slate-800/80 pt-5">
+                <div className="mb-3 text-xs text-slate-400">
+                  <strong className="text-slate-300">Best for:</strong> {pillar.audience}
+                </div>
                 <Link
-                  href={service.href}
-                  className="group block h-full p-8 rounded-2xl bg-white border border-gray-100 hover:border-artyx-brand/30 hover:shadow-lg hover:shadow-artyx-brand/5 transition-all duration-500"
+                  href={pillar.ctaHref}
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-400 transition hover:text-cyan-300"
                 >
-                  {/* Icon */}
-                  <div
-                    className={`w-14 h-14 rounded-xl bg-artyx-brand/5 flex items-center justify-center mb-6 group-hover:bg-artyx-brand/10 transition-colors duration-300`}
-                  >
-                    <service.icon className={`w-6 h-6 text-artyx-brand`} />
-                  </div>
-
-                  {/* Content */}
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-artyx-brand transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-6">
-                    {service.description}
-                  </p>
-
-                  {/* Link */}
-                  <div className="flex items-center gap-2 text-gray-400 group-hover:text-artyx-brand transition-colors">
-                    <span className="text-sm font-medium">Learn More</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </div>
+                  {pillar.ctaLabel}
+                  <ArrowRight className="h-4 w-4" />
                 </Link>
-              </TiltCard>
-            </ScrollReveal>
+              </div>
+            </TiltCard>
           ))}
+        </StaggerReveal>
+
+        {/* Part 2: Dedicated Agency Service Cards */}
+        <div className="mt-24">
+          <div className="flex flex-col justify-between gap-4 border-b border-slate-800 pb-8 sm:flex-row sm:items-end">
+            <div>
+              <span className="text-xs font-semibold uppercase tracking-wider text-cyan-400">
+                End-to-End Capabilities
+              </span>
+              <h3 className="mt-2 font-display text-2xl font-bold text-white sm:text-3xl">
+                Dedicated Agency Services
+              </h3>
+            </div>
+            <Link
+              href="/services/"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-400 transition hover:text-cyan-300"
+            >
+              View All Services Overview
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <StaggerReveal className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" itemSelector=".service-card">
+            {services.map((service) => {
+              const Icon = SERVICE_ICONS[service.slug] ?? Globe;
+              return (
+                <TiltCard
+                  key={service.slug}
+                  maxTilt={5}
+                  glowColor="rgba(0, 153, 255, 0.12)"
+                  className="service-card flex flex-col justify-between rounded-2xl border border-slate-800/80 bg-[#090F1F]/90 p-7 shadow-lg backdrop-blur-sm transition hover:border-cyan-500/40 hover:bg-[#0D152B]"
+                >
+                  <div>
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400">
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <h4 className="mt-5 font-display text-xl font-bold text-white">
+                      {service.name}
+                    </h4>
+                    <p className="mt-2 text-sm leading-relaxed text-[#94A3B8]">
+                      {service.shortOutcomeSummary}
+                    </p>
+                  </div>
+
+                  <div className="mt-6 border-t border-slate-800/80 pt-4">
+                    <Link
+                      href={service.canonicalPath}
+                      className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-cyan-400 transition hover:text-cyan-300"
+                    >
+                      Explore Service &amp; Deliverables
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                  </div>
+                </TiltCard>
+              );
+            })}
+          </StaggerReveal>
         </div>
       </div>
     </section>

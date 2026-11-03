@@ -1,110 +1,115 @@
 "use client";
 
-import { ScrollReveal } from "@/components/ui/scroll-reveal";
-import { TiltCard } from "@/components/ui/tilt-card";
-import { getAllProjects } from "@/lib/projects";
-import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
-const projects = getAllProjects();
+import { ArrowUpRight } from "lucide-react";
+import { getAllProjects } from "@/lib/projects";
+import { TiltCard } from "@/components/motion/tilt-card";
+import { StaggerReveal } from "@/components/motion/stagger-reveal";
 
 export function PortfolioShowcase() {
+  const projects = getAllProjects().slice(0, 4);
+
   return (
-    <section className="relative py-32 overflow-hidden bg-white">
-      {/* Abstract background patterns */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 right-20 w-40 h-40 opacity-5">
-          <svg viewBox="0 0 200 200" className="w-full h-full">
-            <rect
-              x="20"
-              y="20"
-              width="160"
-              height="160"
-              fill="none"
-              stroke="#0078d7"
-              strokeWidth="2"
-              transform="rotate(45 100 100)"
-            />
-          </svg>
-        </div>
+    <section className="bg-[#050814] py-24 text-white lg:py-28 relative overflow-hidden">
+      {/* Subtle background glow */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/2 right-0 h-[450px] w-[450px] rounded-full bg-cyan-500/10 blur-[130px]" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Section Header */}
-        <ScrollReveal className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-16 gap-6">
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="flex flex-col justify-between gap-6 border-b border-slate-800 pb-10 sm:flex-row sm:items-end">
           <div>
-            <span className="inline-block px-4 py-1.5 rounded-full border border-artyx-brand/20 bg-artyx-brand/5 text-artyx-brand text-sm font-medium mb-6">
-              Featured Work
+            <span className="inline-flex items-center rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-wider text-cyan-300">
+              Selected Portfolio &amp; Case Studies
             </span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900">
-              Our Latest <span className="gradient-text">Projects</span>
+            <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+              Documented Brand, Web &amp; E-commerce Work
             </h2>
+            <p className="mt-3 max-w-2xl text-base text-[#94A3B8]">
+              Every project below documents our exact role, deliverables, and relationship
+              transparently—without inflated vanity metrics.
+            </p>
           </div>
+
           <Link
-            href="/portfolio"
-            className="inline-flex items-center gap-2 text-gray-500 hover:text-artyx-brand transition-colors group"
+            href="/work/"
+            className="inline-flex items-center gap-2 self-start rounded-xl border border-slate-700 bg-[#0F172A] px-5 py-3 text-sm font-semibold text-white transition hover:border-cyan-400 hover:text-cyan-300"
           >
-            <span className="text-sm font-medium">View All Projects</span>
-            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            View All Projects
+            <ArrowUpRight className="h-4 w-4" />
           </Link>
-        </ScrollReveal>
+        </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, i) => (
-            <ScrollReveal key={project.slug} delay={i * 0.15}>
-              <TiltCard glare className="rounded-2xl">
+        <StaggerReveal className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2" itemSelector=".project-item">
+          {projects.map((project) => {
+            const isInHouse = project.relationshipType
+              .toLowerCase()
+              .includes("in-house");
+            return (
+              <TiltCard
+                key={project.slug}
+                maxTilt={5}
+                glowColor="rgba(0, 229, 255, 0.12)"
+                className="project-item rounded-3xl border border-slate-800 bg-[#0A1022]/90 shadow-2xl backdrop-blur-md transition hover:border-slate-700"
+              >
                 <Link
-                  href={`/portfolio/${project.slug}`}
-                  className="group block"
+                  href={`/work/${project.slug}/`}
+                  className="group flex flex-col justify-between h-full overflow-hidden"
                 >
-                  {/* Image Container */}
-                  <div
-                    className={`relative aspect-4/3 rounded-2xl overflow-hidden ${project.bg} border border-gray-100 group-hover:border-artyx-brand/30 group-hover:shadow-2xl group-hover:shadow-artyx-brand/10 group-hover:-translate-y-1 transition-all duration-500 ease-out mb-6`}
-                  >
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-contain p-6 transition-all duration-700 ease-out group-hover:scale-110 group-hover:rotate-2"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
-                    {/* Diagonal gradient overlay */}
-                    <div className="absolute inset-0 bg-linear-to-tr from-artyx-brand/95 via-artyx-brand/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
-
-                    {/* Slide-up content */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-6 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-75">
-                      <p className="text-white/90 text-sm leading-relaxed line-clamp-2 mb-3">
-                        {project.description}
-                      </p>
-                      <span className="inline-flex items-center gap-1.5 text-white/80 text-xs font-semibold tracking-wider uppercase">
-                        View Project
-                        <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
-                      </span>
+                  <div>
+                    <div
+                      className={`relative aspect-[16/10] w-full overflow-hidden ${project.bg} border-b border-slate-800/80`}
+                    >
+                      <Image
+                        src={project.image}
+                        alt={`${project.title} — ${project.category}`}
+                        fill
+                        className="object-contain p-8 transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                      <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+                        <span
+                          className={`rounded-full px-3 py-1 text-[11px] font-semibold shadow-md ${
+                            isInHouse
+                              ? "border border-amber-500/40 bg-amber-950/90 text-amber-200"
+                              : "border border-slate-700 bg-slate-900/90 text-slate-100"
+                          }`}
+                        >
+                          {project.relationshipType}
+                        </span>
+                        <span className="rounded-full bg-slate-900/90 border border-slate-700 px-3 py-1 text-[11px] font-medium text-slate-200 shadow-md">
+                          {project.industry}
+                        </span>
+                      </div>
                     </div>
 
-                    {/* Glossy floating button */}
-                    <div className="absolute top-4 right-4 w-11 h-11 rounded-full bg-white/15 backdrop-blur-md border border-white/25 flex items-center justify-center opacity-0 group-hover:opacity-100 -translate-y-3 group-hover:translate-y-0 transition-all duration-500 delay-100">
-                      <ArrowUpRight className="w-5 h-5 text-white" />
+                    <div className="p-7">
+                      <div className="text-xs font-semibold uppercase tracking-wider text-cyan-400">
+                        {project.category}
+                      </div>
+                      <h3 className="mt-1.5 font-display text-2xl font-bold text-white transition group-hover:text-cyan-300">
+                        {project.title}
+                      </h3>
+                      <p className="mt-2.5 text-sm leading-relaxed text-[#94A3B8]">
+                        {project.description}
+                      </p>
+                      <div className="mt-4 rounded-xl border border-slate-800 bg-[#060A16] px-3.5 py-2.5 text-xs text-slate-400">
+                        <strong className="text-slate-200">Role &amp; Scope:</strong>{" "}
+                        {project.roleAndScope}
+                      </div>
                     </div>
                   </div>
 
-                  {/* Content */}
-                  <span className="text-artyx-brand text-xs font-medium tracking-wider uppercase">
-                    {project.category}
-                  </span>
-                  <h3 className="text-xl font-semibold text-gray-900 mt-2 mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-500 text-sm line-clamp-2">
-                    {project.description}
-                  </p>
+                  <div className="flex items-center justify-between border-t border-slate-800/80 bg-[#060A16] px-7 py-4 text-xs font-semibold text-cyan-400">
+                    <span>View Case Study</span>
+                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </div>
                 </Link>
               </TiltCard>
-            </ScrollReveal>
-          ))}
-        </div>
+            );
+          })}
+        </StaggerReveal>
       </div>
     </section>
   );

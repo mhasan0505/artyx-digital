@@ -1,246 +1,300 @@
 "use client";
 
-import { AnimatedText } from "@/components/ui/animated-text";
-import { MagneticButton } from "@/components/ui/magnetic-button";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowDown, Sparkles } from "lucide-react";
 import { useRef } from "react";
-
-const stats = [
-  { value: "150+", label: "Projects Delivered" },
-  { value: "50+", label: "Happy Clients" },
-  { value: "5+", label: "Years of Excellence" },
-  { value: "99%", label: "Client Satisfaction" },
-];
+import Link from "next/link";
+import {
+  ArrowRight,
+  Monitor,
+  ShoppingCart,
+  TrendingUp,
+  CheckCircle2,
+  Sparkles,
+} from "lucide-react";
+import { COMPANY_ENTITY } from "@/lib/content/company";
+import { trackAnalyticsEvent } from "@/lib/analytics/events";
+import { MagneticButton } from "@/components/ui/magnetic-button";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "@/lib/gsap";
+import { HeroCanvas } from "@/components/3d/hero-canvas";
 
 export function Hero() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  });
+  const containerRef = useRef<HTMLElement>(null);
+  const headlineRef = useRef<HTMLHeadingElement>(null);
+  const textRef = useRef<HTMLParagraphElement>(null);
+  const ctaGroupRef = useRef<HTMLDivElement>(null);
+  const glowOrb1 = useRef<HTMLDivElement>(null);
+  const glowOrb2 = useRef<HTMLDivElement>(null);
 
-  const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  useGSAP(
+    () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+      tl.from(".hero-badge", {
+        opacity: 0,
+        y: -20,
+        duration: 0.6,
+      })
+        .from(
+          headlineRef.current,
+          {
+            opacity: 0,
+            y: 35,
+            duration: 0.8,
+          },
+          "-=0.3"
+        )
+        .from(
+          textRef.current,
+          {
+            opacity: 0,
+            y: 25,
+            duration: 0.7,
+          },
+          "-=0.4"
+        )
+        .from(
+          ctaGroupRef.current,
+          {
+            opacity: 0,
+            y: 20,
+            duration: 0.6,
+          },
+          "-=0.3"
+        )
+        .from(
+          ".hero-pillar-anchor",
+          {
+            opacity: 0,
+            y: 15,
+            stagger: 0.1,
+            duration: 0.5,
+          },
+          "-=0.2"
+        );
+
+      // GSAP Parallax background scrub
+      if (glowOrb1.current && glowOrb2.current) {
+        gsap.to(glowOrb1.current, {
+          y: 120,
+          ease: "none",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 1.2,
+          },
+        });
+        gsap.to(glowOrb2.current, {
+          y: -80,
+          ease: "none",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 1.5,
+          },
+        });
+      }
+    },
+    { scope: containerRef }
+  );
 
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-white"
+      className="relative overflow-hidden bg-[#070B18] pt-28 pb-20 text-[#F8FAFC] lg:pt-36 lg:pb-28"
     >
-      {/* Abstract Background Patterns */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Geometric shapes */}
-        <motion.div
-          className="absolute top-20 right-20 w-72 h-72 opacity-10"
-          animate={{ rotate: [0, 360], scale: [1, 1.1, 1] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        >
-          <svg viewBox="0 0 200 200" className="w-full h-full">
-            <circle
-              cx="100"
-              cy="100"
-              r="80"
-              fill="none"
-              stroke="#0078d7"
-              strokeWidth="2"
-            />
-            <circle
-              cx="100"
-              cy="100"
-              r="60"
-              fill="none"
-              stroke="#10b981"
-              strokeWidth="1.5"
-            />
-            <circle
-              cx="100"
-              cy="100"
-              r="40"
-              fill="none"
-              stroke="#0078d7"
-              strokeWidth="1"
-            />
-          </svg>
-        </motion.div>
-
-        <motion.div
-          className="absolute bottom-32 left-16 w-56 h-56 opacity-10"
-          animate={{ rotate: [0, -360] }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        >
-          <svg viewBox="0 0 200 200" className="w-full h-full">
-            <polygon
-              points="100,20 180,180 20,180"
-              fill="none"
-              stroke="#10b981"
-              strokeWidth="2"
-            />
-            <polygon
-              points="100,50 155,160 45,160"
-              fill="none"
-              stroke="#0078d7"
-              strokeWidth="1.5"
-            />
-          </svg>
-        </motion.div>
-
-        {/* Floating dots */}
-        {[...Array(12)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 rounded-full bg-artyx-brand/20"
-            style={{
-              top: `${15 + ((i * 7) % 70)}%`,
-              left: `${10 + ((i * 13) % 80)}%`,
-            }}
-            animate={{
-              y: [0, -20 + i * 5],
-              x: [0, 10 - i * 3],
-              opacity: [0.2, 0.5, 0.2],
-            }}
-            transition={{
-              duration: 4 + (i % 3),
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: i * 0.3,
-            }}
-          />
-        ))}
-
-        {/* Abstract wave pattern */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 opacity-5">
-          <svg
-            viewBox="0 0 1440 320"
-            className="w-full h-full"
-            preserveAspectRatio="none"
-          >
-            <path
-              fill="#0078d7"
-              d="M0,160L48,170.7C96,181,192,203,288,197.3C384,192,480,160,576,149.3C672,139,768,149,864,170.7C960,192,1056,224,1152,218.7C1248,213,1344,171,1392,149.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-            />
-          </svg>
-        </div>
-
-        {/* Grid overlay */}
+      {/* GSAP-Scrubbed Architectural Parallax Background Orbs & Cyber Grid */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div
-          className="absolute inset-0 opacity-[0.03]"
+          ref={glowOrb1}
+          className="absolute -top-40 left-1/4 h-[550px] w-[800px] -translate-x-1/2 rounded-full bg-gradient-to-tr from-[#00E5FF]/18 via-[#8B5CF6]/15 to-transparent blur-[120px]"
+        />
+        <div
+          ref={glowOrb2}
+          className="absolute top-1/3 right-0 h-[480px] w-[600px] rounded-full bg-gradient-to-bl from-[#10B981]/15 via-[#6366F1]/10 to-transparent blur-[110px]"
+        />
+        <div
+          className="absolute inset-0 opacity-[0.035]"
           style={{
-            backgroundImage: `
-              linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)
-            `,
-            backgroundSize: "60px 60px",
+            backgroundImage:
+              "linear-gradient(to right, #94A3B8 1px, transparent 1px), linear-gradient(to bottom, #94A3B8 1px, transparent 1px)",
+            backgroundSize: "64px 64px",
           }}
         />
       </div>
 
-      {/* Content */}
-      <motion.div
-        style={{ y, opacity }}
-        className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 text-center"
-      >
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-artyx-brand/20 bg-artyx-brand/5 mb-8"
-        >
-          <Sparkles className="w-4 h-4 text-artyx-brand" />
-          <span className="text-artyx-brand text-sm font-medium tracking-wide">
-            Digital Agency — Redefining Excellence
-          </span>
-        </motion.div>
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
+          {/* Left Column: Positioning, H1 & Primary CTAs */}
+          <div className="lg:col-span-7">
+            <div className="hero-badge mb-6 inline-flex items-center gap-2.5 rounded-full border border-cyan-500/30 bg-[#0F172A]/90 px-4 py-1.5 text-xs font-medium text-cyan-300 backdrop-blur-md">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-500" />
+              </span>
+              <span>Digital Agency &amp; Owned Business Software — Bangladesh &amp; Global</span>
+            </div>
 
-        {/* Main Heading */}
-        <AnimatedText
-          text="We Build Digital Empires"
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-gray-900 leading-[0.95] tracking-tight mb-8"
-          delay={0.4}
-          staggerDelay={0.04}
-        />
-
-        {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-          className="max-w-2xl mx-auto text-lg sm:text-xl text-gray-600 leading-relaxed mb-12"
-        >
-          From stunning websites to powerful SaaS platforms, we transform bold
-          ideas into exceptional digital experiences that drive growth and
-          captivate audiences.
-        </motion.p>
-
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.4 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <MagneticButton
-            as="a"
-            href="/portfolio"
-            className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-artyx-brand text-white font-semibold text-base hover:bg-artyx-brand-dark transition-colors"
-          >
-            View Our Work
-            <span className="group-hover:translate-x-1 transition-transform">
-              →
-            </span>
-          </MagneticButton>
-
-          <MagneticButton
-            as="a"
-            href="/contact"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-full border-2 border-gray-200 text-gray-700 font-semibold text-base hover:border-artyx-brand hover:text-artyx-brand transition-all"
-          >
-            Start a Project
-          </MagneticButton>
-        </motion.div>
-
-        {/* Stats Row */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.6 }}
-          className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto"
-        >
-          {stats.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.8 + i * 0.1 }}
-              className="text-center"
+            <h1
+              ref={headlineRef}
+              className="font-display text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl lg:leading-[1.08]"
             >
-              <div className="text-3xl sm:text-4xl font-bold text-gray-900 mb-1">
-                {stat.value}
-              </div>
-              <div className="text-gray-500 text-sm">{stat.label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </motion.div>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-slate-300">
+                {COMPANY_ENTITY.tagline}
+              </span>
+            </h1>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2.5, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-      >
-        <span className="text-gray-400 text-xs tracking-widest uppercase">
-          Scroll
-        </span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-        >
-          <ArrowDown className="w-5 h-5 text-gray-400" />
-        </motion.div>
-      </motion.div>
+            <p
+              ref={textRef}
+              className="mt-6 max-w-2xl text-lg leading-relaxed text-[#CBD5E1] sm:text-xl"
+            >
+              We help ambitious businesses build powerful websites, simplify operations
+              with custom technology, and grow through digital marketing.
+            </p>
+
+            {/* Primary & Secondary CTAs with Magnetic Effect */}
+            <div
+              ref={ctaGroupRef}
+              className="mt-9 flex flex-wrap items-center gap-4"
+            >
+              <MagneticButton>
+                <Link
+                  href="/start-a-project/"
+                  onClick={() =>
+                    trackAnalyticsEvent("cta_click", {
+                      cta_name: "Start a Project",
+                      cta_location: "hero_primary",
+                    })
+                  }
+                  className="inline-flex items-center gap-2.5 rounded-xl bg-gradient-to-r from-[#0078D7] to-[#0099FF] px-7 py-4 text-base font-semibold text-white shadow-xl shadow-[#0078D7]/30 transition hover:shadow-cyan-500/25 hover:brightness-110"
+                >
+                  Start a Project
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </MagneticButton>
+
+              <MagneticButton>
+                <Link
+                  href="/work/"
+                  onClick={() =>
+                    trackAnalyticsEvent("cta_click", {
+                      cta_name: "Explore Our Work",
+                      cta_location: "hero_secondary",
+                    })
+                  }
+                  className="inline-flex items-center gap-2.5 rounded-xl border border-slate-700 bg-[#0F172A]/80 px-6 py-4 text-base font-semibold text-slate-100 backdrop-blur-sm transition hover:border-cyan-400/60 hover:bg-[#1E293B]"
+                >
+                  Explore Our Work
+                </Link>
+              </MagneticButton>
+
+              <Link
+                href="/products/"
+                onClick={() =>
+                  trackAnalyticsEvent("cta_click", {
+                    cta_name: "Explore Our Products",
+                    cta_location: "hero_tertiary",
+                  })
+                }
+                className="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-cyan-400 transition hover:text-cyan-300"
+              >
+                Explore POS &amp; OMS Products →
+              </Link>
+            </div>
+
+            {/* Three Pillar Quick Anchors */}
+            <div className="mt-10 grid grid-cols-1 gap-3 border-t border-slate-800/80 pt-7 sm:grid-cols-3">
+              <div className="hero-pillar-anchor flex items-start gap-2.5">
+                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#00E5FF]" />
+                <div>
+                  <div className="text-xs font-semibold text-white">
+                    Digital Experiences
+                  </div>
+                  <div className="text-xs text-slate-400">
+                    Websites, E-commerce &amp; Branding
+                  </div>
+                </div>
+              </div>
+              <div className="hero-pillar-anchor flex items-start gap-2.5">
+                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#A855F7]" />
+                <div>
+                  <div className="text-xs font-semibold text-white">
+                    Business Technology
+                  </div>
+                  <div className="text-xs text-slate-400">
+                    POS, OMS, Custom Software &amp; SaaS
+                  </div>
+                </div>
+              </div>
+              <div className="hero-pillar-anchor flex items-start gap-2.5">
+                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#10B981]" />
+                <div>
+                  <div className="text-xs font-semibold text-white">
+                    Digital Growth
+                  </div>
+                  <div className="text-xs text-slate-400">
+                    Technical SEO, AEO &amp; Performance
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Interactive 3D Digital Nexus Visualizer */}
+          <div className="lg:col-span-5">
+            <div className="relative rounded-3xl border border-slate-800 bg-[#0A1022]/90 p-3 shadow-2xl backdrop-blur-xl">
+              {/* Header Bar */}
+              <div className="flex items-center justify-between border-b border-slate-800/90 px-3 py-2.5">
+                <div className="flex items-center gap-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-rose-500/80" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-amber-500/80" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80" />
+                  <span className="ml-2 text-xs font-medium text-slate-300">
+                    Artyx Connected 3D Nexus
+                  </span>
+                </div>
+                <div className="flex items-center gap-1.5 rounded-md border border-cyan-500/30 bg-[#060A16] px-2 py-0.5 text-[10px] font-medium text-cyan-300">
+                  <Sparkles className="h-3 w-3" />
+                  <span>Interactive WebGL</span>
+                </div>
+              </div>
+
+              {/* 3D WebGL Canvas Viewport */}
+              <div className="relative h-[320px] w-full overflow-hidden rounded-2xl bg-gradient-to-b from-[#060A16] to-[#0D152B] sm:h-[380px]">
+                <HeroCanvas />
+
+                {/* Subtitle / Interaction Guide */}
+                <div className="pointer-events-none absolute bottom-3 left-3 right-3 flex items-center justify-between rounded-xl border border-slate-800/80 bg-[#0B1020]/80 px-3 py-1.5 text-[10px] text-slate-400 backdrop-blur-md">
+                  <span>Hover / tilt cursor to inspect</span>
+                  <span className="font-semibold text-cyan-400">3-Pillar Nexus</span>
+                </div>
+              </div>
+
+              {/* Three Pillar Live Status Cards underneath */}
+              <div className="mt-3 grid grid-cols-3 gap-2 px-1 text-center">
+                <div className="rounded-xl border border-cyan-500/20 bg-[#080E1E] p-2">
+                  <Monitor className="mx-auto h-3.5 w-3.5 text-cyan-400" />
+                  <div className="mt-1 text-[10px] font-semibold text-white">Experiences</div>
+                  <div className="text-[9px] text-slate-400">Next.js 16</div>
+                </div>
+                <div className="rounded-xl border border-purple-500/20 bg-[#080E1E] p-2">
+                  <ShoppingCart className="mx-auto h-3.5 w-3.5 text-purple-400" />
+                  <div className="mt-1 text-[10px] font-semibold text-white">POS &amp; OMS</div>
+                  <div className="text-[9px] text-slate-400">Real-Time</div>
+                </div>
+                <div className="rounded-xl border border-emerald-500/20 bg-[#080E1E] p-2">
+                  <TrendingUp className="mx-auto h-3.5 w-3.5 text-emerald-400" />
+                  <div className="mt-1 text-[10px] font-semibold text-white">AEO &amp; Growth</div>
+                  <div className="text-[9px] text-slate-400">Attribution</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

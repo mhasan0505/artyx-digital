@@ -1,122 +1,128 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
+import { trackAnalyticsEvent } from "@/lib/analytics/events";
+import { openCookieSettingsModal } from "@/lib/consent/consent-manager";
+import { COMPANY_ENTITY } from "@/lib/content/company";
+import { ArrowUpRight, Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import github from "@/public/github-sign.png";
-import instagram from "@/public/instagram.png";
-import linkedin from "@/public/linkedin.png";
-import facebook from "@/public/social.png";
-
 
 const footerLinks = {
   services: [
-    { label: "Web Development", href: "/services/web-development" },
-    { label: "Digital Marketing", href: "/services/digital-marketing" },
-    { label: "Content Creation", href: "/services/content-creation" },
-    { label: "Branding", href: "/services/branding" },
-    { label: "SaaS Development", href: "/services/saas-development" },
-    { label: "POS Software", href: "/services/pos-software" },
+    { label: "Services Overview", href: "/services/" },
+    { label: "Web Development", href: "/services/web-development/" },
+    {
+      label: "E-commerce Website Development",
+      href: "/services/ecommerce-website-development/",
+    },
+    { label: "Custom Software Development", href: "/services/custom-software/" },
+    { label: "SaaS Development", href: "/services/saas-development/" },
+    { label: "SEO & Digital Marketing", href: "/services/digital-marketing/" },
+    { label: "Branding & Creative", href: "/services/branding/" },
   ],
-  company: [
-    { label: "About Us", href: "/about" },
-    { label: "Portfolio", href: "/portfolio" },
-    { label: "Blog", href: "/blog" },
-    { label: "Careers", href: "/careers" },
-    { label: "Contact", href: "/contact" },
+  productsAndCompany: [
+    { label: "Products Overview", href: "/products/" },
+    { label: "POS Software", href: "/products/pos/" },
+    {
+      label: "Order Management System (OMS)",
+      href: "/products/order-management/",
+    },
+    { label: "Request a Product Demo", href: "/request-demo/" },
+    { label: "Our Work & Case Studies", href: "/work/" },
+    { label: "Insights & Guides", href: "/insights/" },
+    { label: "About Artyx Digital", href: "/about/" },
+    { label: "Start a Project", href: "/start-a-project/" },
   ],
 };
 
-const socialLinks = [
-  { icon: linkedin, href: "#", label: "LinkedIn" },
-  { icon: instagram, href: "#", label: "Instagram" },
-  { icon: facebook, href: "#", label: "Facebook" },
-  { icon: github, href: "#", label: "GitHub" },
-];
-
 export function Footer() {
   return (
-    <footer className="relative bg-gray-50 border-t border-gray-100">
-      {/* Gradient accent line */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-artyx-brand/50 to-transparent" />
-
+    <footer className="relative bg-[#0B1020] text-[#F8FAFC] border-t border-[#273248]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Main Footer */}
-        <div className="py-16 grid grid-cols-1 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr] gap-12 lg:gap-8">
+        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.4fr_1.1fr_1.1fr_1.3fr] gap-12 lg:gap-8">
           {/* Brand Column */}
-          <div className="space-y-6">
+          <div className="space-y-5">
             <Link href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10">
+              <div className="w-10 h-10 rounded-xl bg-white/10 p-1.5 flex items-center justify-center border border-white/10">
                 <Image
                   src="/logo.png"
                   alt="Artyx Digital"
-                  width={40}
-                  height={40}
+                  width={36}
+                  height={36}
                   className="w-full h-full object-contain"
                 />
               </div>
-              <span className="text-xl font-semibold text-gray-900">
-                Artyx<span className="text-artyx-brand">Digital</span>
+              <span className="text-xl font-bold text-[#F8FAFC] font-heading">
+                Artyx<span className="text-[#4D7CFE]">Digital</span>
               </span>
             </Link>
-            <p className="text-gray-600 text-sm leading-relaxed max-w-xs">
-              We build digital empires. From stunning websites to powerful SaaS
-              platforms, we transform ideas into exceptional digital
-              experiences.
+            <p className="text-xs font-semibold uppercase tracking-wider text-[#4D7CFE]">
+              {COMPANY_ENTITY.tagline}
             </p>
-            <div className="flex items-center gap-3">
-              {socialLinks.map((social) => (
-                <motion.a
-                  key={social.label}
-                  href={social.href}
-                  whileHover={{ y: -3, scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-10 h-10 rounded-lg bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-500 hover:text-artyx-brand hover:border-artyx-brand/30 transition-colors"
-                  aria-label={social.label}
-                >
-                  <Image
-                    src={social.icon}
-                    alt={social.label}
-                    width={16}
-                    height={16}
-                    className="w-4 h-4 object-contain"
-                  />
-                </motion.a>
-              ))}
+            <p className="text-[#A7B0C0] text-sm leading-relaxed max-w-sm">
+              {COMPANY_ENTITY.consistentDescription}
+            </p>
+            <div className="flex flex-wrap gap-2.5 pt-2">
+              <Link
+                href="/start-a-project/"
+                onClick={() =>
+                  trackAnalyticsEvent("cta_click", {
+                    cta_name: "Start a Project",
+                    cta_location: "footer",
+                  })
+                }
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#4D7CFE] text-white text-xs font-semibold hover:bg-[#3b69eb] transition-colors"
+              >
+                Start a Project
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </Link>
+              <Link
+                href="/request-demo/"
+                onClick={() =>
+                  trackAnalyticsEvent("cta_click", {
+                    cta_name: "Request a Demo",
+                    cta_location: "footer",
+                  })
+                }
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-[#273248] bg-[#121A2D] text-[#F8FAFC] text-xs font-semibold hover:border-[#4D7CFE] transition-colors"
+              >
+                Request a Demo
+              </Link>
             </div>
           </div>
 
           {/* Services Column */}
           <div>
-            <h4 className="text-gray-900 font-semibold mb-6">Services</h4>
-            <ul className="space-y-3">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#F8FAFC] mb-5">
+              Agency Services
+            </h3>
+            <ul className="space-y-2.5">
               {footerLinks.services.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-gray-600 text-sm hover:text-artyx-brand transition-colors flex items-center gap-2 group"
+                    className="text-[#A7B0C0] text-sm hover:text-[#4D7CFE] transition-colors inline-flex items-center gap-1.5"
                   >
-                    <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-                    {link.label}
+                    <span>{link.label}</span>
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Company Column */}
+          {/* Products & Company Column */}
           <div>
-            <h4 className="text-gray-900 font-semibold mb-6">Company</h4>
-            <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#F8FAFC] mb-5">
+              Products & Company
+            </h3>
+            <ul className="space-y-2.5">
+              {footerLinks.productsAndCompany.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-gray-600 text-sm hover:text-artyx-brand transition-colors flex items-center gap-2 group"
+                    className="text-[#A7B0C0] text-sm hover:text-[#4D7CFE] transition-colors inline-flex items-center gap-1.5"
                   >
-                    <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-                    {link.label}
+                    <span>{link.label}</span>
                   </Link>
                 </li>
               ))}
@@ -125,46 +131,98 @@ export function Footer() {
 
           {/* Contact Column */}
           <div>
-            <h4 className="text-gray-900 font-semibold mb-6">Get in Touch</h4>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3 text-gray-600 text-sm">
-                <Mail className="w-4 h-4 mt-0.5 text-artyx-brand shrink-0" />
-                <span>hello@artyxdigital.com</span>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#F8FAFC] mb-5">
+              Get in Touch
+            </h3>
+            <ul className="space-y-3.5">
+              <li>
+                <a
+                  href={`mailto:${COMPANY_ENTITY.email}`}
+                  onClick={() =>
+                    trackAnalyticsEvent("email_click", {
+                      cta_location: "footer",
+                    })
+                  }
+                  className="flex items-start gap-3 text-[#A7B0C0] hover:text-white text-sm transition-colors"
+                >
+                  <Mail className="w-4 h-4 mt-0.5 text-[#4D7CFE] shrink-0" />
+                  <span>{COMPANY_ENTITY.email}</span>
+                </a>
               </li>
-              <li className="flex items-start gap-3 text-gray-600 text-sm">
-                <Phone className="w-4 h-4 mt-0.5 text-artyx-brand shrink-0" />
-                <span>+880 1732-549551</span>
+              <li>
+                <a
+                  href={`tel:${COMPANY_ENTITY.phoneE164}`}
+                  onClick={() =>
+                    trackAnalyticsEvent("phone_click", {
+                      cta_location: "footer",
+                    })
+                  }
+                  className="flex items-start gap-3 text-[#A7B0C0] hover:text-white text-sm transition-colors"
+                >
+                  <Phone className="w-4 h-4 mt-0.5 text-[#4D7CFE] shrink-0" />
+                  <span>{COMPANY_ENTITY.phoneDisplay}</span>
+                </a>
               </li>
-              <li className="flex items-start gap-3 text-gray-600 text-sm">
-                <MapPin className="w-4 h-4 mt-0.5 text-artyx-brand shrink-0" />
-                <span>
-                  18/3 Jahurabad,Mirpur
-                  <br />
-                  Dhaka-1216, Bangladesh
-                </span>
+              <li>
+                <a
+                  href={COMPANY_ENTITY.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() =>
+                    trackAnalyticsEvent("whatsapp_click", {
+                      cta_location: "footer",
+                    })
+                  }
+                  className="flex items-start gap-3 text-[#A7B0C0] hover:text-emerald-400 text-sm transition-colors"
+                >
+                  <MessageCircle className="w-4 h-4 mt-0.5 text-emerald-400 shrink-0" />
+                  <span>WhatsApp Business ({COMPANY_ENTITY.phoneDisplay})</span>
+                </a>
+              </li>
+              <li className="flex items-start gap-3 text-[#A7B0C0] text-sm">
+                <MapPin className="w-4 h-4 mt-0.5 text-[#4D7CFE] shrink-0" />
+                <span>{COMPANY_ENTITY.address.fullDisplay}</span>
+              </li>
+              <li className="flex items-start gap-3 text-[#A7B0C0] text-xs">
+                <Clock className="w-4 h-4 mt-0.5 text-[#4D7CFE] shrink-0" />
+                <span>{COMPANY_ENTITY.operatingHoursDisplay}</span>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="py-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-gray-500 text-sm">
-            © {new Date().getFullYear()} Artyx Digital. All rights reserved.
+        {/* Bottom Legal & Consent Bar */}
+        <div className="py-6 border-t border-[#273248] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-[#A7B0C0] text-xs">
+            © {new Date().getFullYear()} {COMPANY_ENTITY.name}. All rights
+            reserved.
           </p>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center gap-6">
             <Link
-              href="/privacy"
-              className="text-gray-500 text-sm hover:text-artyx-brand transition-colors"
+              href="/privacy-policy/"
+              className="text-[#A7B0C0] text-xs hover:text-white transition-colors"
             >
               Privacy Policy
             </Link>
             <Link
-              href="/terms"
-              className="text-gray-500 text-sm hover:text-artyx-brand transition-colors"
+              href="/terms/"
+              className="text-[#A7B0C0] text-xs hover:text-white transition-colors"
             >
               Terms of Service
             </Link>
+            <Link
+              href="/cookie-policy/"
+              className="text-[#A7B0C0] text-xs hover:text-white transition-colors"
+            >
+              Cookie Policy
+            </Link>
+            <button
+              type="button"
+              onClick={openCookieSettingsModal}
+              className="text-[#A7B0C0] text-xs hover:text-[#4D7CFE] underline transition-colors cursor-pointer"
+            >
+              Cookie settings
+            </button>
           </div>
         </div>
       </div>

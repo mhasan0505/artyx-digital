@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 interface MagneticButtonProps {
   children: React.ReactNode;
@@ -19,7 +19,6 @@ export function MagneticButton({
   as = "button",
 }: MagneticButtonProps) {
   const ref = useRef<HTMLElement | null>(null);
-  const [isHovering, setIsHovering] = useState(false);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -42,7 +41,6 @@ export function MagneticButton({
   const handleMouseLeave = () => {
     x.set(0);
     y.set(0);
-    setIsHovering(false);
   };
 
   const Component = as === "a" ? motion.a : motion.button;
@@ -56,7 +54,6 @@ export function MagneticButton({
       onClick={onClick}
       href={href}
       onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={handleMouseLeave}
       style={{ x: springX, y: springY }}
     >

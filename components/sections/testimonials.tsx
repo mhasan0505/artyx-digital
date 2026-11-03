@@ -1,172 +1,98 @@
 "use client";
 
-import { ScrollReveal } from "@/components/ui/scroll-reveal";
-import { AnimatePresence, motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
-import { useState } from "react";
+import Link from "next/link";
+import { ShieldCheck, FileCheck2, Lock, CheckCircle2, ArrowRight } from "lucide-react";
+import { TiltCard } from "@/components/motion/tilt-card";
+import { StaggerReveal } from "@/components/motion/stagger-reveal";
 
-const testimonials = [
+const QUALITY_COMMITMENTS = [
   {
-    quote:
-      "Artyx Digital transformed our online presence completely. The website they built increased our leads by 250% in just three months.",
-    author: "Sarah Chen",
-    role: "CEO, TechVentures Inc.",
-    avatar: "SC",
+    icon: FileCheck2,
+    title: "Written Scope & Deliverable Clarity",
+    description:
+      "Every engagement begins with a documented specification listing what is included, what is outside scope, and how each milestone is reviewed.",
   },
   {
-    quote:
-      "Their SaaS development team delivered a platform that exceeded all our expectations. Scalable, beautiful, and lightning fast.",
-    author: "Marcus Johnson",
-    role: "CTO, DataFlow Systems",
-    avatar: "MJ",
+    icon: ShieldCheck,
+    title: "Verified Product Capabilities Only",
+    description:
+      "During Artyx POS and OMS demos, we walk you through live, supported capabilities first and clearly distinguish roadmap features from production modules.",
   },
   {
-    quote:
-      "The branding work was exceptional. They captured our vision perfectly and created an identity that truly resonates with our audience.",
-    author: "Emily Rodriguez",
-    role: "Founder, Bloom Studio",
-    avatar: "ER",
-  },
-  {
-    quote:
-      "From strategy to execution, Artyx Digital delivered a marketing campaign that drove real, measurable results for our business.",
-    author: "David Park",
-    role: "Marketing Director, Nexus Corp",
-    avatar: "DP",
+    icon: Lock,
+    title: "Transparent Portfolio & Asset Ownership",
+    description:
+      "We distinguish client work from in-house ventures in our portfolio, and upon project completion, agreed brand assets and deliverables are handed over cleanly.",
   },
 ];
 
 export function Testimonials() {
-  const [active, setActive] = useState(0);
-
-  const next = () => setActive((prev) => (prev + 1) % testimonials.length);
-  const prev = () =>
-    setActive((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-
   return (
-    <section className="relative py-32 overflow-hidden bg-gray-50">
-      {/* Abstract background patterns */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-16 left-16 w-36 h-36 opacity-5">
-          <svg viewBox="0 0 200 200" className="w-full h-full">
-            <circle
-              cx="100"
-              cy="100"
-              r="80"
-              fill="none"
-              stroke="#0078d7"
-              strokeWidth="2"
-            />
-            <circle
-              cx="100"
-              cy="100"
-              r="50"
-              fill="none"
-              stroke="#0078d7"
-              strokeWidth="1.5"
-            />
-          </svg>
-        </div>
-        <div className="absolute bottom-16 right-16 w-32 h-32 opacity-5">
-          <svg viewBox="0 0 200 200" className="w-full h-full">
-            <rect
-              x="20"
-              y="20"
-              width="160"
-              height="160"
-              fill="none"
-              stroke="#0078d7"
-              strokeWidth="2"
-              transform="rotate(45 100 100)"
-            />
-          </svg>
-        </div>
-      </div>
+    <section className="bg-[#050814] py-20 text-white lg:py-24 relative overflow-hidden">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="rounded-3xl border border-slate-800 bg-[#0C1326]/90 p-8 shadow-2xl backdrop-blur-xl sm:p-12 lg:p-14">
+          <div className="max-w-3xl">
+            <span className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-wider text-emerald-300">
+              <CheckCircle2 className="h-3.5 w-3.5" />
+              Standards &amp; Accountability
+            </span>
+            <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Built on Verifiable Work—Not Inflated Claims
+            </h2>
+            <p className="mt-3 text-base leading-relaxed text-[#CBD5E1]">
+              We only publish client quotes and performance metrics when written client
+              sign-off is on file. Evaluate our capability directly through our published
+              case studies, live product walkthroughs, and transparent delivery standards.
+            </p>
+          </div>
 
-      <div className="relative max-w-5xl mx-auto px-6 lg:px-8">
-        {/* Section Header */}
-        <ScrollReveal className="text-center mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full border border-artyx-brand/20 bg-artyx-brand/5 text-artyx-brand text-sm font-medium mb-6">
-            Client Stories
-          </span>
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900">
-            What Our <span className="gradient-text">Clients Say</span>
-          </h2>
-        </ScrollReveal>
-
-        {/* Testimonial Card */}
-        <ScrollReveal>
-          <div className="relative p-8 sm:p-12 rounded-3xl bg-white border border-gray-100 shadow-sm">
-            {/* Quote Icon */}
-            <Quote className="absolute top-8 left-8 w-12 h-12 text-artyx-brand/10" />
-
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={active}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.4 }}
-                className="relative z-10"
-              >
-                {/* Quote */}
-                <blockquote className="text-xl sm:text-2xl text-gray-700 leading-relaxed mb-8 text-center">
-                  "{testimonials[active].quote}"
-                </blockquote>
-
-                {/* Author */}
-                <div className="flex items-center justify-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-artyx-brand flex items-center justify-center text-white font-bold text-sm">
-                    {testimonials[active].avatar}
+          <StaggerReveal className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-3" itemSelector=".commitment-card">
+            {QUALITY_COMMITMENTS.map((item) => {
+              const Icon = item.icon;
+              return (
+                <TiltCard
+                  key={item.title}
+                  maxTilt={5}
+                  glowColor="rgba(16, 185, 129, 0.15)"
+                  className="commitment-card rounded-2xl border border-slate-800 bg-[#060A16] p-6 shadow-md"
+                >
+                  <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-500/15 text-emerald-400">
+                    <Icon className="h-5 w-5" />
                   </div>
-                  <div>
-                    <div className="text-gray-900 font-semibold">
-                      {testimonials[active].author}
-                    </div>
-                    <div className="text-gray-500 text-sm">
-                      {testimonials[active].role}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
+                  <h3 className="font-display text-lg font-bold text-white">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-[#94A3B8]">
+                    {item.description}
+                  </p>
+                </TiltCard>
+              );
+            })}
+          </StaggerReveal>
 
-            {/* Navigation */}
-            <div className="flex items-center justify-center gap-4 mt-10">
-              <button
-                onClick={prev}
-                className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:text-artyx-brand hover:border-artyx-brand transition-colors"
-                aria-label="Previous testimonial"
+          <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-slate-800/80 pt-6">
+            <p className="text-xs text-slate-400">
+              Want to inspect live systems before making a decision? Book a POS/OMS
+              walkthrough or review our 6 documented case studies.
+            </p>
+            <div className="flex flex-wrap items-center gap-4">
+              <Link
+                href="/work/"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-cyan-400 hover:text-cyan-300"
               >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-
-              {/* Dots */}
-              <div className="flex items-center gap-2">
-                {testimonials.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setActive(i)}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      i === active
-                        ? "w-8 bg-artyx-brand"
-                        : "w-2 bg-gray-300 hover:bg-gray-400"
-                    }`}
-                    aria-label={`Go to testimonial ${i + 1}`}
-                  />
-                ))}
-              </div>
-
-              <button
-                onClick={next}
-                className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:text-artyx-brand hover:border-artyx-brand transition-colors"
-                aria-label="Next testimonial"
+                Inspect Case Studies
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link
+                href="/request-demo/"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-400 hover:text-emerald-300"
               >
-                <ChevronRight className="w-5 h-5" />
-              </button>
+                Request Product Walkthrough
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
           </div>
-        </ScrollReveal>
+        </div>
       </div>
     </section>
   );

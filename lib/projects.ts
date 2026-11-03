@@ -15,6 +15,9 @@ export interface Project {
   slug: string;
   title: string;
   category: string;
+  industry: string;
+  relationshipType: string;
+  roleAndScope: string;
   description: string;
   /** Thumbnail used on the listing card */
   image: string;
@@ -29,8 +32,10 @@ export interface Project {
   duration: string;
   challenge: string;
   solution: string;
+  deliverables: string[];
   results: ProjectResult[];
   tech: string[];
+  relatedServiceSlug: string;
   images: ProjectImage[];
 }
 
@@ -42,6 +47,12 @@ export function getAllProjects(): Project[] {
 
 export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug);
+}
+
+export function getProjectsBySlugs(slugs: string[]): Project[] {
+  return slugs
+    .map((s) => getProjectBySlug(s))
+    .filter((p): p is Project => Boolean(p));
 }
 
 export function getCategories(): string[] {

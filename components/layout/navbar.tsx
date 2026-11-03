@@ -1,139 +1,400 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { trackAnalyticsEvent } from "@/lib/analytics/events";
+import { ChevronDown, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import { MobileNav } from "./mobile-nav";
 
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "Contact", href: "/contact" },
-];
+export const SERVICE_NAV_ITEMS = [
+  {
+    label: "Web Development",
+    href: "/services/web-development/",
+    desc: "Business websites, landing pages & web apps",
+  },
+  {
+    label: "E-commerce Website Development",
+    href: "/services/ecommerce-website-development/",
+    desc: "Online stores, catalogues & mobile checkout",
+  },
+  {
+    label: "Custom Software Development",
+    href: "/services/custom-software/",
+    desc: "Internal systems, dashboards & automation",
+  },
+  {
+    label: "SaaS Development",
+    href: "/services/saas-development/",
+    desc: "Scalable multi-user software products",
+  },
+  {
+    label: "SEO & Digital Marketing",
+    href: "/services/digital-marketing/",
+    desc: "Technical SEO, content strategy & paid growth",
+  },
+  {
+    label: "Branding & Creative",
+    href: "/services/branding/",
+    desc: "Logos, visual identity & brand guidelines",
+  },
+] as const;
+
+export const PRODUCT_NAV_ITEMS = [
+  {
+    label: "POS Software",
+    href: "/products/pos/",
+    desc: "Counter sales, SKU inventory & retail reporting",
+  },
+  {
+    label: "Order Management System (OMS)",
+    href: "/products/order-management/",
+    desc: "Social & website order workflow for online sellers",
+  },
+] as const;
 
 export function Navbar() {
+  const pathname = usePathname();
+  const [prevPathname, setPrevPathname] = useState(pathname);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<"services" | "products" | null>(
+    null,
+  );
+  const navRef = useRef<HTMLElement>(null);
+
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
+    setOpenDropdown(null);
+    setMobileOpen(false);
+  }
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 24);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpenDropdown(null);
+        setMobileOpen(false);
+      }
+    };
+    const handleClickOutside = (e: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setOpenDropdown(null);
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   return (
     <>
-      <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      <header
+        ref={navRef}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-white/90 backdrop-blur-xl border-b border-gray-100 shadow-sm"
-            : "bg-transparent"
+            ? "bg-[#0B1020]/95 backdrop-blur-xl border-b border-[#273248] shadow-lg"
+            : "bg-[#0B1020]/90 backdrop-blur-md border-b border-[#273248]/60"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            {/* Logo */}
+            {/* Brand Logo */}
             <Link
               href="/"
-              className="relative z-50 flex items-center gap-3 group"
+              className="relative z-50 flex items-center gap-3 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#4D7CFE] rounded-lg"
             >
-              <motion.div
-                whileHover={{ rotate: 180, scale: 1.1 }}
-                transition={{ duration: 0.4 }}
-                className="w-10 h-10"
-              >
+              <div className="w-10 h-10 rounded-xl bg-white/10 p-1.5 flex items-center justify-center border border-white/10">
                 <Image
                   src="/logo.png"
-                  alt="Artyx Digital"
-                  width={40}
-                  height={40}
+                  alt="Artyx Digital logo"
+                  width={36}
+                  height={36}
                   className="w-full h-full object-contain"
                 />
-              </motion.div>
-              <span className="text-xl font-semibold text-gray-900 tracking-tight">
-                Artyx<span className="text-artyx-brand">Digital</span>
+              </div>
+              <span className="text-xl font-bold text-[#F8FAFC] tracking-tight font-heading">
+                Artyx<span className="text-[#4D7CFE]">Digital</span>
               </span>
             </Link>
 
-            {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-1">
-              {navLinks.map((link, i) => (
-                <motion.div
-                  key={link.href}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 * i, duration: 0.4 }}
-                >
+            {/* Desktop Navigation */}
+            <nav
+              aria-label="Primary navigation"
+              className="hidden lg:flex items-center gap-1"
+            >
+              <Link
+                href="/"
+                className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  pathname === "/"
+                    ? "text-white bg-white/10"
+                    : "text-[#A7B0C0] hover:text-white hover:bg-white/5"
+                }`}
+              >
+                Home
+              </Link>
+
+              {/* Services Dropdown */}
+              <div
+                className="relative"
+                onMouseEnter={() => setOpenDropdown("services")}
+                onMouseLeave={() => setOpenDropdown(null)}
+              >
+                <div className="flex items-center">
                   <Link
-                    href={link.href}
-                    className="relative px-4 py-2 text-sm font-medium text-gray-600 hover:text-artyx-brand transition-colors group"
+                    href="/services/"
+                    className={`pl-3.5 pr-1.5 py-2 rounded-l-lg text-sm font-medium transition-colors ${
+                      pathname?.startsWith("/services")
+                        ? "text-white bg-white/10"
+                        : "text-[#A7B0C0] hover:text-white hover:bg-white/5"
+                    }`}
                   >
-                    {link.label}
-                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-linear-to-r from-artyx-brand to-artyx-secondary transition-all duration-300 group-hover:w-full" />
+                    Services
                   </Link>
-                </motion.div>
-              ))}
+                  <button
+                    type="button"
+                    aria-expanded={openDropdown === "services"}
+                    aria-haspopup="true"
+                    aria-label="Toggle Services menu"
+                    onClick={() =>
+                      setOpenDropdown((prev) =>
+                        prev === "services" ? null : "services",
+                      )
+                    }
+                    className="pr-2.5 pl-1 py-2 rounded-r-lg text-[#A7B0C0] hover:text-white focus-visible:outline-2 focus-visible:outline-[#4D7CFE]"
+                  >
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform ${
+                        openDropdown === "services" ? "rotate-180 text-[#4D7CFE]" : ""
+                      }`}
+                    />
+                  </button>
+                </div>
+
+                {openDropdown === "services" && (
+                  <div
+                    role="menu"
+                    aria-label="Services submenu"
+                    className="absolute top-full left-0 pt-2 w-80 z-50"
+                  >
+                    <div className="rounded-2xl bg-[#121A2D] border border-[#273248] shadow-2xl p-2 space-y-1">
+                      <Link
+                        href="/services/"
+                        role="menuitem"
+                        className="block px-3.5 py-2.5 rounded-xl bg-[#0B1020]/60 border border-[#273248] hover:border-[#4D7CFE] transition-colors"
+                      >
+                        <div className="text-xs font-semibold uppercase tracking-wider text-[#4D7CFE]">
+                          All Agency Services →
+                        </div>
+                        <div className="text-xs text-[#A7B0C0] mt-0.5">
+                          Overview of our 3 connected pillars
+                        </div>
+                      </Link>
+                      {SERVICE_NAV_ITEMS.map((item) => (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          role="menuitem"
+                          className="block px-3.5 py-2.5 rounded-xl hover:bg-white/5 transition-colors group"
+                        >
+                          <div className="text-sm font-medium text-[#F8FAFC] group-hover:text-[#4D7CFE]">
+                            {item.label}
+                          </div>
+                          <div className="text-xs text-[#A7B0C0] mt-0.5">
+                            {item.desc}
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Products Dropdown */}
+              <div
+                className="relative"
+                onMouseEnter={() => setOpenDropdown("products")}
+                onMouseLeave={() => setOpenDropdown(null)}
+              >
+                <div className="flex items-center">
+                  <Link
+                    href="/products/"
+                    className={`pl-3.5 pr-1.5 py-2 rounded-l-lg text-sm font-medium transition-colors ${
+                      pathname?.startsWith("/products")
+                        ? "text-white bg-white/10"
+                        : "text-[#A7B0C0] hover:text-white hover:bg-white/5"
+                    }`}
+                  >
+                    Products
+                  </Link>
+                  <button
+                    type="button"
+                    aria-expanded={openDropdown === "products"}
+                    aria-haspopup="true"
+                    aria-label="Toggle Products menu"
+                    onClick={() =>
+                      setOpenDropdown((prev) =>
+                        prev === "products" ? null : "products",
+                      )
+                    }
+                    className="pr-2.5 pl-1 py-2 rounded-r-lg text-[#A7B0C0] hover:text-white focus-visible:outline-2 focus-visible:outline-[#4D7CFE]"
+                  >
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform ${
+                        openDropdown === "products" ? "rotate-180 text-[#4D7CFE]" : ""
+                      }`}
+                    />
+                  </button>
+                </div>
+
+                {openDropdown === "products" && (
+                  <div
+                    role="menu"
+                    aria-label="Products submenu"
+                    className="absolute top-full left-0 pt-2 w-80 z-50"
+                  >
+                    <div className="rounded-2xl bg-[#121A2D] border border-[#273248] shadow-2xl p-2 space-y-1">
+                      <Link
+                        href="/products/"
+                        role="menuitem"
+                        className="block px-3.5 py-2.5 rounded-xl bg-[#0B1020]/60 border border-[#273248] hover:border-[#4D7CFE] transition-colors"
+                      >
+                        <div className="text-xs font-semibold uppercase tracking-wider text-[#8B5CF6]">
+                          All Business Software Products →
+                        </div>
+                        <div className="text-xs text-[#A7B0C0] mt-0.5">
+                          Compare POS vs. Order Management (OMS)
+                        </div>
+                      </Link>
+                      {PRODUCT_NAV_ITEMS.map((item) => (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          role="menuitem"
+                          className="block px-3.5 py-2.5 rounded-xl hover:bg-white/5 transition-colors group"
+                        >
+                          <div className="text-sm font-medium text-[#F8FAFC] group-hover:text-[#4D7CFE]">
+                            {item.label}
+                          </div>
+                          <div className="text-xs text-[#A7B0C0] mt-0.5">
+                            {item.desc}
+                          </div>
+                        </Link>
+                      ))}
+                      <div className="pt-1 border-t border-[#273248]">
+                        <Link
+                          href="/request-demo/"
+                          role="menuitem"
+                          className="block px-3.5 py-2 rounded-xl text-xs font-semibold text-[#4D7CFE] hover:bg-[#4D7CFE]/10 transition-colors"
+                        >
+                          Request a Live Product Demo →
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <Link
+                href="/work/"
+                className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  pathname?.startsWith("/work")
+                    ? "text-white bg-white/10"
+                    : "text-[#A7B0C0] hover:text-white hover:bg-white/5"
+                }`}
+              >
+                Our Work
+              </Link>
+
+              <Link
+                href="/about/"
+                className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  pathname?.startsWith("/about")
+                    ? "text-white bg-white/10"
+                    : "text-[#A7B0C0] hover:text-white hover:bg-white/5"
+                }`}
+              >
+                About
+              </Link>
+
+              <Link
+                href="/insights/"
+                className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  pathname?.startsWith("/insights")
+                    ? "text-white bg-white/10"
+                    : "text-[#A7B0C0] hover:text-white hover:bg-white/5"
+                }`}
+              >
+                Insights
+              </Link>
+
+              <Link
+                href="/contact/"
+                className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  pathname?.startsWith("/contact")
+                    ? "text-white bg-white/10"
+                    : "text-[#A7B0C0] hover:text-white hover:bg-white/5"
+                }`}
+              >
+                Let&apos;s Talk
+              </Link>
             </nav>
 
-            {/* CTA Button */}
-            <div className="hidden lg:block">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.5, duration: 0.4 }}
+            {/* Primary & Secondary CTAs (Section 2.1) */}
+            <div className="hidden lg:flex items-center gap-3">
+              <Link
+                href="/products/"
+                onClick={() =>
+                  trackAnalyticsEvent("cta_click", {
+                    cta_name: "Explore Products",
+                    cta_location: "navbar",
+                  })
+                }
+                className="px-4 py-2.5 rounded-xl border border-[#273248] bg-[#121A2D] text-[#F8FAFC] text-xs font-semibold hover:border-[#4D7CFE] transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4D7CFE]"
               >
-                <Link
-                  href="/contact"
-                  className="relative inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-linear-to-r from-artyx-brand to-artyx-secondary text-white text-sm font-semibold hover:shadow-lg hover:shadow-artyx-brand/25 transition-all duration-300"
-                >
-                  Let's Talk
-                  <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                </Link>
-              </motion.div>
+                Explore Products
+              </Link>
+              <Link
+                href="/start-a-project/"
+                onClick={() =>
+                  trackAnalyticsEvent("cta_click", {
+                    cta_name: "Start a Project",
+                    cta_location: "navbar",
+                  })
+                }
+                className="px-5 py-2.5 rounded-xl bg-[#4D7CFE] text-white text-xs font-semibold hover:bg-[#3b69eb] transition-colors shadow-md shadow-[#4D7CFE]/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              >
+                Start a Project
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
-            <motion.button
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden relative z-50 w-10 h-10 flex items-center justify-center text-gray-900"
+            <button
+              type="button"
+              aria-expanded={mobileOpen}
+              aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
+              onClick={() => setMobileOpen((prev) => !prev)}
+              className="lg:hidden relative z-50 w-10 h-10 rounded-xl border border-[#273248] bg-[#121A2D] flex items-center justify-center text-[#F8FAFC] focus-visible:outline-2 focus-visible:outline-[#4D7CFE]"
             >
-              <AnimatePresence mode="wait">
-                {mobileOpen ? (
-                  <motion.div
-                    key="close"
-                    initial={{ rotate: -90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: 90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <X className="w-6 h-6" />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="menu"
-                    initial={{ rotate: 90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: -90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Menu className="w-6 h-6" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.button>
+              {mobileOpen ? (
+                <X className="w-5 h-5" />
+              ) : (
+                <Menu className="w-5 h-5" />
+              )}
+            </button>
           </div>
         </div>
-      </motion.header>
+      </header>
 
       <MobileNav isOpen={mobileOpen} onClose={() => setMobileOpen(false)} />
     </>

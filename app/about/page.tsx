@@ -1,313 +1,329 @@
-"use client";
-
-import { AnimatedText } from "@/components/ui/animated-text";
-import { MagneticButton } from "@/components/ui/magnetic-button";
-import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import type { Metadata } from "next";
+import Link from "next/link";
 import {
   ArrowRight,
-  Heart,
-  Lightbulb,
-  Shield,
-  Target,
-  Users,
-  Zap,
+  CheckCircle2,
+  MapPin,
+  Clock,
+  Mail,
+  Phone,
+  ShieldCheck,
 } from "lucide-react";
-import Link from "next/link";
+import {
+  COMPANY_ENTITY,
+  THREE_BUSINESS_PILLARS,
+  WHY_ARTYX_REASONS,
+  DELIVERY_PROCESS_STEPS,
+} from "@/lib/content/company";
+import { Breadcrumbs } from "@/components/seo/breadcrumbs";
+import { CTASection } from "@/components/sections/cta-section";
 
-const values = [
-  {
-    icon: Target,
-    title: "Precision",
-    description:
-      "Every pixel, every line of code is crafted with meticulous attention to detail.",
+export const metadata: Metadata = {
+  title: "About Artyx Digital | Technology & Digital Growth Partner",
+  description:
+    "Artyx Digital is a Dhaka-based digital technology and growth company helping businesses build websites, operate smarter with POS, OMS, and custom software, and grow through SEO.",
+  alternates: {
+    canonical: "https://artyx.digital/about/",
   },
-  {
-    icon: Lightbulb,
-    title: "Innovation",
-    description:
-      "We push boundaries and embrace cutting-edge technologies to deliver forward-thinking solutions.",
+  openGraph: {
+    title: "About Artyx Digital | Technology & Digital Growth Partner",
+    description: COMPANY_ENTITY.consistentDescription,
+    url: "https://artyx.digital/about/",
+    type: "website",
   },
-  {
-    icon: Heart,
-    title: "Passion",
-    description:
-      "Our team is driven by a genuine love for creating exceptional digital experiences.",
-  },
-  {
-    icon: Shield,
-    title: "Trust",
-    description:
-      "We build lasting partnerships through transparency, reliability, and consistent delivery.",
-  },
-  {
-    icon: Users,
-    title: "Collaboration",
-    description:
-      "Your vision is our mission. We work closely with you at every step of the journey.",
-  },
-  {
-    icon: Zap,
-    title: "Speed",
-    description:
-      "Fast delivery without compromising quality. We move at the speed of your ambition.",
-  },
-];
+};
 
-const milestones = [
+const WORKING_PRINCIPLES = [
   {
-    year: "2019",
-    title: "Founded",
+    title: "Clarity Before Code",
     description:
-      "Artyx Digital was born from a vision to redefine digital excellence.",
+      "We document business goals, user workflows, and scope boundaries in plain language before engineering begins so there are no surprises mid-project.",
   },
   {
-    year: "2020",
-    title: "First 50 Clients",
+    title: "Operational Realism",
     description:
-      "Rapid growth as businesses recognized our unique approach to digital solutions.",
+      "Whether we are designing an e-commerce checkout or configuring Artyx POS and OMS, we build for real-world retail counters, moderators, and mobile networks.",
   },
   {
-    year: "2021",
-    title: "SaaS Division Launch",
+    title: "Evidence Over Hype",
     description:
-      "Expanded into software development, building scalable platforms for enterprises.",
+      "We do not publish inflated percentage claims, fabricated testimonials, or unverified awards. We stand behind live product demos and documented work.",
   },
   {
-    year: "2022",
-    title: "100+ Projects",
+    title: "Connected Architecture",
     description:
-      "Reached a major milestone with over 100 successful project deliveries.",
-  },
-  {
-    year: "2023",
-    title: "Global Expansion",
-    description:
-      "Started serving international clients across multiple continents.",
-  },
-  {
-    year: "2024",
-    title: "Industry Awards",
-    description:
-      "Recognized for excellence in web development and digital marketing.",
-  },
-];
-
-const team = [
-  {
-    name: "Alex Morgan",
-    role: "Founder & CEO",
-    avatar: "AM",
-    color: "from-artyx-brand to-artyx-cyan",
-  },
-  {
-    name: "Sarah Chen",
-    role: "Creative Director",
-    avatar: "SC",
-    color: "from-artyx-gold to-artyx-rose",
-  },
-  {
-    name: "Marcus Johnson",
-    role: "Lead Developer",
-    avatar: "MJ",
-    color: "from-artyx-purple to-artyx-brand",
-  },
-  {
-    name: "Emily Rodriguez",
-    role: "Marketing Head",
-    avatar: "ER",
-    color: "from-artyx-emerald to-artyx-brand",
+      "Your brand identity, website, operational software, and search visibility should work as one connected system rather than isolated silos.",
   },
 ];
 
 export default function AboutPage() {
   return (
-    <>
-      {/* Hero */}
-      <section className="relative min-h-[60vh] flex items-center justify-center pt-32 pb-20 overflow-hidden bg-white">
-        {/* Abstract background patterns */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 right-20 w-48 h-48 opacity-5">
-            <svg viewBox="0 0 200 200" className="w-full h-full">
-              <circle
-                cx="100"
-                cy="100"
-                r="80"
-                fill="none"
-                stroke="#0078d7"
-                strokeWidth="2"
-              />
-              <circle
-                cx="100"
-                cy="100"
-                r="50"
-                fill="none"
-                stroke="#0078d7"
-                strokeWidth="1.5"
-              />
-            </svg>
-          </div>
-          <div className="absolute bottom-20 left-20 w-40 h-40 opacity-5">
-            <svg viewBox="0 0 200 200" className="w-full h-full">
-              <polygon
-                points="100,20 180,180 20,180"
-                fill="none"
-                stroke="#0078d7"
-                strokeWidth="2"
-              />
-            </svg>
-          </div>
-        </div>
+    <div className="bg-white">
+      {/* Dark Hero */}
+      <section className="bg-[#0B1020] pt-28 pb-20 text-[#F8FAFC] lg:pt-36 lg:pb-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <Breadcrumbs items={[{ name: "About", path: "/about/" }]} theme="dark" />
 
-        <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
-          <ScrollReveal>
-            <span className="inline-block px-4 py-1.5 rounded-full border border-artyx-brand/20 bg-artyx-brand/5 text-artyx-brand text-sm font-medium mb-6">
-              Our Story
+          <div className="max-w-3xl">
+            <span className="inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-wider text-blue-300">
+              About {COMPANY_ENTITY.name}
             </span>
-          </ScrollReveal>
-          <AnimatedText
-            text="Crafting Digital Excellence Since 2019"
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-8"
-            delay={0.2}
-            staggerDelay={0.03}
-          />
-          <ScrollReveal delay={0.4}>
-            <p className="max-w-2xl mx-auto text-gray-600 text-lg leading-relaxed">
-              We're a team of passionate creators, developers, and strategists
-              dedicated to transforming bold ideas into extraordinary digital
-              experiences that drive real business results.
+            <h1 className="mt-4 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+              We Help Businesses Build, Operate and Grow.
+            </h1>
+            <p className="mt-5 text-lg leading-relaxed text-[#CBD5E1] sm:text-xl">
+              Artyx Digital brings together digital product thinking, creative execution,
+              business technology and growth strategy.
             </p>
-          </ScrollReveal>
+          </div>
         </div>
       </section>
 
-      {/* Values */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <ScrollReveal className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Our Core <span className="gradient-text">Values</span>
-            </h2>
-            <p className="text-gray-600 max-w-xl mx-auto">
-              The principles that guide everything we do.
-            </p>
-          </ScrollReveal>
+      {/* Company Overview & Mission */}
+      <section className="py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid gap-12 lg:grid-cols-12">
+            <div className="lg:col-span-7">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#0078D7]">
+                Who We Are
+              </span>
+              <h2 className="mt-2 font-display text-3xl font-bold text-[#0F172A] sm:text-4xl">
+                One Partner for Digital Experiences, Business Software &amp; Search Growth
+              </h2>
+              <div className="mt-5 space-y-4 text-base leading-relaxed text-[#475569]">
+                <p>{COMPANY_ENTITY.consistentDescription}</p>
+                <p>
+                  Many growing businesses face a frustrating divide: creative agencies can
+                  design a website that looks good on launch day, but they rarely
+                  understand SKU inventory, order confirmation queues, or custom software
+                  architecture. Conversely, traditional software vendors build rigid tools
+                  that ignore brand credibility, mobile conversion, and search engine
+                  visibility.
+                </p>
+                <p>
+                  Artyx Digital bridges that gap. Headquartered in Dhaka and serving both
+                  Bangladeshi enterprises and international clients, we combine full-stack
+                  agency services with our own operational software products—
+                  <strong>Artyx POS</strong> and <strong>Artyx OMS</strong>.
+                </p>
+              </div>
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {values.map((value, i) => (
-              <ScrollReveal key={value.title} delay={i * 0.1}>
-                <div className="p-8 rounded-2xl bg-white border border-gray-100 hover:border-artyx-brand/30 hover:shadow-md transition-all duration-300 group">
-                  <div className="w-12 h-12 rounded-xl bg-artyx-brand/5 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                    <value.icon className="w-5 h-5 text-artyx-brand" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                    {value.title}
-                  </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">
-                    {value.description}
-                  </p>
+            {/* Verified Operations & Entity Card */}
+            <div className="lg:col-span-5">
+              <div className="rounded-3xl border border-slate-200 bg-[#F8FAFC] p-8 shadow-xs">
+                <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-700">
+                  <ShieldCheck className="h-4 w-4" />
+                  Verified Company Profile
                 </div>
-              </ScrollReveal>
+                <h3 className="mt-3 font-display text-2xl font-bold text-[#0F172A]">
+                  Dhaka Engineering &amp; Operations Hub
+                </h3>
+                <p className="mt-2 text-sm text-[#475569]">
+                  Our multi-disciplinary engineering, product, design, and growth teams
+                  operate from Dhaka, supporting clients across Bangladesh and
+                  internationally.
+                </p>
+
+                <div className="mt-6 space-y-4 border-t border-slate-200 pt-6 text-sm">
+                  <div className="flex items-start gap-3">
+                    <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#0078D7]" />
+                    <div>
+                      <div className="font-semibold text-slate-900">Office Address</div>
+                      <div className="text-slate-600">
+                        {COMPANY_ENTITY.address.fullDisplay}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <Clock className="mt-0.5 h-4 w-4 shrink-0 text-[#0078D7]" />
+                    <div>
+                      <div className="font-semibold text-slate-900">
+                        Staffed Operating Hours
+                      </div>
+                      <div className="text-slate-600">
+                        {COMPANY_ENTITY.operatingHoursDisplay}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[#0078D7]" />
+                    <div>
+                      <div className="font-semibold text-slate-900">Direct Email</div>
+                      <a
+                        href={`mailto:${COMPANY_ENTITY.email}`}
+                        className="text-[#0078D7] hover:underline"
+                      >
+                        {COMPANY_ENTITY.email}
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <Phone className="mt-0.5 h-4 w-4 shrink-0 text-[#0078D7]" />
+                    <div>
+                      <div className="font-semibold text-slate-900">
+                        Phone &amp; WhatsApp
+                      </div>
+                      <a
+                        href={`tel:${COMPANY_ENTITY.phoneE164}`}
+                        className="text-[#0078D7] hover:underline"
+                      >
+                        {COMPANY_ENTITY.phoneDisplay}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Three Business Pillars */}
+      <section className="border-y border-slate-200 bg-[#F8FAFC] py-20">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="font-display text-3xl font-bold text-[#0F172A] sm:text-4xl">
+              Our Three Business Pillars
+            </h2>
+            <p className="mt-3 text-base text-[#475569]">
+              Balanced focus across client engineering services and owned operational
+              products.
+            </p>
+          </div>
+
+          <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-3">
+            {THREE_BUSINESS_PILLARS.map((pillar) => (
+              <div
+                key={pillar.id}
+                className="flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-8 shadow-xs"
+              >
+                <div>
+                  <div
+                    className="mb-4 h-1.5 w-12 rounded-full"
+                    style={{ backgroundColor: pillar.accentColor }}
+                  />
+                  <h3 className="font-display text-2xl font-bold text-[#0F172A]">
+                    {pillar.title}
+                  </h3>
+                  <p className="mt-2.5 text-sm leading-relaxed text-[#475569]">
+                    {pillar.summary}
+                  </p>
+                  <ul className="mt-5 space-y-2 border-t border-slate-100 pt-4">
+                    {pillar.offerings.map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-center gap-2 text-xs font-medium text-slate-800"
+                      >
+                        <CheckCircle2
+                          className="h-3.5 w-3.5 shrink-0"
+                          style={{ color: pillar.accentColor }}
+                        />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="mt-6 border-t border-slate-100 pt-4">
+                  <Link
+                    href={pillar.ctaHref}
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0078D7] hover:underline"
+                  >
+                    {pillar.ctaLabel}
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Timeline */}
-      <section className="py-24 bg-white">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8">
-          <ScrollReveal className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Our <span className="gradient-text">Journey</span>
-            </h2>
-          </ScrollReveal>
-
-          <div className="relative">
-            {/* Vertical line */}
-            <div className="absolute left-8 top-0 bottom-0 w-px bg-gray-200" />
-
-            {milestones.map((milestone, i) => (
-              <ScrollReveal key={milestone.year} delay={i * 0.15}>
-                <div className="relative flex gap-8 pb-12 last:pb-0">
-                  {/* Dot */}
-                  <div className="relative z-10 w-16 h-16 rounded-full bg-artyx-brand/5 border-2 border-artyx-brand/30 flex items-center justify-center shrink-0">
-                    <span className="text-artyx-brand font-bold text-sm">
-                      {milestone.year}
-                    </span>
-                  </div>
-                  {/* Content */}
-                  <div className="pt-3">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-1">
-                      {milestone.title}
+      {/* Working Principles & Why Businesses Choose Us */}
+      <section className="py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid gap-14 lg:grid-cols-2">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-wider text-[#0078D7]">
+                Operating Philosophy
+              </span>
+              <h2 className="mt-2 font-display text-3xl font-bold text-[#0F172A]">
+                Principles That Guide Our Work
+              </h2>
+              <div className="mt-6 space-y-4">
+                {WORKING_PRINCIPLES.map((p) => (
+                  <div
+                    key={p.title}
+                    className="rounded-2xl border border-slate-200 bg-[#F8FAFC] p-6"
+                  >
+                    <h3 className="font-display text-lg font-bold text-[#0F172A]">
+                      {p.title}
                     </h3>
-                    <p className="text-gray-500 text-sm">
-                      {milestone.description}
+                    <p className="mt-1.5 text-sm leading-relaxed text-[#475569]">
+                      {p.description}
                     </p>
                   </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <ScrollReveal className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Meet the <span className="gradient-text">Team</span>
-            </h2>
-            <p className="text-gray-600 max-w-xl mx-auto">
-              The talented people behind Artyx Digital.
-            </p>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map((member, i) => (
-              <ScrollReveal key={member.name} delay={i * 0.1}>
-                <div className="text-center p-6 rounded-2xl bg-white border border-gray-100 hover:border-artyx-brand/30 hover:shadow-md transition-all group">
-                  <div className="w-20 h-20 mx-auto rounded-full bg-artyx-brand flex items-center justify-center text-white font-bold text-lg mb-4 group-hover:scale-110 transition-transform">
-                    {member.avatar}
-                  </div>
-                  <h3 className="text-gray-900 font-semibold">{member.name}</h3>
-                  <p className="text-gray-500 text-sm">{member.role}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-24 bg-white">
-        <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
-          <ScrollReveal>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-              Want to Join Our <span className="gradient-text">Story</span>?
-            </h2>
-            <p className="text-gray-600 mb-8">
-              Whether you're looking for a career change or want to collaborate
-              on a project, we'd love to hear from you.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <MagneticButton
-                as="a"
-                href="/contact"
-                className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-artyx-brand text-white font-semibold"
-              >
-                Get in Touch
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </MagneticButton>
-              <Link
-                href="/careers"
-                className="text-gray-500 hover:text-artyx-brand transition-colors text-sm"
-              >
-                View Open Positions →
-              </Link>
+                ))}
+              </div>
             </div>
-          </ScrollReveal>
+
+            <div>
+              <span className="text-xs font-bold uppercase tracking-wider text-[#0078D7]">
+                Why Artyx Digital
+              </span>
+              <h2 className="mt-2 font-display text-3xl font-bold text-[#0F172A]">
+                How We Deliver Long-Term Value
+              </h2>
+              <div className="mt-6 space-y-4">
+                {WHY_ARTYX_REASONS.map((r) => (
+                  <div
+                    key={r.title}
+                    className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs"
+                  >
+                    <h3 className="font-display text-lg font-bold text-[#0F172A]">
+                      {r.title}
+                    </h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-[#475569]">
+                      {r.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* 6-Step Delivery Process */}
+          <div className="mt-20 border-t border-slate-200 pt-16">
+            <h2 className="text-center font-display text-3xl font-bold text-[#0F172A]">
+              Our 6-Step Delivery Process
+            </h2>
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {DELIVERY_PROCESS_STEPS.map((step) => (
+                <div
+                  key={step.stepNumber}
+                  className="rounded-2xl border border-slate-200 bg-[#F8FAFC] p-6"
+                >
+                  <span className="font-display text-2xl font-bold text-[#0078D7]">
+                    {step.stepNumber}
+                  </span>
+                  <h3 className="mt-2 font-display text-lg font-bold text-[#0F172A]">
+                    {step.title}
+                  </h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-[#475569]">
+                    {step.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
-    </>
+
+      <CTASection />
+    </div>
   );
 }

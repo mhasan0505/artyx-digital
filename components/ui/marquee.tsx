@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 
 interface MarqueeProps {
   children: React.ReactNode;
@@ -18,16 +18,6 @@ export function Marquee({
   className = "",
 }: MarqueeProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [contentWidth, setContentWidth] = useState(0);
-
-  useEffect(() => {
-    if (containerRef.current) {
-      const firstChild = containerRef.current.firstElementChild;
-      if (firstChild) {
-        setContentWidth(firstChild.scrollWidth);
-      }
-    }
-  }, [children]);
 
   return (
     <div className={`overflow-hidden ${className}`}>

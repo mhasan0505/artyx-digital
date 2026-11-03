@@ -1,317 +1,178 @@
-"use client";
+import type { Metadata } from "next";
+import Link from "next/link";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Clock,
+  MessageSquare,
+  ArrowRight,
+  CalendarClock,
+  Briefcase,
+} from "lucide-react";
+import { COMPANY_ENTITY } from "@/lib/content/company";
+import { Breadcrumbs } from "@/components/seo/breadcrumbs";
+import { LeadSubmissionForm } from "@/components/forms/lead-submission-form";
 
-import { AnimatedText } from "@/components/ui/animated-text";
-import { MagneticButton } from "@/components/ui/magnetic-button";
-import { ScrollReveal } from "@/components/ui/scroll-reveal";
-import { motion } from "framer-motion";
-import { CheckCircle2, Clock, Mail, MapPin, Phone, Send } from "lucide-react";
-import { useState } from "react";
-
-const contactInfo = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "hello@artyxdigital.com",
-    href: "mailto:hello@artyxdigital.com",
+export const metadata: Metadata = {
+  title: "Contact Artyx Digital | Start a Project or Request a Demo",
+  description:
+    "Contact Artyx Digital in Dhaka or online. Start a web, e-commerce, software, or marketing project, or request a live demo of Artyx POS and OMS.",
+  alternates: {
+    canonical: "https://artyx.digital/contact/",
   },
-  {
-    icon: Phone,
-    label: "Phone",
-    value: "+880 1732-549551",
-    href: "tel:+8801732549551",
+  openGraph: {
+    title: "Contact Artyx Digital | Start a Project or Request a Demo",
+    description:
+      "Share your project, product interest or business goal. Our team will guide you toward the next step.",
+    url: "https://artyx.digital/contact/",
+    type: "website",
   },
-  {
-    icon: MapPin,
-    label: "Location",
-    value: "18/3 Jahurabad,Mirpur,Dhaka-1216, Bangladesh",
-    href: "#",
-  },
-  { icon: Clock, label: "Hours", value: "Mon - Fri: 9AM - 6PM EST", href: "#" },
-];
-
-const services = [
-  "Web Development",
-  "Digital Marketing",
-  "Content Creation",
-  "Branding",
-  "SaaS Development",
-  "POS Software",
-  "Other",
-];
+};
 
 export default function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    service: "",
-    budget: "",
-    message: "",
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
-
   return (
-    <>
-      {/* Hero */}
-      <section className="relative min-h-[50vh] flex items-center justify-center pt-32 pb-20 overflow-hidden bg-white">
-        {/* Abstract background patterns */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 right-20 w-48 h-48 opacity-5">
-            <svg viewBox="0 0 200 200" className="w-full h-full">
-              <circle
-                cx="100"
-                cy="100"
-                r="80"
-                fill="none"
-                stroke="#0078d7"
-                strokeWidth="2"
-              />
-              <circle
-                cx="100"
-                cy="100"
-                r="50"
-                fill="none"
-                stroke="#0078d7"
-                strokeWidth="1.5"
-              />
-            </svg>
-          </div>
-          <div className="absolute bottom-20 left-20 w-40 h-40 opacity-5">
-            <svg viewBox="0 0 200 200" className="w-full h-full">
-              <polygon
-                points="100,20 180,180 20,180"
-                fill="none"
-                stroke="#0078d7"
-                strokeWidth="2"
-              />
-            </svg>
-          </div>
-        </div>
+    <div className="bg-[#0B1020] text-[#F8FAFC]">
+      <section className="pt-28 pb-24 lg:pt-36 lg:pb-28">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <Breadcrumbs items={[{ name: "Contact", path: "/contact/" }]} theme="dark" />
 
-        <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
-          <ScrollReveal>
-            <span className="inline-block px-4 py-1.5 rounded-full border border-artyx-brand/20 bg-artyx-brand/5 text-artyx-brand text-sm font-medium mb-6">
-              Get in Touch
-            </span>
-          </ScrollReveal>
-          <AnimatedText
-            text="Let's Start a Conversation"
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-8"
-            delay={0.2}
-            staggerDelay={0.03}
-          />
-          <ScrollReveal delay={0.4}>
-            <p className="max-w-2xl mx-auto text-gray-600 text-lg leading-relaxed">
-              Have a project in mind? We'd love to hear about it. Fill out the
-              form below and we'll get back to you within 24 hours.
-            </p>
-          </ScrollReveal>
-        </div>
-      </section>
+          <div className="grid gap-12 lg:grid-cols-12">
+            {/* Left Column: Context, Direct Paths & Contact Info */}
+            <div className="lg:col-span-5">
+              <span className="inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-wider text-blue-300">
+                Get in Touch
+              </span>
+              <h1 className="mt-4 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
+                Let&apos;s Talk About What You Want to Build.
+              </h1>
+              <p className="mt-4 text-base leading-relaxed text-[#CBD5E1]">
+                Share your project, product interest or business goal. Our team will
+                guide you toward the next step.
+              </p>
 
-      {/* Contact Section */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-[1fr_1.2fr] gap-16">
-            {/* Contact Info */}
-            <ScrollReveal>
-              <div className="space-y-8">
-                <h2 className="text-2xl font-bold text-gray-900">
-                  Contact Information
-                </h2>
-                <p className="text-gray-600">
-                  Reach out through any of these channels. We're always happy to
-                  discuss your next big idea.
-                </p>
+              {/* Dedicated Conversion Path Shortcuts */}
+              <div className="mt-8 space-y-3">
+                <Link
+                  href="/start-a-project/"
+                  className="flex items-center justify-between rounded-2xl border border-slate-800 bg-[#121A30] p-4 transition hover:border-blue-500/50"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/15 text-blue-400">
+                      <Briefcase className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <div className="text-sm font-bold text-white">
+                        Starting an Agency Project?
+                      </div>
+                      <div className="text-xs text-slate-400">
+                        Use our structured project scope &amp; budget planner
+                      </div>
+                    </div>
+                  </div>
+                  <ArrowRight className="h-4 w-4 text-blue-400" />
+                </Link>
 
-                <div className="space-y-6">
-                  {contactInfo.map((info) => (
+                <Link
+                  href="/request-demo/"
+                  className="flex items-center justify-between rounded-2xl border border-slate-800 bg-[#121A30] p-4 transition hover:border-purple-500/50"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-500/15 text-purple-400">
+                      <CalendarClock className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <div className="text-sm font-bold text-white">
+                        Evaluating Artyx POS or OMS?
+                      </div>
+                      <div className="text-xs text-slate-400">
+                        Request a tailored product walkthrough call
+                      </div>
+                    </div>
+                  </div>
+                  <ArrowRight className="h-4 w-4 text-purple-400" />
+                </Link>
+              </div>
+
+              {/* Verified Contact Channels */}
+              <div className="mt-8 space-y-4 rounded-2xl border border-slate-800 bg-[#121A30]/70 p-6 text-sm">
+                <div className="flex items-start gap-3">
+                  <Mail className="mt-0.5 h-4 w-4 shrink-0 text-blue-400" />
+                  <div>
+                    <div className="text-xs text-slate-400">Email</div>
                     <a
-                      key={info.label}
-                      href={info.href}
-                      className="flex items-start gap-4 group"
+                      href={`mailto:${COMPANY_ENTITY.email}`}
+                      className="font-semibold text-white hover:text-blue-300"
                     >
-                      <div className="w-12 h-12 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center shrink-0 group-hover:border-artyx-brand/30 group-hover:bg-artyx-brand/5 transition-all">
-                        <info.icon className="w-5 h-5 text-artyx-brand" />
-                      </div>
-                      <div>
-                        <div className="text-gray-400 text-sm mb-1">
-                          {info.label}
-                        </div>
-                        <div className="text-gray-900 group-hover:text-artyx-brand transition-colors">
-                          {info.value}
-                        </div>
-                      </div>
+                      {COMPANY_ENTITY.email}
                     </a>
-                  ))}
+                  </div>
                 </div>
 
-                {/* Social Links */}
-                <div className="pt-8 border-t border-gray-200">
-                  <h3 className="text-gray-900 font-semibold mb-4">
-                    Follow Us
-                  </h3>
-                  <div className="flex items-center gap-3">
-                    {["LinkedIn", "Instagram", "Twitter", "GitHub"].map(
-                      (social) => (
-                        <a
-                          key={social}
-                          href="#"
-                          className="w-10 h-10 rounded-lg bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-600 hover:text-artyx-brand hover:border-artyx-brand/30 transition-all text-xs font-medium"
-                        >
-                          {social[0]}
-                        </a>
-                      ),
-                    )}
+                <div className="flex items-start gap-3">
+                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-blue-400" />
+                  <div>
+                    <div className="text-xs text-slate-400">Phone (Bangladesh &amp; Global)</div>
+                    <a
+                      href={`tel:${COMPANY_ENTITY.phoneE164}`}
+                      className="font-semibold text-white hover:text-blue-300"
+                    >
+                      {COMPANY_ENTITY.phoneDisplay}
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <MessageSquare className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400" />
+                  <div>
+                    <div className="text-xs text-slate-400">WhatsApp Business</div>
+                    <a
+                      href={COMPANY_ENTITY.whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-semibold text-emerald-300 hover:underline"
+                    >
+                      Chat on WhatsApp ({COMPANY_ENTITY.phoneDisplay})
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-blue-400" />
+                  <div>
+                    <div className="text-xs text-slate-400">Dhaka Office</div>
+                    <div className="text-slate-200">
+                      {COMPANY_ENTITY.address.fullDisplay}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 border-t border-slate-800 pt-4">
+                  <Clock className="mt-0.5 h-4 w-4 shrink-0 text-amber-400" />
+                  <div>
+                    <div className="text-xs font-semibold text-white">
+                      {COMPANY_ENTITY.operatingHoursDisplay}
+                    </div>
+                    <div className="mt-0.5 text-xs text-slate-400">
+                      {COMPANY_ENTITY.responseSlaStatement}
+                    </div>
                   </div>
                 </div>
               </div>
-            </ScrollReveal>
+            </div>
 
-            {/* Contact Form */}
-            <ScrollReveal delay={0.2}>
-              <div className="p-8 sm:p-10 rounded-3xl bg-white border border-gray-200 shadow-sm">
-                {submitted ? (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="text-center py-12"
-                  >
-                    <div className="w-16 h-16 mx-auto rounded-full bg-artyx-brand/10 flex items-center justify-center mb-6">
-                      <CheckCircle2 className="w-8 h-8 text-artyx-brand" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                      Message Sent!
-                    </h3>
-                    <p className="text-gray-600">
-                      Thank you for reaching out. We'll get back to you within
-                      24 hours.
-                    </p>
-                  </motion.div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid sm:grid-cols-2 gap-6">
-                      <div>
-                        <label className="block text-gray-600 text-sm mb-2">
-                          Full Name *
-                        </label>
-                        <input
-                          type="text"
-                          required
-                          value={formData.name}
-                          onChange={(e) =>
-                            setFormData({ ...formData, name: e.target.value })
-                          }
-                          className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:border-artyx-brand/50 focus:outline-none focus:ring-1 focus:ring-artyx-brand/20 transition-all"
-                          placeholder="John Doe"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-gray-600 text-sm mb-2">
-                          Email *
-                        </label>
-                        <input
-                          type="email"
-                          required
-                          value={formData.email}
-                          onChange={(e) =>
-                            setFormData({ ...formData, email: e.target.value })
-                          }
-                          className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:border-artyx-brand/50 focus:outline-none focus:ring-1 focus:ring-artyx-brand/20 transition-all"
-                          placeholder="john@example.com"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid sm:grid-cols-2 gap-6">
-                      <div>
-                        <label className="block text-gray-600 text-sm mb-2">
-                          Service Interested In
-                        </label>
-                        <select
-                          value={formData.service}
-                          onChange={(e) =>
-                            setFormData({
-                              ...formData,
-                              service: e.target.value,
-                            })
-                          }
-                          className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 focus:border-artyx-brand/50 focus:outline-none focus:ring-1 focus:ring-artyx-brand/20 transition-all appearance-none"
-                        >
-                          <option value="" className="bg-white">
-                            Select a service
-                          </option>
-                          {services.map((s) => (
-                            <option key={s} value={s} className="bg-white">
-                              {s}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                      <div>
-                        <label className="block text-gray-600 text-sm mb-2">
-                          Budget Range
-                        </label>
-                        <select
-                          value={formData.budget}
-                          onChange={(e) =>
-                            setFormData({ ...formData, budget: e.target.value })
-                          }
-                          className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 focus:border-artyx-brand/50 focus:outline-none focus:ring-1 focus:ring-artyx-brand/20 transition-all appearance-none"
-                        >
-                          <option value="" className="bg-white">
-                            Select budget
-                          </option>
-                          <option value="5k-10k" className="bg-white">
-                            5k - 10k
-                          </option>
-                          <option value="10k-25k" className="bg-white">
-                            10k - 25k
-                          </option>
-                          <option value="25k-50k" className="bg-white">
-                            25k - 50k
-                          </option>
-                          <option value="50k+" className="bg-white">
-                            50k+
-                          </option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-gray-600 text-sm mb-2">
-                        Project Details *
-                      </label>
-                      <textarea
-                        required
-                        rows={5}
-                        value={formData.message}
-                        onChange={(e) =>
-                          setFormData({ ...formData, message: e.target.value })
-                        }
-                        className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:border-artyx-brand/50 focus:outline-none focus:ring-1 focus:ring-artyx-brand/20 transition-all resize-none"
-                        placeholder="Tell us about your project, goals, and timeline..."
-                      />
-                    </div>
-
-                    <MagneticButton
-                      as="button"
-                      className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-artyx-brand text-white font-semibold hover:bg-artyx-brand/90 transition-colors"
-                    >
-                      Send Message
-                      <Send className="w-5 h-5" />
-                    </MagneticButton>
-                  </form>
-                )}
-              </div>
-            </ScrollReveal>
+            {/* Right Column: Interactive Multi-Mode Form */}
+            <div className="lg:col-span-7">
+              <LeadSubmissionForm
+                initialMode="general"
+                allowModeSwitch={true}
+                heading="Send Us a Message"
+                subheading="Choose your enquiry type below so we route your message to the right specialist."
+              />
+            </div>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
