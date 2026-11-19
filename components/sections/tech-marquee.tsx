@@ -2,7 +2,12 @@
 
 import { Marquee } from "@/components/ui/marquee";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
-import StackIcon, { IconName } from "tech-stack-icons";
+import dynamic from "next/dynamic";
+import type { IconName } from "tech-stack-icons";
+
+const StackIcon = dynamic(() => import("tech-stack-icons"), {
+  ssr: false,
+});
 
 const technologies: { name: string; id: IconName | "shopify" }[] = [
   { name: "Next.js", id: "nextjs" },

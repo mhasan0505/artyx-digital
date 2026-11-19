@@ -1,6 +1,11 @@
 "use client";
 
-import StackIcon, { IconName } from "tech-stack-icons";
+import dynamic from "next/dynamic";
+import type { IconName } from "tech-stack-icons";
+
+const StackIcon = dynamic(() => import("tech-stack-icons"), {
+  ssr: false,
+});
 
 interface TechIconProps {
   name: string;

@@ -1,7 +1,10 @@
+nodeLinker: hoisted
 allowBuilds:
+  esbuild: true
   msw: false
   sharp: false
   unrs-resolver: false
+  workerd: true
 ignoredBuiltDependencies:
   - sharp
   - unrs-resolver
