@@ -4,16 +4,16 @@ export const COMPANY_ENTITY = {
   url: "https://artyx.digital/",
   organizationId: "https://artyx.digital/#organization",
   websiteId: "https://artyx.digital/#website",
-  logoPath: "/logo.png",
-  logoUrl: "https://artyx.digital/logo.png",
-  tagline: "Build Better. Operate Smarter. Grow Faster.",
+  logoPath: "/logo-compact-for-dark-bg.png",
+  logoUrl: "https://artyx.digital/logo-compact-for-dark-bg.png",
+  tagline: "Build. Launch. Grow.",
   positioningStatement:
     "Artyx Digital helps ambitious businesses build better digital experiences, operate smarter with technology and grow through digital marketing.",
   supportingMessage:
     "From high-performing websites and custom software to business management systems and digital growth, we bring the technology and expertise businesses need to move forward.",
   consistentDescription:
     "Artyx Digital is a Dhaka-based digital technology and growth company offering web development, e-commerce development, custom software, POS, order management, branding, and digital marketing services.",
-  email: "hello@artyxdigital.com",
+  email: "hello@artyx.digital",
   phoneDisplay: "+880 1732-549551",
   phoneE164: "+8801732549551",
   whatsappNumber: "8801732549551",
@@ -26,9 +26,9 @@ export const COMPANY_ENTITY = {
     fullDisplay: "18/3 Jahurabad, Mirpur, Dhaka-1216, Bangladesh",
   },
   operatingTimezone: "Asia/Dhaka (GMT+6)",
-  operatingHoursDisplay: "Sunday – Thursday: 10:00 AM – 7:00 PM (Asia/Dhaka, GMT+6)",
+  operatingHoursDisplay: "Sunday – Thursday (Asia/Dhaka, GMT+6)",
   responseSlaStatement:
-    "First human response within 2 staffed business hours during Dhaka operating hours (Sunday–Thursday, 10:00 AM – 7:00 PM GMT+6).",
+    "Inquiries reviewed promptly during active business hours.",
   privacyNoticeVersion: "2026-10-v1",
 } as const;
 
@@ -58,7 +58,7 @@ export const THREE_BUSINESS_PILLARS: BusinessPillar[] = [
     audience: "Startups, SMEs, and established businesses",
     ctaLabel: "Explore Services",
     ctaHref: "/services/",
-    accentColor: "#4D7CFE",
+    accentColor: "#7FFF00",
   },
   {
     id: "business-technology",
@@ -173,13 +173,13 @@ export const VERIFIED_TRUST_EVIDENCE = [
   },
   {
     label: "Delivered Work",
-    value: "6 Published Projects",
+    value: "4 Case Studies",
     detail: "Documented brand, web & e-commerce engagements in our portfolio",
   },
   {
-    label: "Response Commitment",
-    value: "≤ 2 Business Hours",
-    detail: "Human follow-up during staffed Dhaka operating hours (Sun–Thu)",
+    label: "Direct Scoping",
+    value: "Engineering Consultation",
+    detail: "Direct technical follow-up with our product team for project inquiries",
   },
 ] as const;
 

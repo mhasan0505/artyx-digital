@@ -45,7 +45,7 @@ const PROJECT_PLANNING_POINTS = [
 
 export default function StartAProjectPage() {
   return (
-    <div className="bg-[#0B1020] text-[#F8FAFC]">
+    <div className="bg-bg text-text min-h-screen">
       <section className="pt-28 pb-24 lg:pt-36 lg:pb-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <Breadcrumbs
@@ -56,15 +56,15 @@ export default function StartAProjectPage() {
           <div className="grid gap-12 lg:grid-cols-12">
             {/* Left Column: Context, Value Proposition & Direct Contact */}
             <div className="lg:col-span-5">
-              <span className="inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-wider text-blue-300">
+              <span className="eyebrow-pill">
                 Project Scoping
               </span>
 
-              <h1 className="mt-4 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl lg:leading-[1.1]">
+              <h1 className="mt-4 font-display text-4xl font-bold tracking-tight text-text sm:text-5xl lg:leading-[1.1]">
                 Tell Us What You&apos;re Planning. We&apos;ll Help You Move Forward.
               </h1>
 
-              <p className="mt-4 text-base leading-relaxed text-[#CBD5E1]">
+              <p className="mt-4 text-base leading-relaxed text-text-muted">
                 Whether you need a high-conversion corporate website, an e-commerce
                 storefront, custom business software, or an SEO growth plan, share your
                 objectives below to receive scoping guidance and a structured proposal.
@@ -75,12 +75,12 @@ export default function StartAProjectPage() {
                 {PROJECT_PLANNING_POINTS.map((pt) => (
                   <div
                     key={pt.title}
-                    className="flex items-start gap-3 rounded-2xl border border-slate-800 bg-[#121A30]/80 p-4"
+                    className="flex items-start gap-3 rounded-2xl border border-border bg-surface p-4"
                   >
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400" />
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent-text" />
                     <div>
-                      <h3 className="text-sm font-semibold text-white">{pt.title}</h3>
-                      <p className="mt-1 text-xs leading-relaxed text-slate-300">
+                      <h3 className="text-sm font-semibold text-text">{pt.title}</h3>
+                      <p className="mt-1 text-xs leading-relaxed text-text-muted">
                         {pt.description}
                       </p>
                     </div>
@@ -88,22 +88,22 @@ export default function StartAProjectPage() {
                 ))}
               </div>
 
-              {/* Dhaka SLA Notice */}
-              <div className="mt-8 rounded-2xl border border-slate-800 bg-[#121A30]/60 p-5 text-xs text-slate-300">
-                <div className="flex items-center gap-2 font-semibold text-white">
+              {/* Dhaka Response Notice */}
+              <div className="mt-8 rounded-2xl border border-border bg-surface/60 p-5 text-xs text-text-muted">
+                <div className="flex items-center gap-2 font-semibold text-text">
                   <Clock className="h-4 w-4 text-amber-400" />
                   Response Time Commitment
                 </div>
-                <p className="mt-1.5 leading-relaxed text-slate-400">
+                <p className="mt-1.5 leading-relaxed text-text-muted">
                   {COMPANY_ENTITY.responseSlaStatement}
                 </p>
-                <div className="mt-4 flex flex-wrap items-center gap-3 border-t border-slate-800/80 pt-3">
+                <div className="mt-4 flex flex-wrap items-center gap-3 border-t border-border/80 pt-3">
                   <span>Need an immediate conversation?</span>
                   <a
                     href={COMPANY_ENTITY.whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 font-semibold text-emerald-400 hover:underline"
+                    className="inline-flex items-center gap-1 font-semibold text-accent-text hover:underline"
                   >
                     <MessageSquare className="h-3.5 w-3.5" />
                     WhatsApp Us
@@ -118,7 +118,7 @@ export default function StartAProjectPage() {
                 </span>
                 <Link
                   href="/request-demo/"
-                  className="font-semibold text-purple-300 underline hover:text-white"
+                  className="font-semibold text-purple-300 underline hover:text-text"
                 >
                   Request Product Demo →
                 </Link>

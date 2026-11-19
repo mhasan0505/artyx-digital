@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useRef } from "react";
+import { gsap } from "@/lib/gsap";
 
 interface MagneticButtonProps {
   children: React.ReactNode;
@@ -16,48 +16,46 @@ export function MagneticButton({
   className = "",
   onClick,
   href,
-  as = "button",
 }: MagneticButtonProps) {
-  const ref = useRef<HTMLElement | null>(null);
-
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const springX = useSpring(x, { stiffness: 150, damping: 15, mass: 0.1 });
-  const springY = useSpring(y, { stiffness: 150, damping: 15, mass: 0.1 });
+  const ref = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!ref.current) return;
+    if (!ref.current || window.matchMedia("(pointer: coarse)").matches) return;
     const rect = ref.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
-    const distanceX = e.clientX - centerX;
-    const distanceY = e.clientY - centerY;
+    const distanceX = (e.clientX - centerX) * 0.28;
+    const distanceY = (e.clientY - centerY) * 0.28;
 
-    x.set(distanceX * 0.3);
-    y.set(distanceY * 0.3);
+    gsap.to(ref.current, {
+      x: distanceX,
+      y: distanceY,
+      duration: 0.35,
+      ease: "power2.out",
+      overwrite: "auto",
+    });
   };
 
   const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
+    if (!ref.current) return;
+    gsap.to(ref.current, {
+      x: 0,
+      y: 0,
+      duration: 0.5,
+      ease: "elastic.out(1, 0.4)",
+      overwrite: "auto",
+    });
   };
 
-  const Component = as === "a" ? motion.a : motion.button;
-
   return (
-    <Component
-      ref={(node: HTMLAnchorElement | HTMLButtonElement | null) => {
-        ref.current = node as HTMLElement | null;
-      }}
-      className={className}
+    <div
+      ref={ref}
+      className={`inline-block ${className}`}
       onClick={onClick}
-      href={href}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      style={{ x: springX, y: springY }}
     >
       {children}
-    </Component>
+    </div>
   );
 }

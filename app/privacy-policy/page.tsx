@@ -15,52 +15,52 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="bg-white">
-      <section className="bg-[#0B1020] pt-28 pb-16 text-[#F8FAFC] lg:pt-36 lg:pb-20">
+    <div className="bg-bg text-text min-h-screen">
+      <section className="bg-bg pt-28 pb-16 text-text lg:pt-36 lg:pb-20">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <Breadcrumbs
             items={[{ name: "Privacy Policy", path: "/privacy-policy/" }]}
-            theme="dark"
+            theme="light"
           />
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-emerald-400">
+          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-accent-text">
             <ShieldCheck className="h-4 w-4" />
             Policy Version: 2026-10-v1 · Effective October 2026
           </div>
-          <h1 className="mt-4 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+          <h1 className="mt-4 font-display text-3xl font-bold tracking-tight text-text sm:text-4xl lg:text-5xl">
             Artyx Digital Privacy Policy
           </h1>
-          <p className="mt-4 text-base leading-relaxed text-[#CBD5E1]">
+          <p className="mt-4 text-base leading-relaxed text-text-muted">
             This Privacy Policy explains how Artyx Digital (&quot;we&quot;, &quot;us&quot;,
             or &quot;our&quot;) collects, uses, retains, and protects personal information
-            when you visit <Link href="/" className="text-white underline">artyx.digital</Link>,
+            when you visit <Link href="/" className="text-text underline">artyx.digital</Link>,
             submit a project brief, request a product demo, or communicate with our team.
           </p>
         </div>
       </section>
 
       <main className="py-16 lg:py-20">
-        <div className="mx-auto max-w-4xl px-6 text-[#334155] lg:px-8">
+        <div className="mx-auto max-w-4xl px-6 text-text-muted lg:px-8">
           <div className="space-y-12 leading-relaxed">
             {/* 1. Data Controller */}
             <section>
-              <h2 className="font-display text-2xl font-bold text-[#0F172A]">
+              <h2 className="font-display text-2xl font-bold text-text">
                 1. Data Controller Information
               </h2>
               <p className="mt-3">
                 The data controller responsible for the processing of your personal
                 information is:
               </p>
-              <div className="mt-4 rounded-2xl border border-slate-200 bg-[#F8FAFC] p-5 text-sm">
-                <div className="font-bold text-slate-900">{COMPANY_ENTITY.legalName}</div>
-                <div className="mt-1 flex items-start gap-2 text-slate-700">
-                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#0078D7]" />
+              <div className="mt-4 rounded-2xl border border-border bg-surface p-5 text-sm">
+                <div className="font-bold text-text">{COMPANY_ENTITY.legalName}</div>
+                <div className="mt-1 flex items-start gap-2 text-text-muted">
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent-text" />
                   <span>{COMPANY_ENTITY.address.fullDisplay}</span>
                 </div>
-                <div className="mt-2 flex items-center gap-2 text-slate-700">
-                  <Mail className="h-4 w-4 shrink-0 text-[#0078D7]" />
+                <div className="mt-2 flex items-center gap-2 text-text-muted">
+                  <Mail className="h-4 w-4 shrink-0 text-accent-text" />
                   <a
                     href={`mailto:${COMPANY_ENTITY.email}`}
-                    className="text-[#0078D7] hover:underline"
+                    className="text-accent-text hover:underline"
                   >
                     {COMPANY_ENTITY.email}
                   </a>
@@ -70,7 +70,7 @@ export default function PrivacyPolicyPage() {
 
             {/* 2. Information We Collect */}
             <section>
-              <h2 className="font-display text-2xl font-bold text-[#0F172A]">
+              <h2 className="font-display text-2xl font-bold text-text">
                 2. Information We Collect
               </h2>
               <p className="mt-3">
@@ -110,7 +110,7 @@ export default function PrivacyPolicyPage() {
 
             {/* 3. Legal Bases for Processing */}
             <section>
-              <h2 className="font-display text-2xl font-bold text-[#0F172A]">
+              <h2 className="font-display text-2xl font-bold text-text">
                 3. Legal Bases for Processing
               </h2>
               <p className="mt-3 text-sm">
@@ -118,30 +118,30 @@ export default function PrivacyPolicyPage() {
                 and recognized legal bases:
               </p>
               <div className="mt-4 grid gap-4 sm:grid-cols-2 text-sm">
-                <div className="rounded-xl border border-slate-200 bg-[#F8FAFC] p-4">
-                  <div className="font-bold text-slate-900">Pre-Contractual Steps</div>
-                  <p className="mt-1 text-xs text-slate-600">
+                <div className="rounded-xl border border-border bg-surface p-4">
+                  <div className="font-bold text-text">Pre-Contractual Steps</div>
+                  <p className="mt-1 text-xs text-text-muted">
                     To evaluate your project requirements, schedule a live POS or OMS demo,
                     prepare technical proposals, and respond to your enquiries.
                   </p>
                 </div>
-                <div className="rounded-xl border border-slate-200 bg-[#F8FAFC] p-4">
-                  <div className="font-bold text-slate-900">Legitimate Interests</div>
-                  <p className="mt-1 text-xs text-slate-600">
+                <div className="rounded-xl border border-border bg-surface p-4">
+                  <div className="font-bold text-text">Legitimate Interests</div>
+                  <p className="mt-1 text-xs text-text-muted">
                     To protect our web applications from denial-of-service and form abuse,
                     maintain audit logs of consent records, and safeguard server operations.
                   </p>
                 </div>
-                <div className="rounded-xl border border-slate-200 bg-[#F8FAFC] p-4">
-                  <div className="font-bold text-slate-900">Explicit Consent</div>
-                  <p className="mt-1 text-xs text-slate-600">
+                <div className="rounded-xl border border-border bg-surface p-4">
+                  <div className="font-bold text-text">Explicit Consent</div>
+                  <p className="mt-1 text-xs text-text-muted">
                     For non-essential analytics tracking, marketing campaign attribution
                     cookies, and optional email newsletter or engineering insights updates.
                   </p>
                 </div>
-                <div className="rounded-xl border border-slate-200 bg-[#F8FAFC] p-4">
-                  <div className="font-bold text-slate-900">Legal Compliance</div>
-                  <p className="mt-1 text-xs text-slate-600">
+                <div className="rounded-xl border border-border bg-surface p-4">
+                  <div className="font-bold text-text">Legal Compliance</div>
+                  <p className="mt-1 text-xs text-text-muted">
                     To comply with applicable laws in Bangladesh, including commercial
                     recordkeeping, tax requirements, and data protection rules.
                   </p>
@@ -151,7 +151,7 @@ export default function PrivacyPolicyPage() {
 
             {/* 4. Sub-Processors & Data Sharing */}
             <section>
-              <h2 className="font-display text-2xl font-bold text-[#0F172A]">
+              <h2 className="font-display text-2xl font-bold text-text">
                 4. Third-Party Sub-Processors &amp; Zero-PII Protections
               </h2>
               <p className="mt-3 text-sm">
@@ -191,7 +191,7 @@ export default function PrivacyPolicyPage() {
 
             {/* 5. Data Retention */}
             <section>
-              <h2 className="font-display text-2xl font-bold text-[#0F172A]">
+              <h2 className="font-display text-2xl font-bold text-text">
                 5. Data Retention Schedule
               </h2>
               <p className="mt-3 text-sm">
@@ -218,7 +218,7 @@ export default function PrivacyPolicyPage() {
 
             {/* 6. Your Rights */}
             <section>
-              <h2 className="font-display text-2xl font-bold text-[#0F172A]">
+              <h2 className="font-display text-2xl font-bold text-text">
                 6. Your Rights &amp; How to Exercise Them
               </h2>
               <p className="mt-3 text-sm">
@@ -235,7 +235,7 @@ export default function PrivacyPolicyPage() {
                 To submit a privacy inquiry or exercise your rights, please email us at{" "}
                 <a
                   href={`mailto:${COMPANY_ENTITY.email}`}
-                  className="font-semibold text-[#0078D7] hover:underline"
+                  className="font-semibold text-accent-text hover:underline"
                 >
                   {COMPANY_ENTITY.email}
                 </a>

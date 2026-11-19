@@ -72,20 +72,20 @@ export default function ServicesOverviewPage() {
   const services = getAllServices();
 
   return (
-    <div className="bg-white">
+    <div className="bg-bg text-text min-h-screen">
       {/* Section 1: Hero */}
-      <section className="bg-[#0B1020] pt-28 pb-20 text-[#F8FAFC] lg:pt-36 lg:pb-24">
+      <section className="bg-bg pt-28 pb-20 text-text lg:pt-36 lg:pb-24 border-b border-border">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <Breadcrumbs items={[{ name: "Services", path: "/services/" }]} theme="dark" />
+          <Breadcrumbs items={[{ name: "Services", path: "/services/" }]} theme="light" />
 
           <div className="max-w-3xl">
-            <span className="inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-wider text-blue-300">
+            <span className="inline-flex items-center rounded-full border border-blue-500/30 bg-surface-20/10 px-4 py-1 text-xs font-semibold uppercase tracking-wider text-blue-300">
               Agency Capabilities
             </span>
-            <h1 className="mt-4 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h1 className="mt-4 font-display text-4xl font-bold tracking-tight text-text sm:text-5xl lg:text-6xl">
               Digital Solutions Built Around Your Business.
             </h1>
-            <p className="mt-5 text-lg leading-relaxed text-[#CBD5E1] sm:text-xl">
+            <p className="mt-5 text-lg leading-relaxed text-text-muted sm:text-xl">
               From websites and custom software to branding and digital marketing, Artyx
               Digital helps businesses build, improve and grow.
             </p>
@@ -93,14 +93,14 @@ export default function ServicesOverviewPage() {
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
                 href="/start-a-project/"
-                className="inline-flex items-center gap-2 rounded-xl bg-[#0078D7] px-7 py-4 text-base font-semibold text-white shadow-lg shadow-[#0078D7]/30 transition hover:bg-[#3B82F6]"
+                className="inline-flex items-center gap-2 rounded-xl bg-btn-primary-bg px-7 py-4 text-base font-semibold text-text shadow-lg shadow-xs transition hover:opacity-90"
               >
                 Start a Project
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href="/products/"
-                className="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-[#121A30] px-6 py-4 text-base font-semibold text-slate-200 transition hover:border-blue-400/50 hover:text-white"
+                className="inline-flex items-center gap-2 rounded-xl border border-border bg-surface-2 px-6 py-4 text-base font-semibold text-text-muted transition hover:border-blue-400/50 hover:text-text"
               >
                 Looking for POS or OMS Products?
               </Link>
@@ -110,13 +110,13 @@ export default function ServicesOverviewPage() {
       </section>
 
       {/* Section 2: Three Business Pillars */}
-      <section className="border-b border-slate-200 bg-[#F8FAFC] py-20">
+      <section className="border-b border-border bg-surface py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="max-w-3xl">
-            <h2 className="font-display text-3xl font-bold text-[#0F172A] sm:text-4xl">
+            <h2 className="font-display text-3xl font-bold text-text sm:text-4xl">
               Organized Around Three Business Pillars
             </h2>
-            <p className="mt-3 text-base text-[#475569]">
+            <p className="mt-3 text-base text-text-muted">
               Clients should understand business outcomes before technical specifications.
               Here is how our capabilities connect across your growth stages.
             </p>
@@ -126,21 +126,21 @@ export default function ServicesOverviewPage() {
             {THREE_BUSINESS_PILLARS.map((pillar) => (
               <div
                 key={pillar.id}
-                className="rounded-2xl border border-slate-200 bg-white p-7 shadow-xs"
+                className="rounded-2xl border border-border bg-surface p-7 shadow-xs"
               >
                 <div
                   className="mb-3 h-1.5 w-10 rounded-full"
                   style={{ backgroundColor: pillar.accentColor }}
                 />
-                <h3 className="font-display text-xl font-bold text-[#0F172A]">
+                <h3 className="font-display text-xl font-bold text-text">
                   {pillar.title}
                 </h3>
-                <p className="mt-2 text-sm text-[#475569]">{pillar.summary}</p>
-                <ul className="mt-4 space-y-2 border-t border-slate-100 pt-4">
+                <p className="mt-2 text-sm text-text-muted">{pillar.summary}</p>
+                <ul className="mt-4 space-y-2 border-t border-border pt-4">
                   {pillar.offerings.map((item) => (
                     <li
                       key={item}
-                      className="flex items-center gap-2 text-xs font-medium text-slate-700"
+                      className="flex items-center gap-2 text-xs font-medium text-text-muted"
                     >
                       <CheckCircle2
                         className="h-3.5 w-3.5 shrink-0"
@@ -160,10 +160,10 @@ export default function ServicesOverviewPage() {
       <section className="py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="max-w-3xl">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#0078D7]">
+            <span className="text-xs font-semibold uppercase tracking-wider text-accent-text">
               Dedicated Service Lines
             </span>
-            <h2 className="mt-2 font-display text-3xl font-bold text-[#0F172A] sm:text-4xl">
+            <h2 className="mt-2 font-display text-3xl font-bold text-text sm:text-4xl">
               Choose the Service That Matches Your Immediate Goal
             </h2>
           </div>
@@ -174,36 +174,36 @@ export default function ServicesOverviewPage() {
               return (
                 <div
                   key={service.slug}
-                  className="flex flex-col justify-between rounded-2xl border border-slate-200 bg-[#F8FAFC] p-8 transition hover:border-[#0078D7]/40 hover:bg-white hover:shadow-xl"
+                  className="flex flex-col justify-between rounded-2xl border border-border bg-surface p-8 transition hover:border-border/40 hover:bg-surface hover:shadow-xl"
                 >
                   <div>
                     <div className="flex items-center justify-between">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-[#0078D7]">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-surface-2 text-accent-text">
                         <Icon className="h-6 w-6" />
                       </div>
-                      <span className="rounded-full bg-slate-200/70 px-3 py-1 text-xs font-semibold text-slate-700">
+                      <span className="rounded-full bg-surface-2/70 px-3 py-1 text-xs font-semibold text-text-muted">
                         {service.pillar}
                       </span>
                     </div>
 
-                    <h3 className="mt-6 font-display text-2xl font-bold text-[#0F172A]">
+                    <h3 className="mt-6 font-display text-2xl font-bold text-text">
                       {service.name}
                     </h3>
-                    <p className="mt-2.5 text-base leading-relaxed text-[#475569]">
+                    <p className="mt-2.5 text-base leading-relaxed text-text-muted">
                       {service.heroSupportingCopy}
                     </p>
 
-                    <div className="mt-6 border-t border-slate-200/80 pt-5">
-                      <div className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                    <div className="mt-6 border-t border-border/80 pt-5">
+                      <div className="text-xs font-bold uppercase tracking-wider text-text-muted">
                         Key Deliverables
                       </div>
                       <ul className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
                         {service.deliverables.slice(0, 4).map((del) => (
                           <li
                             key={del.title}
-                            className="flex items-start gap-2 text-xs font-medium text-slate-800"
+                            className="flex items-start gap-2 text-xs font-medium text-text"
                           >
-                            <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#0078D7]" />
+                            <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent-text" />
                             <span>{del.title}</span>
                           </li>
                         ))}
@@ -211,17 +211,17 @@ export default function ServicesOverviewPage() {
                     </div>
                   </div>
 
-                  <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-slate-200/80 pt-5">
+                  <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-border/80 pt-5">
                     <Link
                       href={service.canonicalPath}
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-[#0078D7] hover:text-blue-700"
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-accent-text hover:text-accent-text"
                     >
                       Explore {service.shortTitle}
                       <ArrowRight className="h-4 w-4" />
                     </Link>
                     <Link
                       href={`/start-a-project/?service=${service.slug}`}
-                      className="text-xs font-medium text-slate-500 hover:text-slate-900"
+                      className="text-xs font-medium text-text-muted hover:text-text"
                     >
                       Request Proposal →
                     </Link>
@@ -234,13 +234,13 @@ export default function ServicesOverviewPage() {
       </section>
 
       {/* Section 4: Delivery Process */}
-      <section className="border-y border-slate-200 bg-[#F8FAFC] py-20">
+      <section className="border-y border-border bg-surface py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="font-display text-3xl font-bold text-[#0F172A] sm:text-4xl">
+            <h2 className="font-display text-3xl font-bold text-text sm:text-4xl">
               Our Six-Stage Delivery Process
             </h2>
-            <p className="mt-3 text-base text-[#475569]">
+            <p className="mt-3 text-base text-text-muted">
               Structured discovery, transparent milestones, and clean production launches.
             </p>
           </div>
@@ -249,15 +249,15 @@ export default function ServicesOverviewPage() {
             {DELIVERY_PROCESS_STEPS.map((step) => (
               <div
                 key={step.stepNumber}
-                className="rounded-2xl border border-slate-200 bg-white p-6"
+                className="rounded-2xl border border-border bg-surface p-6"
               >
-                <span className="font-display text-2xl font-bold text-[#0078D7]">
+                <span className="font-display text-2xl font-bold text-accent-text">
                   {step.stepNumber}
                 </span>
-                <h3 className="mt-2 font-display text-lg font-bold text-[#0F172A]">
+                <h3 className="mt-2 font-display text-lg font-bold text-text">
                   {step.title}
                 </h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-[#475569]">
+                <p className="mt-1.5 text-sm leading-relaxed text-text-muted">
                   {step.description}
                 </p>
               </div>
@@ -270,11 +270,11 @@ export default function ServicesOverviewPage() {
       <section className="py-20">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <div className="text-center">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-[#0078D7]">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-surface-2 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-accent-text">
               <HelpCircle className="h-3.5 w-3.5" />
               Services FAQs
             </span>
-            <h2 className="mt-3 font-display text-3xl font-bold text-[#0F172A]">
+            <h2 className="mt-3 font-display text-3xl font-bold text-text">
               Frequently Asked Questions
             </h2>
           </div>
@@ -283,12 +283,12 @@ export default function ServicesOverviewPage() {
             {SERVICES_OVERVIEW_FAQS.map((faq) => (
               <div
                 key={faq.question}
-                className="rounded-2xl border border-slate-200 bg-white p-6"
+                className="rounded-2xl border border-border bg-surface p-6"
               >
-                <h3 className="font-display text-lg font-bold text-[#0F172A]">
+                <h3 className="font-display text-lg font-bold text-text">
                   {faq.question}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-[#475569]">
+                <p className="mt-2 text-sm leading-relaxed text-text-muted">
                   {faq.answer}
                 </p>
               </div>

@@ -11,8 +11,13 @@ export function buildOrganizationAndWebsiteSchema() {
         url: COMPANY_ENTITY.url,
         logo: {
           "@type": "ImageObject",
-          url: COMPANY_ENTITY.logoUrl,
+          url: "https://artyx.digital/logo-full-for-dark-bg.png",
+          caption: "Artyx Digital Logo",
         },
+        image: [
+          "https://artyx.digital/logo-compact-for-dark-bg.png",
+          "https://artyx.digital/logo-compact-for-light-bg.png",
+        ],
         description: COMPANY_ENTITY.consistentDescription,
         email: COMPANY_ENTITY.email,
         telephone: COMPANY_ENTITY.phoneE164,

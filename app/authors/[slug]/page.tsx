@@ -50,33 +50,33 @@ export default async function AuthorProfilePage({ params }: AuthorPageProps) {
   const articles = getArticlesByAuthor(author.slug);
 
   return (
-    <div className="bg-white">
-      <section className="bg-[#0B1020] pt-28 pb-20 text-[#F8FAFC] lg:pt-36 lg:pb-24">
+    <div className="bg-bg text-text min-h-screen">
+      <section className="bg-bg pt-28 pb-20 text-text lg:pt-36 lg:pb-24 border-b border-border">
         <div className="mx-auto max-w-5xl px-6 lg:px-8">
           <Breadcrumbs
             items={[
               { name: "Insights", path: "/insights/" },
               { name: author.name, path: `/authors/${author.slug}/` },
             ]}
-            theme="dark"
+            theme="light"
           />
 
-          <div className="rounded-3xl border border-slate-800 bg-[#121A30] p-8 sm:p-10">
+          <div className="rounded-3xl border border-border bg-surface-2 p-8 sm:p-10">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/15 px-3 py-1 text-xs font-semibold text-emerald-300">
               <ShieldCheck className="h-3.5 w-3.5" />
               Verified Editorial Profile
             </span>
-            <h1 className="mt-4 font-display text-3xl font-bold text-white sm:text-4xl">
+            <h1 className="mt-4 font-display text-3xl font-bold text-text sm:text-4xl">
               {author.name}
             </h1>
-            <div className="mt-1 text-sm font-medium text-blue-400">
+            <div className="mt-1 text-sm font-medium text-accent-text">
               {author.role}
             </div>
-            <p className="mt-4 text-base leading-relaxed text-[#CBD5E1]">
+            <p className="mt-4 text-base leading-relaxed text-text-muted">
               {author.bio}
             </p>
-            <div className="mt-5 rounded-xl border border-slate-800 bg-[#0B1020] p-4 text-xs text-slate-300">
-              <strong className="text-white">Domain Credentials:</strong>{" "}
+            <div className="mt-5 rounded-xl border border-border bg-bg p-4 text-xs text-text-muted">
+              <strong className="text-text">Domain Credentials:</strong>{" "}
               {author.credentials}
             </div>
           </div>
@@ -85,7 +85,7 @@ export default async function AuthorProfilePage({ params }: AuthorPageProps) {
 
       <section className="py-20">
         <div className="mx-auto max-w-5xl px-6 lg:px-8">
-          <h2 className="font-display text-2xl font-bold text-[#0F172A] sm:text-3xl">
+          <h2 className="font-display text-2xl font-bold text-text sm:text-3xl">
             Published Guides by {author.name} ({articles.length})
           </h2>
 
@@ -95,11 +95,11 @@ export default async function AuthorProfilePage({ params }: AuthorPageProps) {
               return (
                 <article
                   key={article.slug}
-                  className="flex flex-col justify-between rounded-2xl border border-slate-200 bg-[#F8FAFC] p-6"
+                  className="flex flex-col justify-between rounded-2xl border border-border bg-surface p-6"
                 >
                   <div>
-                    <div className="flex items-center justify-between text-xs text-slate-500">
-                      <span className="font-semibold text-[#0078D7]">
+                    <div className="flex items-center justify-between text-xs text-text-muted">
+                      <span className="font-semibold text-accent-text">
                         {category?.shortName}
                       </span>
                       <span className="inline-flex items-center gap-1">
@@ -107,20 +107,20 @@ export default async function AuthorProfilePage({ params }: AuthorPageProps) {
                         {article.readingTimeMinutes} min read
                       </span>
                     </div>
-                    <h3 className="mt-3 font-display text-xl font-bold text-[#0F172A]">
+                    <h3 className="mt-3 font-display text-xl font-bold text-text">
                       <Link
                         href={article.canonicalPath}
-                        className="hover:text-[#0078D7]"
+                        className="hover:text-accent-text"
                       >
                         {article.title}
                       </Link>
                     </h3>
-                    <p className="mt-2 text-sm text-[#475569]">{article.excerpt}</p>
+                    <p className="mt-2 text-sm text-text-muted">{article.excerpt}</p>
                   </div>
-                  <div className="mt-5 border-t border-slate-200 pt-4">
+                  <div className="mt-5 border-t border-border pt-4">
                     <Link
                       href={article.canonicalPath}
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0078D7]"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-accent-text"
                     >
                       Read Full Guide
                       <ArrowRight className="h-3.5 w-3.5" />

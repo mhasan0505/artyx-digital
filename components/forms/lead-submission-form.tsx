@@ -353,15 +353,15 @@ export function LeadSubmissionForm({
       <div
         role="status"
         aria-live="polite"
-        className="rounded-2xl border border-emerald-500/30 bg-[#121A30]/90 p-8 text-slate-100 shadow-2xl"
+        className="rounded-2xl border border-border bg-surface p-8 text-text shadow-2xl"
       >
         <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/15 text-emerald-400">
           <CheckCircle2 className="h-6 w-6" />
         </div>
-        <h3 className="font-display text-2xl font-bold text-white">
+        <h3 className="font-display text-2xl font-bold text-text">
           Enquiry Received
         </h3>
-        <p className="mt-2 text-base leading-relaxed text-slate-300">
+        <p className="mt-2 text-base leading-relaxed text-text-muted">
           {submittedResult.message}
         </p>
 
@@ -375,9 +375,9 @@ export function LeadSubmissionForm({
           </div>
         )}
 
-        <div className="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-xl border border-slate-800 bg-[#0B1020] px-4 py-3 text-xs text-slate-400">
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-xl border border-border bg-surface-2 px-4 py-3 text-xs text-text-muted">
           <span>
-            Reference ID: <code className="text-slate-200">{submittedResult.leadId}</code>
+            Reference ID: <code className="text-text">{submittedResult.leadId}</code>
           </span>
           <span>Response target: {COMPANY_ENTITY.responseSlaStatement}</span>
         </div>
@@ -392,7 +392,7 @@ export function LeadSubmissionForm({
                 cta_location: "form_confirmation",
               })
             }
-            className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-500"
+            className="inline-flex items-center gap-2 rounded-xl btn-primary px-5 py-2.5 text-sm font-semibold"
           >
             <MessageSquare className="h-4 w-4" />
             Message Us on WhatsApp
@@ -400,7 +400,7 @@ export function LeadSubmissionForm({
           <button
             type="button"
             onClick={resetFormForAnotherEnquiry}
-            className="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-800/60 px-4 py-2.5 text-sm font-medium text-slate-200 transition hover:bg-slate-800"
+            className="inline-flex items-center gap-2 rounded-xl border btn-secondary px-4 py-2.5 text-sm font-medium"
           >
             Submit Another Enquiry
           </button>
@@ -410,7 +410,7 @@ export function LeadSubmissionForm({
   }
 
   return (
-    <div className="rounded-2xl border border-slate-800/90 bg-[#121A30]/90 p-6 shadow-2xl sm:p-8">
+    <div className="rounded-2xl border border-border bg-surface p-6 shadow-2xl sm:p-8">
       {turnstileSiteKey && (
         <Script
           src="https://challenges.cloudflare.com/turnstile/v0/api.js"
@@ -419,15 +419,15 @@ export function LeadSubmissionForm({
       )}
 
       {/* Header + Wizard / Single-Page Toggle */}
-      <div className="mb-6 flex flex-col justify-between gap-4 border-b border-slate-800/80 pb-5 sm:flex-row sm:items-center">
+      <div className="mb-6 flex flex-col justify-between gap-4 border-b border-border pb-5 sm:flex-row sm:items-center">
         <div>
           {heading && (
-            <h2 className="font-display text-xl font-bold text-white sm:text-2xl">
+            <h2 className="font-display text-xl font-bold text-text sm:text-2xl">
               {heading}
             </h2>
           )}
           {subheading && (
-            <p className="mt-1 text-sm text-slate-400">{subheading}</p>
+            <p className="mt-1 text-sm text-text-muted">{subheading}</p>
           )}
         </div>
 
@@ -435,16 +435,16 @@ export function LeadSubmissionForm({
           <button
             type="button"
             onClick={() => setIsWizardMode((prev) => !prev)}
-            className="inline-flex items-center gap-2 self-start rounded-lg border border-slate-700 bg-[#0B1020] px-3 py-1.5 text-xs font-medium text-slate-300 transition hover:border-blue-500/50 hover:text-white"
+            className="btn-secondary inline-flex items-center gap-2 self-start px-3 py-1.5 text-xs font-medium cursor-pointer"
           >
             {isWizardMode ? (
               <>
-                <LayoutList className="h-3.5 w-3.5 text-blue-400" />
+                <LayoutList className="h-3.5 w-3.5 text-accent-text" />
                 Switch to Single-Page Form
               </>
             ) : (
               <>
-                <Layers className="h-3.5 w-3.5 text-blue-400" />
+                <Layers className="h-3.5 w-3.5 text-accent-text" />
                 Switch to Guided Steps
               </>
             )}
@@ -455,7 +455,7 @@ export function LeadSubmissionForm({
       {/* Mode Switcher when allowModeSwitch is true */}
       {allowModeSwitch && (
         <div className="mb-6">
-          <span className="mb-2 block text-xs font-semibold uppercase tracking-wider text-slate-400">
+          <span className="mb-2 block text-xs font-semibold uppercase tracking-wider text-text-muted">
             What would you like to discuss?
           </span>
           <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
@@ -478,8 +478,8 @@ export function LeadSubmissionForm({
                 }}
                 className={`rounded-xl border px-3 py-2.5 text-xs font-semibold transition ${
                   mode === tab.id
-                    ? "border-blue-500 bg-blue-600/20 text-white shadow-sm"
-                    : "border-slate-800 bg-[#0B1020]/70 text-slate-400 hover:border-slate-700 hover:text-slate-200"
+                    ? "border-accent-text bg-surface-2 text-text shadow-sm"
+                    : "border-border bg-surface-2/70 text-text-muted hover:border-accent-text hover:text-text"
                 }`}
               >
                 {tab.label}
@@ -492,7 +492,7 @@ export function LeadSubmissionForm({
       {/* Wizard Step Indicator */}
       {isWizardMode && (
         <div className="mb-6">
-          <div className="flex items-center justify-between text-xs font-medium text-slate-400">
+          <div className="flex items-center justify-between text-xs font-medium text-text-muted">
             <span className={wizardStep >= 1 ? "text-blue-400" : ""}>
               1. Service & Scope
             </span>
@@ -503,7 +503,7 @@ export function LeadSubmissionForm({
               3. Contact & Submit
             </span>
           </div>
-          <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-slate-800">
+          <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-surface-2">
             <div
               className="h-full bg-gradient-to-r from-blue-500 to-cyan-400 transition-all duration-300"
               style={{ width: `${(wizardStep / 3) * 100}%` }}
@@ -533,7 +533,7 @@ export function LeadSubmissionForm({
               <div>
                 <label
                   htmlFor={`${formId}-serviceSlug`}
-                  className="mb-2 block text-sm font-medium text-slate-200"
+                  className="mb-2 block text-sm font-medium text-text"
                 >
                   Primary Service Required <span className="text-rose-400">*</span>
                 </label>
@@ -544,7 +544,7 @@ export function LeadSubmissionForm({
                     handleFirstInteraction();
                     setServiceSlug(e.target.value as ServiceSlug);
                   }}
-                  className="w-full rounded-xl border border-slate-700 bg-[#0B1020] px-4 py-3 text-sm text-white focus:border-blue-500 focus:outline-none"
+                  className="w-full rounded-xl border border-border bg-surface-2 px-4 py-3 text-sm text-text focus:border-accent-text focus:outline-none"
                 >
                   {SERVICE_SLUGS.map((slug) => (
                     <option key={slug} value={slug}>
@@ -565,7 +565,7 @@ export function LeadSubmissionForm({
                 <div>
                   <label
                     htmlFor={`${formId}-businessType`}
-                    className="mb-2 block text-sm font-medium text-slate-200"
+                    className="mb-2 block text-sm font-medium text-text"
                   >
                     Retail / Business Category <span className="text-rose-400">*</span>
                   </label>
@@ -578,7 +578,7 @@ export function LeadSubmissionForm({
                       handleFirstInteraction();
                       setBusinessType(e.target.value);
                     }}
-                    className="w-full rounded-xl border border-slate-700 bg-[#0B1020] px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-blue-500 focus:outline-none"
+                    className="w-full rounded-xl border border-border bg-surface-2 px-4 py-3 text-sm text-text placeholder-text-muted focus:border-accent-text focus:outline-none"
                   />
                   {fieldErrors.businessType && (
                     <p className="mt-1 text-xs text-rose-400">
@@ -589,7 +589,7 @@ export function LeadSubmissionForm({
                 <div>
                   <label
                     htmlFor={`${formId}-outletCount`}
-                    className="mb-2 block text-sm font-medium text-slate-200"
+                    className="mb-2 block text-sm font-medium text-text"
                   >
                     Number of Branches / Outlets
                   </label>
@@ -603,7 +603,7 @@ export function LeadSubmissionForm({
                       handleFirstInteraction();
                       setOutletCount(e.target.value);
                     }}
-                    className="w-full rounded-xl border border-slate-700 bg-[#0B1020] px-4 py-3 text-sm text-white focus:border-blue-500 focus:outline-none"
+                    className="w-full rounded-xl border border-border bg-surface-2 px-4 py-3 text-sm text-text focus:border-accent-text focus:outline-none"
                   />
                   {fieldErrors.outletCount && (
                     <p className="mt-1 text-xs text-rose-400">
@@ -617,7 +617,7 @@ export function LeadSubmissionForm({
             {mode === "oms_demo" && (
               <div className="space-y-4">
                 <div>
-                  <span className="mb-2 block text-sm font-medium text-slate-200">
+                  <span className="mb-2 block text-sm font-medium text-text">
                     Active Sales Channels (Select all that apply)
                   </span>
                   <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
@@ -628,15 +628,15 @@ export function LeadSubmissionForm({
                           key={channel}
                           className={`flex cursor-pointer items-center gap-2.5 rounded-xl border px-3.5 py-2.5 text-xs font-medium transition ${
                             active
-                              ? "border-blue-500 bg-blue-600/15 text-white"
-                              : "border-slate-800 bg-[#0B1020] text-slate-300 hover:border-slate-700"
+                              ? "border-accent-text bg-surface-2 text-text"
+                              : "border-border bg-surface-2 text-text-muted hover:border-accent-text"
                           }`}
                         >
                           <input
                             type="checkbox"
                             checked={active}
                             onChange={() => toggleSalesChannel(channel)}
-                            className="h-4 w-4 rounded border-slate-600 text-blue-600 focus:ring-blue-500"
+                            className="h-4 w-4 rounded border-border text-accent-text focus:ring-accent-text"
                           />
                           {SALES_CHANNEL_LABELS[channel]}
                         </label>
@@ -648,7 +648,7 @@ export function LeadSubmissionForm({
                 <div>
                   <label
                     htmlFor={`${formId}-monthlyOrderBand`}
-                    className="mb-2 block text-sm font-medium text-slate-200"
+                    className="mb-2 block text-sm font-medium text-text"
                   >
                     Estimated Monthly Order Volume
                   </label>
@@ -661,7 +661,7 @@ export function LeadSubmissionForm({
                         e.target.value as (typeof MONTHLY_ORDER_BANDS)[number],
                       );
                     }}
-                    className="w-full rounded-xl border border-slate-700 bg-[#0B1020] px-4 py-3 text-sm text-white focus:border-blue-500 focus:outline-none"
+                    className="w-full rounded-xl border border-border bg-surface-2 px-4 py-3 text-sm text-text focus:border-accent-text focus:outline-none"
                   >
                     {MONTHLY_ORDER_BANDS.map((band) => (
                       <option key={band} value={band}>
@@ -680,7 +680,7 @@ export function LeadSubmissionForm({
                   onClick={() => {
                     if (validateCurrentStep(1)) setWizardStep(2);
                   }}
-                  className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-500"
+                  className="inline-flex items-center gap-2 rounded-xl btn-primary px-5 py-2.5 text-sm font-semibold"
                 >
                   Continue to Goals & Budget
                   <ArrowRight className="h-4 w-4" />
@@ -698,7 +698,7 @@ export function LeadSubmissionForm({
                 <div>
                   <label
                     htmlFor={`${formId}-budgetBand`}
-                    className="mb-2 block text-sm font-medium text-slate-200"
+                    className="mb-2 block text-sm font-medium text-text"
                   >
                     Indicative Budget Range
                   </label>
@@ -709,7 +709,7 @@ export function LeadSubmissionForm({
                       handleFirstInteraction();
                       setBudgetBand(e.target.value);
                     }}
-                    className="w-full rounded-xl border border-slate-700 bg-[#0B1020] px-4 py-3 text-sm text-white focus:border-blue-500 focus:outline-none"
+                    className="w-full rounded-xl border border-border bg-surface-2 px-4 py-3 text-sm text-text focus:border-accent-text focus:outline-none"
                   >
                     {BUDGET_BANDS.map((band) => (
                       <option key={band.value} value={band.value}>
@@ -722,7 +722,7 @@ export function LeadSubmissionForm({
                 <div>
                   <label
                     htmlFor={`${formId}-timelineBand`}
-                    className="mb-2 block text-sm font-medium text-slate-200"
+                    className="mb-2 block text-sm font-medium text-text"
                   >
                     Target Timeline
                   </label>
@@ -733,7 +733,7 @@ export function LeadSubmissionForm({
                       handleFirstInteraction();
                       setTimelineBand(e.target.value);
                     }}
-                    className="w-full rounded-xl border border-slate-700 bg-[#0B1020] px-4 py-3 text-sm text-white focus:border-blue-500 focus:outline-none"
+                    className="w-full rounded-xl border border-border bg-surface-2 px-4 py-3 text-sm text-text focus:border-accent-text focus:outline-none"
                   >
                     {TIMELINE_BANDS.map((band) => (
                       <option key={band.value} value={band.value}>
@@ -748,7 +748,7 @@ export function LeadSubmissionForm({
             <div>
               <label
                 htmlFor={`${formId}-details`}
-                className="mb-2 block text-sm font-medium text-slate-200"
+                className="mb-2 block text-sm font-medium text-text"
               >
                 {mode === "pos_demo" || mode === "oms_demo"
                   ? "Current Workflow & What You Want to See in the Demo"
@@ -771,7 +771,7 @@ export function LeadSubmissionForm({
                   handleFirstInteraction();
                   setDetails(e.target.value);
                 }}
-                className="w-full rounded-xl border border-slate-700 bg-[#0B1020] px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-blue-500 focus:outline-none"
+                className="w-full rounded-xl border border-border bg-surface-2 px-4 py-3 text-sm text-text placeholder-text-muted focus:border-accent-text focus:outline-none"
               />
               {fieldErrors.details && (
                 <p className="mt-1 text-xs text-rose-400">{fieldErrors.details[0]}</p>
@@ -783,7 +783,7 @@ export function LeadSubmissionForm({
                 <button
                   type="button"
                   onClick={() => setWizardStep(1)}
-                  className="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-[#0B1020] px-4 py-2.5 text-sm font-medium text-slate-300 transition hover:text-white"
+                  className="btn-secondary inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium"
                 >
                   <ArrowLeft className="h-4 w-4" />
                   Back
@@ -793,7 +793,7 @@ export function LeadSubmissionForm({
                   onClick={() => {
                     if (validateCurrentStep(2)) setWizardStep(3);
                   }}
-                  className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-500"
+                  className="inline-flex items-center gap-2 rounded-xl btn-primary px-5 py-2.5 text-sm font-semibold"
                 >
                   Continue to Contact Details
                   <ArrowRight className="h-4 w-4" />
@@ -810,7 +810,7 @@ export function LeadSubmissionForm({
               <div>
                 <label
                   htmlFor={`${formId}-name`}
-                  className="mb-2 block text-sm font-medium text-slate-200"
+                  className="mb-2 block text-sm font-medium text-text"
                 >
                   Your Full Name <span className="text-rose-400">*</span>
                 </label>
@@ -825,7 +825,7 @@ export function LeadSubmissionForm({
                     handleFirstInteraction();
                     setName(e.target.value);
                   }}
-                  className="w-full rounded-xl border border-slate-700 bg-[#0B1020] px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-blue-500 focus:outline-none"
+                  className="w-full rounded-xl border border-border bg-surface-2 px-4 py-3 text-sm text-text placeholder-text-muted focus:border-accent-text focus:outline-none"
                 />
                 {fieldErrors.name && (
                   <p className="mt-1 text-xs text-rose-400">{fieldErrors.name[0]}</p>
@@ -835,7 +835,7 @@ export function LeadSubmissionForm({
               <div>
                 <label
                   htmlFor={`${formId}-email`}
-                  className="mb-2 block text-sm font-medium text-slate-200"
+                  className="mb-2 block text-sm font-medium text-text"
                 >
                   Business or Work Email <span className="text-rose-400">*</span>
                 </label>
@@ -850,7 +850,7 @@ export function LeadSubmissionForm({
                     handleFirstInteraction();
                     setEmail(e.target.value);
                   }}
-                  className="w-full rounded-xl border border-slate-700 bg-[#0B1020] px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-blue-500 focus:outline-none"
+                  className="w-full rounded-xl border border-border bg-surface-2 px-4 py-3 text-sm text-text placeholder-text-muted focus:border-accent-text focus:outline-none"
                 />
                 {fieldErrors.email && (
                   <p className="mt-1 text-xs text-rose-400">{fieldErrors.email[0]}</p>
@@ -862,7 +862,7 @@ export function LeadSubmissionForm({
               <div>
                 <label
                   htmlFor={`${formId}-phone`}
-                  className="mb-2 block text-sm font-medium text-slate-200"
+                  className="mb-2 block text-sm font-medium text-text"
                 >
                   Phone / WhatsApp Number (Optional)
                 </label>
@@ -874,7 +874,7 @@ export function LeadSubmissionForm({
                       handleFirstInteraction();
                       setCountryCode(e.target.value);
                     }}
-                    className="w-36 shrink-0 rounded-xl border border-slate-700 bg-[#0B1020] px-2.5 py-3 text-xs text-white focus:border-blue-500 focus:outline-none"
+                    className="w-36 shrink-0 rounded-xl border border-border bg-surface-2 px-2.5 py-3 text-xs text-text focus:border-accent-text focus:outline-none"
                   >
                     {COUNTRY_OPTIONS.map((c) => (
                       <option key={c.code} value={c.code}>
@@ -894,7 +894,7 @@ export function LeadSubmissionForm({
                       handleFirstInteraction();
                       setPhone(e.target.value);
                     }}
-                    className="w-full rounded-xl border border-slate-700 bg-[#0B1020] px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-blue-500 focus:outline-none"
+                    className="w-full rounded-xl border border-border bg-surface-2 px-4 py-3 text-sm text-text placeholder-text-muted focus:border-accent-text focus:outline-none"
                   />
                 </div>
                 {fieldErrors.phone && (
@@ -905,7 +905,7 @@ export function LeadSubmissionForm({
               <div>
                 <label
                   htmlFor={`${formId}-company`}
-                  className="mb-2 block text-sm font-medium text-slate-200"
+                  className="mb-2 block text-sm font-medium text-text"
                 >
                   Company / Brand Name (Optional)
                 </label>
@@ -919,7 +919,7 @@ export function LeadSubmissionForm({
                     handleFirstInteraction();
                     setCompany(e.target.value);
                   }}
-                  className="w-full rounded-xl border border-slate-700 bg-[#0B1020] px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-blue-500 focus:outline-none"
+                  className="w-full rounded-xl border border-border bg-surface-2 px-4 py-3 text-sm text-text placeholder-text-muted focus:border-accent-text focus:outline-none"
                 />
                 {fieldErrors.company && (
                   <p className="mt-1 text-xs text-rose-400">{fieldErrors.company[0]}</p>
@@ -928,7 +928,7 @@ export function LeadSubmissionForm({
             </div>
 
             <div>
-              <span className="mb-2 block text-sm font-medium text-slate-200">
+              <span className="mb-2 block text-sm font-medium text-text">
                 Preferred Contact Channel
               </span>
               <div className="grid grid-cols-3 gap-2.5">
@@ -948,8 +948,8 @@ export function LeadSubmissionForm({
                     }}
                     className={`rounded-xl border px-3 py-2.5 text-xs font-semibold transition ${
                       preferredContactMethod === method.id
-                        ? "border-blue-500 bg-blue-600/20 text-white"
-                        : "border-slate-800 bg-[#0B1020] text-slate-400 hover:border-slate-700 hover:text-slate-200"
+                        ? "border-accent-text bg-surface-2 text-text"
+                        : "border-border bg-surface-2 text-text-muted hover:border-accent-text hover:text-text"
                     }`}
                   >
                     {method.label}
@@ -959,8 +959,8 @@ export function LeadSubmissionForm({
             </div>
 
             {/* Privacy Notice & Marketing Opt-in */}
-            <div className="space-y-3 rounded-xl border border-slate-800/90 bg-[#0B1020]/70 p-4">
-              <label className="flex cursor-pointer items-start gap-3 text-xs leading-relaxed text-slate-300">
+            <div className="space-y-3 rounded-xl border border-border bg-surface-2 p-4">
+              <label className="flex cursor-pointer items-start gap-3 text-xs leading-relaxed text-text-muted">
                 <input
                   type="checkbox"
                   required
@@ -969,7 +969,7 @@ export function LeadSubmissionForm({
                     handleFirstInteraction();
                     setPrivacyNoticeAcknowledged(e.target.checked);
                   }}
-                  className="mt-0.5 h-4 w-4 rounded border-slate-600 text-blue-600 focus:ring-blue-500"
+                  className="mt-0.5 h-4 w-4 rounded border-border text-accent-text focus:ring-accent-text"
                 />
                 <span>
                   I acknowledge that Artyx Digital will process my contact and enquiry
@@ -989,7 +989,7 @@ export function LeadSubmissionForm({
                 </p>
               )}
 
-              <label className="flex cursor-pointer items-start gap-3 text-xs leading-relaxed text-slate-400">
+              <label className="flex cursor-pointer items-start gap-3 text-xs leading-relaxed text-text-muted">
                 <input
                   type="checkbox"
                   checked={marketingOptIn}
@@ -997,7 +997,7 @@ export function LeadSubmissionForm({
                     handleFirstInteraction();
                     setMarketingOptIn(e.target.checked);
                   }}
-                  className="mt-0.5 h-4 w-4 rounded border-slate-600 text-blue-600 focus:ring-blue-500"
+                  className="mt-0.5 h-4 w-4 rounded border-border text-accent-text focus:ring-accent-text"
                 />
                 <span>
                   Optional: Send me occasional engineering insights, product updates, and
@@ -1024,7 +1024,7 @@ export function LeadSubmissionForm({
                 <button
                   type="button"
                   onClick={() => setWizardStep(2)}
-                  className="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-[#0B1020] px-4 py-3 text-sm font-medium text-slate-300 transition hover:text-white"
+                  className="btn-secondary inline-flex items-center gap-2 px-4 py-3 text-sm font-medium"
                 >
                   <ArrowLeft className="h-4 w-4" />
                   Back
@@ -1034,7 +1034,7 @@ export function LeadSubmissionForm({
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-blue-600/25 transition hover:bg-blue-500 disabled:cursor-not-allowed disabled:opacity-60"
+                className="btn-primary inline-flex flex-1 items-center justify-center gap-2 px-6 py-3.5 text-sm disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {isSubmitting ? (
                   <>
@@ -1057,7 +1057,7 @@ export function LeadSubmissionForm({
               </button>
             </div>
 
-            <div className="flex items-center gap-2 text-xs text-slate-400">
+            <div className="flex items-center gap-2 text-xs text-text-muted">
               <ShieldCheck className="h-4 w-4 shrink-0 text-emerald-400" />
               <span>
                 {mode === "pos_demo" || mode === "oms_demo"

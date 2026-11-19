@@ -17,21 +17,21 @@ export const metadata: Metadata = {
 
 export default function CookiePolicyPage() {
   return (
-    <div className="bg-white">
-      <section className="bg-[#0B1020] pt-28 pb-16 text-[#F8FAFC] lg:pt-36 lg:pb-20">
+    <div className="bg-bg text-text min-h-screen">
+      <section className="bg-bg pt-28 pb-16 text-text lg:pt-36 lg:pb-20">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <Breadcrumbs
             items={[{ name: "Cookie Policy", path: "/cookie-policy/" }]}
-            theme="dark"
+            theme="light"
           />
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-emerald-400">
+          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-accent-text">
             <ShieldCheck className="h-4 w-4" />
             Cookie Policy Version: 2026-10-v1 · Effective October 2026
           </div>
-          <h1 className="mt-4 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+          <h1 className="mt-4 font-display text-3xl font-bold tracking-tight text-text sm:text-4xl lg:text-5xl">
             Artyx Digital Cookie Policy
           </h1>
-          <p className="mt-4 text-base leading-relaxed text-[#CBD5E1]">
+          <p className="mt-4 text-base leading-relaxed text-text-muted">
             This Cookie Policy explains how Artyx Digital uses cookies and similar
             technologies to ensure website security, remember your preferences, and
             measure non-PII performance when you visit our website.
@@ -44,10 +44,10 @@ export default function CookiePolicyPage() {
       </section>
 
       <main className="py-16 lg:py-20">
-        <div className="mx-auto max-w-4xl px-6 text-[#334155] lg:px-8">
+        <div className="mx-auto max-w-4xl px-6 text-text-muted lg:px-8">
           <div className="space-y-10 leading-relaxed text-sm">
             <section>
-              <h2 className="font-display text-xl font-bold text-[#0F172A]">
+              <h2 className="font-display text-xl font-bold text-text">
                 1. What Are Cookies?
               </h2>
               <p className="mt-3">
@@ -59,30 +59,30 @@ export default function CookiePolicyPage() {
             </section>
 
             <section>
-              <h2 className="font-display text-xl font-bold text-[#0F172A]">
+              <h2 className="font-display text-xl font-bold text-text">
                 2. Cookie Categories Used on Artyx Digital
               </h2>
               <div className="mt-4 space-y-4">
                 {/* Necessary */}
-                <div className="rounded-2xl border border-slate-200 bg-[#F8FAFC] p-5">
+                <div className="rounded-2xl border border-border bg-surface p-5">
                   <div className="flex items-center justify-between">
-                    <span className="font-bold text-slate-900 flex items-center gap-2">
-                      <Lock className="h-4 w-4 text-[#0078D7]" />
+                    <span className="font-bold text-text flex items-center gap-2">
+                      <Lock className="h-4 w-4 text-accent-text" />
                       Strictly Necessary Cookies (Always Active)
                     </span>
-                    <span className="rounded bg-slate-200 px-2.5 py-0.5 text-xs font-semibold text-slate-700">
+                    <span className="rounded bg-surface-2 px-2.5 py-0.5 text-xs font-semibold text-text-muted">
                       Required
                     </span>
                   </div>
-                  <p className="mt-2 text-xs leading-relaxed text-slate-600">
+                  <p className="mt-2 text-xs leading-relaxed text-text-muted">
                     These cookies are essential for core site navigation, form security,
                     and remembering your cookie consent choices. They do not store any
                     personally identifiable information.
                   </p>
-                  <div className="mt-3 overflow-x-auto text-xs text-slate-700">
+                  <div className="mt-3 overflow-x-auto text-xs text-text-muted">
                     <table className="w-full text-left">
                       <thead>
-                        <tr className="border-b border-slate-200 text-slate-500">
+                        <tr className="border-b border-border text-text-muted">
                           <th className="py-1">Cookie Name</th>
                           <th className="py-1">Provider</th>
                           <th className="py-1">Purpose</th>
@@ -91,13 +91,13 @@ export default function CookiePolicyPage() {
                       </thead>
                       <tbody className="divide-y divide-slate-100 font-mono text-[11px]">
                         <tr>
-                          <td className="py-1.5 font-semibold text-slate-900">artyx_consent_v1</td>
+                          <td className="py-1.5 font-semibold text-text">artyx_consent_v1</td>
                           <td className="py-1.5">First-party</td>
                           <td className="py-1.5 font-sans">Stores your cookie consent preferences and policy version.</td>
                           <td className="py-1.5 font-sans">180 days</td>
                         </tr>
                         <tr>
-                          <td className="py-1.5 font-semibold text-slate-900">__cf_bm / cf_clearance</td>
+                          <td className="py-1.5 font-semibold text-text">__cf_bm / cf_clearance</td>
                           <td className="py-1.5">Cloudflare</td>
                           <td className="py-1.5 font-sans">Turnstile bot mitigation and DDoS security verification.</td>
                           <td className="py-1.5 font-sans">Session to 30 min</td>
@@ -108,26 +108,26 @@ export default function CookiePolicyPage() {
                 </div>
 
                 {/* Analytics */}
-                <div className="rounded-2xl border border-slate-200 bg-[#F8FAFC] p-5">
+                <div className="rounded-2xl border border-border bg-surface p-5">
                   <div className="flex items-center justify-between">
-                    <span className="font-bold text-slate-900 flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-blue-600" />
+                    <span className="font-bold text-text flex items-center gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-accent-text" />
                       Analytics &amp; Performance Cookies (Optional)
                     </span>
                     <span className="rounded bg-blue-100 px-2.5 py-0.5 text-xs font-semibold text-blue-800">
                       Off by default
                     </span>
                   </div>
-                  <p className="mt-2 text-xs leading-relaxed text-slate-600">
+                  <p className="mt-2 text-xs leading-relaxed text-text-muted">
                     Helps us understand how visitors interact with our content (such as
                     which guides or services are most read), measure Core Web Vitals
                     performance, and troubleshoot broken links. We do not transmit PII to
                     analytics engines.
                   </p>
-                  <div className="mt-3 overflow-x-auto text-xs text-slate-700">
+                  <div className="mt-3 overflow-x-auto text-xs text-text-muted">
                     <table className="w-full text-left">
                       <thead>
-                        <tr className="border-b border-slate-200 text-slate-500">
+                        <tr className="border-b border-border text-text-muted">
                           <th className="py-1">Cookie Name</th>
                           <th className="py-1">Provider</th>
                           <th className="py-1">Purpose</th>
@@ -136,7 +136,7 @@ export default function CookiePolicyPage() {
                       </thead>
                       <tbody className="divide-y divide-slate-100 font-mono text-[11px]">
                         <tr>
-                          <td className="py-1.5 font-semibold text-slate-900">_ga / _ga_*</td>
+                          <td className="py-1.5 font-semibold text-text">_ga / _ga_*</td>
                           <td className="py-1.5">Google Analytics 4</td>
                           <td className="py-1.5 font-sans">Anonymized visitor interaction statistics and page view counts.</td>
                           <td className="py-1.5 font-sans">Up to 2 years</td>
@@ -147,9 +147,9 @@ export default function CookiePolicyPage() {
                 </div>
 
                 {/* Advertising / Attribution */}
-                <div className="rounded-2xl border border-slate-200 bg-[#F8FAFC] p-5">
+                <div className="rounded-2xl border border-border bg-surface p-5">
                   <div className="flex items-center justify-between">
-                    <span className="font-bold text-slate-900 flex items-center gap-2">
+                    <span className="font-bold text-text flex items-center gap-2">
                       <SlidersHorizontal className="h-4 w-4 text-purple-600" />
                       Marketing &amp; Attribution Cookies (Optional)
                     </span>
@@ -157,14 +157,14 @@ export default function CookiePolicyPage() {
                       Off by default
                     </span>
                   </div>
-                  <p className="mt-2 text-xs leading-relaxed text-slate-600">
+                  <p className="mt-2 text-xs leading-relaxed text-text-muted">
                     Used to attribute incoming enquiries to the advertising campaign or
                     search keyword that originated your visit. Retained for 90 days.
                   </p>
-                  <div className="mt-3 overflow-x-auto text-xs text-slate-700">
+                  <div className="mt-3 overflow-x-auto text-xs text-text-muted">
                     <table className="w-full text-left">
                       <thead>
-                        <tr className="border-b border-slate-200 text-slate-500">
+                        <tr className="border-b border-border text-text-muted">
                           <th className="py-1">Cookie Name</th>
                           <th className="py-1">Provider</th>
                           <th className="py-1">Purpose</th>
@@ -173,7 +173,7 @@ export default function CookiePolicyPage() {
                       </thead>
                       <tbody className="divide-y divide-slate-100 font-mono text-[11px]">
                         <tr>
-                          <td className="py-1.5 font-semibold text-slate-900">artyx_attribution_v1</td>
+                          <td className="py-1.5 font-semibold text-text">artyx_attribution_v1</td>
                           <td className="py-1.5">First-party</td>
                           <td className="py-1.5 font-sans">First-touch and last-touch UTM and campaign attribution tracking.</td>
                           <td className="py-1.5 font-sans">90 days</td>
@@ -186,7 +186,7 @@ export default function CookiePolicyPage() {
             </section>
 
             <section>
-              <h2 className="font-display text-xl font-bold text-[#0F172A]">
+              <h2 className="font-display text-xl font-bold text-text">
                 3. How to Manage and Withdraw Your Consent
               </h2>
               <p className="mt-3">

@@ -15,33 +15,33 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <div className="bg-white">
-      <section className="bg-[#0B1020] pt-28 pb-16 text-[#F8FAFC] lg:pt-36 lg:pb-20">
+    <div className="bg-bg text-text min-h-screen">
+      <section className="bg-bg pt-28 pb-16 text-text lg:pt-36 lg:pb-20">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <Breadcrumbs
             items={[{ name: "Terms of Service", path: "/terms/" }]}
-            theme="dark"
+            theme="light"
           />
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-emerald-400">
+          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-accent-text">
             <ShieldCheck className="h-4 w-4" />
             Terms Version: 2026-10-v1 · Effective October 2026
           </div>
-          <h1 className="mt-4 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+          <h1 className="mt-4 font-display text-3xl font-bold tracking-tight text-text sm:text-4xl lg:text-5xl">
             Terms of Service
           </h1>
-          <p className="mt-4 text-base leading-relaxed text-[#CBD5E1]">
+          <p className="mt-4 text-base leading-relaxed text-text-muted">
             Please read these Terms of Service carefully before browsing{" "}
-            <Link href="/" className="text-white underline">artyx.digital</Link> or engaging
+            <Link href="/" className="text-text underline">artyx.digital</Link> or engaging
             our agency or product services.
           </p>
         </div>
       </section>
 
       <main className="py-16 lg:py-20">
-        <div className="mx-auto max-w-4xl px-6 text-[#334155] lg:px-8">
+        <div className="mx-auto max-w-4xl px-6 text-text-muted lg:px-8">
           <div className="space-y-10 leading-relaxed text-sm">
             <section>
-              <h2 className="font-display text-xl font-bold text-[#0F172A]">
+              <h2 className="font-display text-xl font-bold text-text">
                 1. Acceptance of Terms
               </h2>
               <p className="mt-3">
@@ -53,7 +53,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="font-display text-xl font-bold text-[#0F172A]">
+              <h2 className="font-display text-xl font-bold text-text">
                 2. Agency Services &amp; Project Statements of Work (SOW)
               </h2>
               <p className="mt-3">
@@ -74,7 +74,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="font-display text-xl font-bold text-[#0F172A]">
+              <h2 className="font-display text-xl font-bold text-text">
                 3. Software Products (Artyx POS &amp; Artyx OMS)
               </h2>
               <p className="mt-3">
@@ -87,7 +87,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="font-display text-xl font-bold text-[#0F172A]">
+              <h2 className="font-display text-xl font-bold text-text">
                 4. Intellectual Property Rights
               </h2>
               <p className="mt-3">
@@ -103,7 +103,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="font-display text-xl font-bold text-[#0F172A]">
+              <h2 className="font-display text-xl font-bold text-text">
                 5. Website Use &amp; Acceptable Behavior
               </h2>
               <p className="mt-3">
@@ -118,7 +118,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="font-display text-xl font-bold text-[#0F172A]">
+              <h2 className="font-display text-xl font-bold text-text">
                 6. Limitation of Liability &amp; Disclaimers
               </h2>
               <p className="mt-3">
@@ -131,7 +131,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="font-display text-xl font-bold text-[#0F172A]">
+              <h2 className="font-display text-xl font-bold text-text">
                 7. Governing Law &amp; Jurisdiction
               </h2>
               <p className="mt-3">
@@ -141,17 +141,17 @@ export default function TermsPage() {
               </p>
             </section>
 
-            <section className="border-t border-slate-200 pt-8">
-              <h2 className="font-display text-xl font-bold text-[#0F172A]">
+            <section className="border-t border-border pt-8">
+              <h2 className="font-display text-xl font-bold text-text">
                 8. Contact for Legal Inquiries
               </h2>
               <p className="mt-2">
                 If you have questions about these Terms of Service, please contact us at:
               </p>
-              <div className="mt-3 text-slate-700">
-                <div className="font-semibold text-slate-900">{COMPANY_ENTITY.legalName}</div>
+              <div className="mt-3 text-text-muted">
+                <div className="font-semibold text-text">{COMPANY_ENTITY.legalName}</div>
                 <div>{COMPANY_ENTITY.address.fullDisplay}</div>
-                <div>Email: <a href={`mailto:${COMPANY_ENTITY.email}`} className="text-[#0078D7] hover:underline">{COMPANY_ENTITY.email}</a></div>
+                <div>Email: <a href={`mailto:${COMPANY_ENTITY.email}`} className="text-accent-text hover:underline">{COMPANY_ENTITY.email}</a></div>
               </div>
             </section>
           </div>

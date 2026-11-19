@@ -26,9 +26,9 @@ const technologies: { name: string; id: IconName | "shopify" }[] = [
 
 export function TechMarquee() {
   return (
-    <section className="py-16 border-y border-gray-100 bg-white">
+    <section className="py-16 border-y border-border bg-bg">
       <ScrollReveal className="text-center mb-10">
-        <p className="text-gray-400 text-sm tracking-widest uppercase">
+        <p className="text-text-muted text-sm tracking-widest uppercase">
           Technologies We Master
         </p>
       </ScrollReveal>
@@ -37,7 +37,7 @@ export function TechMarquee() {
         {technologies.map((tech) => (
           <div
             key={tech.id}
-            className="flex items-center gap-3 px-6 py-3 rounded-full bg-gray-50 border border-gray-100 text-gray-600 text-sm font-medium whitespace-nowrap hover:border-artyx-brand/30 hover:text-artyx-brand transition-colors cursor-default"
+            className="flex items-center gap-3 px-6 py-3 rounded-full bg-surface border border-border text-text-muted text-sm font-medium whitespace-nowrap hover:border-accent-text hover:text-text transition-colors cursor-default"
           >
             <div className="w-5 h-5 flex items-center justify-center">
               {tech.id === "shopify" ? (

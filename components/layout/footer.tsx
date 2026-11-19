@@ -6,13 +6,14 @@ import { COMPANY_ENTITY } from "@/lib/content/company";
 import { ArrowUpRight, Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { ThemeToggle } from "@/components/theme/theme-toggle";
 
 const footerLinks = {
   services: [
     { label: "Services Overview", href: "/services/" },
     { label: "Web Development", href: "/services/web-development/" },
     {
-      label: "E-commerce Website Development",
+      label: "E-commerce Development",
       href: "/services/ecommerce-website-development/",
     },
     { label: "Custom Software Development", href: "/services/custom-software/" },
@@ -37,63 +38,74 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="relative bg-[#0B1020] text-[#F8FAFC] border-t border-[#273248]">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.4fr_1.1fr_1.1fr_1.3fr] gap-12 lg:gap-8">
+    <footer className="relative border-t border-border bg-bg text-text">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1.1fr_1.1fr_1.3fr] lg:gap-8">
           {/* Brand Column */}
           <div className="space-y-5">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-white/10 p-1.5 flex items-center justify-center border border-white/10">
-                <Image
-                  src="/logo.png"
-                  alt="Artyx Digital"
-                  width={36}
-                  height={36}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <span className="text-xl font-bold text-[#F8FAFC] font-heading">
-                Artyx<span className="text-[#4D7CFE]">Digital</span>
-              </span>
+            <Link href="/" prefetch={false} className="inline-flex items-center">
+              <Image
+                src="/logo-compact-for-dark-bg.png"
+                alt="Artyx Digital"
+                width={124}
+                height={40}
+                className="h-10 w-auto object-contain block dark:block light:hidden"
+              />
+              <Image
+                src="/logo-compact-for-light-bg.png"
+                alt="Artyx Digital"
+                width={124}
+                height={40}
+                className="h-10 w-auto object-contain hidden dark:hidden light:block"
+              />
             </Link>
-            <p className="text-xs font-semibold uppercase tracking-wider text-[#4D7CFE]">
+
+            {/* Tagline */}
+            <p className="font-heading text-xs font-bold uppercase tracking-widest text-text-muted">
               {COMPANY_ENTITY.tagline}
             </p>
-            <p className="text-[#A7B0C0] text-sm leading-relaxed max-w-sm">
+
+            <p className="max-w-sm text-sm leading-relaxed text-text-muted">
               {COMPANY_ENTITY.consistentDescription}
             </p>
-            <div className="flex flex-wrap gap-2.5 pt-2">
+
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              {/* Primary CTA */}
               <Link
                 href="/start-a-project/"
+                prefetch={false}
                 onClick={() =>
                   trackAnalyticsEvent("cta_click", {
                     cta_name: "Start a Project",
                     cta_location: "footer",
                   })
                 }
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#4D7CFE] text-white text-xs font-semibold hover:bg-[#3b69eb] transition-colors"
+                className="btn-primary inline-flex items-center gap-1.5 px-4 py-2.5 text-xs font-bold"
               >
                 Start a Project
-                <ArrowUpRight className="w-3.5 h-3.5" />
+                <ArrowUpRight className="h-3.5 w-3.5" />
               </Link>
+              {/* Secondary CTA */}
               <Link
                 href="/request-demo/"
+                prefetch={false}
                 onClick={() =>
                   trackAnalyticsEvent("cta_click", {
                     cta_name: "Request a Demo",
                     cta_location: "footer",
                   })
                 }
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-[#273248] bg-[#121A2D] text-[#F8FAFC] text-xs font-semibold hover:border-[#4D7CFE] transition-colors"
+                className="btn-secondary inline-flex items-center gap-1.5 px-4 py-2.5 text-xs font-semibold"
               >
                 Request a Demo
               </Link>
+              <ThemeToggle />
             </div>
           </div>
 
           {/* Services Column */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#F8FAFC] mb-5">
+            <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-text">
               Agency Services
             </h3>
             <ul className="space-y-2.5">
@@ -101,7 +113,8 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-[#A7B0C0] text-sm hover:text-[#4D7CFE] transition-colors inline-flex items-center gap-1.5"
+                    prefetch={false}
+                    className="inline-flex items-center text-sm text-text-muted transition hover:text-text"
                   >
                     <span>{link.label}</span>
                   </Link>
@@ -112,15 +125,16 @@ export function Footer() {
 
           {/* Products & Company Column */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#F8FAFC] mb-5">
-              Products & Company
+            <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-text">
+              Products &amp; Company
             </h3>
             <ul className="space-y-2.5">
               {footerLinks.productsAndCompany.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-[#A7B0C0] text-sm hover:text-[#4D7CFE] transition-colors inline-flex items-center gap-1.5"
+                    prefetch={false}
+                    className="inline-flex items-center text-sm text-text-muted transition hover:text-text"
                   >
                     <span>{link.label}</span>
                   </Link>
@@ -131,7 +145,7 @@ export function Footer() {
 
           {/* Contact Column */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-[#F8FAFC] mb-5">
+            <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-text">
               Get in Touch
             </h3>
             <ul className="space-y-3.5">
@@ -143,9 +157,9 @@ export function Footer() {
                       cta_location: "footer",
                     })
                   }
-                  className="flex items-start gap-3 text-[#A7B0C0] hover:text-white text-sm transition-colors"
+                  className="flex items-start gap-3 text-sm text-text-muted transition hover:text-text"
                 >
-                  <Mail className="w-4 h-4 mt-0.5 text-[#4D7CFE] shrink-0" />
+                  <Mail className="mt-0.5 h-4 w-4 shrink-0 text-accent-text" />
                   <span>{COMPANY_ENTITY.email}</span>
                 </a>
               </li>
@@ -157,9 +171,9 @@ export function Footer() {
                       cta_location: "footer",
                     })
                   }
-                  className="flex items-start gap-3 text-[#A7B0C0] hover:text-white text-sm transition-colors"
+                  className="flex items-start gap-3 text-sm text-text-muted transition hover:text-text"
                 >
-                  <Phone className="w-4 h-4 mt-0.5 text-[#4D7CFE] shrink-0" />
+                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-accent-text" />
                   <span>{COMPANY_ENTITY.phoneDisplay}</span>
                 </a>
               </li>
@@ -173,18 +187,18 @@ export function Footer() {
                       cta_location: "footer",
                     })
                   }
-                  className="flex items-start gap-3 text-[#A7B0C0] hover:text-emerald-400 text-sm transition-colors"
+                  className="flex items-start gap-3 text-sm text-text-muted transition hover:text-text"
                 >
-                  <MessageCircle className="w-4 h-4 mt-0.5 text-emerald-400 shrink-0" />
+                  <MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-accent-text" />
                   <span>WhatsApp Business ({COMPANY_ENTITY.phoneDisplay})</span>
                 </a>
               </li>
-              <li className="flex items-start gap-3 text-[#A7B0C0] text-sm">
-                <MapPin className="w-4 h-4 mt-0.5 text-[#4D7CFE] shrink-0" />
+              <li className="flex items-start gap-3 text-sm text-text-muted">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent-text" />
                 <span>{COMPANY_ENTITY.address.fullDisplay}</span>
               </li>
-              <li className="flex items-start gap-3 text-[#A7B0C0] text-xs">
-                <Clock className="w-4 h-4 mt-0.5 text-[#4D7CFE] shrink-0" />
+              <li className="flex items-start gap-3 text-xs text-text-muted">
+                <Clock className="mt-0.5 h-4 w-4 shrink-0 text-accent-text" />
                 <span>{COMPANY_ENTITY.operatingHoursDisplay}</span>
               </li>
             </ul>
@@ -192,34 +206,36 @@ export function Footer() {
         </div>
 
         {/* Bottom Legal & Consent Bar */}
-        <div className="py-6 border-t border-[#273248] flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-[#A7B0C0] text-xs">
-            © {new Date().getFullYear()} {COMPANY_ENTITY.name}. All rights
-            reserved.
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-border py-6 sm:flex-row">
+          <p className="text-xs text-text-muted">
+            © {new Date().getFullYear()} {COMPANY_ENTITY.name}. All rights reserved.
           </p>
           <div className="flex flex-wrap items-center gap-6">
             <Link
               href="/privacy-policy/"
-              className="text-[#A7B0C0] text-xs hover:text-white transition-colors"
+              prefetch={false}
+              className="text-xs text-text-muted transition hover:text-text"
             >
               Privacy Policy
             </Link>
             <Link
               href="/terms/"
-              className="text-[#A7B0C0] text-xs hover:text-white transition-colors"
+              prefetch={false}
+              className="text-xs text-text-muted transition hover:text-text"
             >
               Terms of Service
             </Link>
             <Link
               href="/cookie-policy/"
-              className="text-[#A7B0C0] text-xs hover:text-white transition-colors"
+              prefetch={false}
+              className="text-xs text-text-muted transition hover:text-text"
             >
               Cookie Policy
             </Link>
             <button
               type="button"
               onClick={openCookieSettingsModal}
-              className="text-[#A7B0C0] text-xs hover:text-[#4D7CFE] underline transition-colors cursor-pointer"
+              className="cursor-pointer text-xs text-text-muted underline transition hover:text-text"
             >
               Cookie settings
             </button>

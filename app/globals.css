@@ -3,74 +3,36 @@
 @import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
+@custom-variant light (&:is(.light *));
 
 @theme inline {
-  /* === ARTYX BLUEPRINT PALETTE === */
-  --color-artyx-navy: #0b1020;
-  --color-artyx-deep: #121a2d;
-  --color-artyx-surface: #121a2d;
-  --color-artyx-ocean: #17223b;
-  --color-artyx-brand: #4d7cfe;
-  --color-artyx-brand-light: #6b93ff;
-  --color-artyx-brand-dark: #3b69eb;
-  --color-artyx-electric: #4d7cfe;
-  --color-artyx-violet: #8b5cf6;
-  --color-artyx-secondary: #10b981;
-  --color-artyx-secondary-light: #34d399;
-  --color-artyx-secondary-dark: #059669;
-  --color-artyx-blue: #4d7cfe;
-  --color-artyx-blue-light: #6b93ff;
-  --color-artyx-gold: #ffd166;
-  --color-artyx-gold-light: #ffe099;
-  --color-artyx-cyan: #00d4ff;
-  --color-artyx-purple: #8b5cf6;
-  --color-artyx-emerald: #10b981;
-  --color-artyx-rose: #fb7185;
-  --color-artyx-light-bg: #f5f7fb;
-  --color-artyx-border-dark: #273248;
-
-  /* === SEMANTIC COLORS === */
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans), var(--font-bengali), system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), monospace;
-  --font-heading: var(--font-heading), var(--font-bengali), system-ui, sans-serif;
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
+  /* === ARTYX CANONICAL SEMANTIC TOKENS === */
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
   --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-accent-text: var(--accent-text);
+  --color-btn-primary-bg: var(--btn-primary-bg);
+  --color-btn-primary-fg: var(--btn-primary-fg);
+  --color-highlight-bg: var(--highlight-bg);
+  --color-highlight-fg: var(--highlight-fg);
+
+  /* Legacy & Semantic Utility Bindings */
+  --color-brand-graphite: var(--border);
+  --color-green-secondary: var(--accent-text);
+  --color-lime: var(--btn-primary-bg);
+  --color-amber: #FFB020;
+
+  /* === SEMANTIC COLORS & TYPOGRAPHY === */
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+  --font-sans: var(--font-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+  --font-heading: var(--font-heading), system-ui, sans-serif;
+  --font-display: var(--font-unbounded), system-ui, sans-serif;
+  --font-wordmark: var(--font-unbounded), system-ui, sans-serif;
 
   /* === ANIMATION TIMING === */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -78,19 +40,188 @@
   --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
 }
 
-/* === BASE STYLES === */
-html {
-  background: #070B18;
+/* === BASE STYLES & SEMANTIC THEME TOKENS === */
+:root,
+html.dark,
+[data-theme="dark"] {
+  --bg: #070B06;
+  --surface: #11180E;
+  --surface-2: #1A2218;
+  --border: #333333;
+  --text: #E8ECE4;
+  --text-muted: #9AA394;
+  --accent-text: #4F8A1E;
+  --btn-primary-bg: #7FFF00;
+  --btn-primary-fg: #0E140C;
+  --highlight-bg: transparent;
+  --highlight-fg: #7FFF00;
+
+  --bg-current: var(--bg);
+  --text-current: var(--text);
+  --card-current: var(--surface);
+  --border-current: var(--border);
+  --accent-action: var(--btn-primary-bg);
   color-scheme: dark;
+}
+
+html.light,
+[data-theme="light"] {
+  --bg: #F6F8F3;
+  --surface: #FFFFFF;
+  --surface-2: #E9EFE2;
+  --border: #DDE3D6;
+  --text: #0E140C;
+  --text-muted: #566052;
+  --accent-text: #3E7000;
+  --btn-primary-bg: #0E140C;
+  --btn-primary-fg: #7FFF00;
+  --highlight-bg: #7FFF00;
+  --highlight-fg: #0E140C;
+
+  --bg-current: var(--bg);
+  --text-current: var(--text);
+  --card-current: var(--surface);
+  --border-current: var(--border);
+  --accent-action: var(--btn-primary-bg);
+  color-scheme: light;
+}
+
+/* Theme Flash & Transition Freeze Utility */
+.disable-transitions * {
+  transition: none !important;
+}
+
+/* Print Rules: Hide custom cursor and fixed ambient layers */
+@media print {
+  .custom-cursor,
+  [data-custom-cursor] {
+    display: none !important;
+  }
+}
+
+/* Heading Highlight Word Utility (Dark: lime text; Light: authentic lower-60% highlighter marker) */
+.highlight-word {
+  background: var(--highlight-bg);
+  color: var(--highlight-fg);
+  padding: 0 0.12em;
+  border-radius: 0.12em;
+  display: inline-block;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+html.light .highlight-word,
+[data-theme="light"] .highlight-word {
+  background: linear-gradient(to top, rgba(127, 255, 0, 0.85) 60%, transparent 60%);
+  color: #0E140C;
+}
+
+html.dark .highlight-word,
+[data-theme="dark"] .highlight-word {
+  background: transparent;
+  color: #7FFF00;
+}
+
+/* Semantic Button Classes */
+.theme-link {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  transition: color 0.2s ease;
+}
+.theme-link:hover {
+  color: var(--accent-text);
+}
+.theme-link svg, .theme-link .link-arrow {
+  color: var(--accent-text);
+}
+
+.btn-primary {
+  background-color: var(--btn-primary-bg);
+  color: var(--btn-primary-fg);
+  font-weight: 700;
+  border-radius: 0.75rem;
+  transition: filter 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.dark .btn-primary, [data-theme="dark"] .btn-primary {
+  box-shadow: 0 10px 25px -5px rgba(127, 255, 0, 0.25);
+}
+.light .btn-primary, [data-theme="light"] .btn-primary {
+  box-shadow: none;
+}
+.btn-primary:hover {
+  filter: brightness(1.08);
+}
+
+.btn-secondary {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-weight: 600;
+  border-radius: 0.75rem;
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+.btn-secondary:hover {
+  border-color: var(--accent-text);
+  color: var(--text);
+}
+
+/* Eyebrow Pill Utility */
+.eyebrow-pill {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.875rem;
+  border-radius: 9999px;
+}
+.eyebrow-pill .pill-dot {
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 9999px;
+  background-color: var(--accent-text);
+}
+
+html {
+  background: var(--bg);
+  color: var(--text);
 }
 
 body {
   min-height: 100vh;
-  background: #070B18;
-  color: #F8FAFC;
-  font-family: var(--font-sans), var(--font-bengali), "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans), "Segoe UI", sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
+  background: var(--bg-current);
+  color: var(--text-current);
+  font-family: var(--font-sans), "Segoe UI", sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Hero and Section Level Display Headings -> Unbounded */
+h1, h2, .font-display {
+  font-family: var(--font-unbounded), system-ui, sans-serif;
+  letter-spacing: -0.02em;
+  line-height: 1.14;
+}
+
+/* Card titles, subheadings, and secondary headings -> Space Grotesk */
+h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  letter-spacing: -0.01em;
 }
 
 /* === LENIS SMOOTH SCROLL SUPPORT === */
@@ -114,83 +245,71 @@ html.lenis, html.lenis body {
   pointer-events: none;
 }
 
-h1,
-h2,
-h3,
-h4,
 .font-heading {
-  font-family: var(--font-heading), var(--font-bengali), system-ui, sans-serif;
+  font-family: var(--font-heading), system-ui, sans-serif;
 }
 
-/* === GRADIENT TEXT === */
-.gradient-text {
-  background: linear-gradient(135deg, #4d7cfe 0%, #8b5cf6 55%, #10b981 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+.font-wordmark {
+  font-family: var(--font-unbounded), system-ui, sans-serif;
 }
 
-/* === GLASS CARD === */
-.glass-card {
-  background: rgba(18, 26, 45, 0.75);
-  backdrop-filter: blur(16px);
-  border: 1px solid #273248;
-  border-radius: var(--radius-xl);
+/* === GLOW & GLASS UTILITIES === */
+.lime-glow {
+  box-shadow: 0 0 15px rgba(127, 255, 0, 0.15);
+}
+
+.lime-border-glow:hover {
+  border-color: #333333;
 }
 
 /* === MARQUEE === */
 @keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .animate-marquee {
-  animation: marquee 30s linear infinite;
+  animation: marquee 25s linear infinite;
 }
 
-/* === REDUCED MOTION SAFEGUARD (WCAG 2.2 AA — Section 20) === */
+/* === MOBILE CSS FADE-UP ANIMATIONS (Compositor-only GPU execution) === */
+@media (max-width: 767px) {
+  @keyframes mobileFadeInUp {
+    from {
+      opacity: 0.85;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .mobile-fade-up-1 {
+    animation: mobileFadeInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  }
+  .mobile-fade-up-2 {
+    animation: mobileFadeInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  }
+  .mobile-fade-up-3 {
+    animation: mobileFadeInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  }
+  .mobile-fade-up-4 {
+    animation: mobileFadeInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  }
+}
+
+/* === ROUTE TRANSITION ANIMATION (Native CSS, zero JS bundle) === */
+@keyframes routeEnter { from { opacity: 0 } to { opacity: 1 } }
+.animate-route-enter { animation: routeEnter .25s ease-out; }   /* no transform, no forwards */
+
 @media (prefers-reduced-motion: reduce) {
-  *,
-  ::before,
-  ::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-:root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --radius: 0.75rem;
-}
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
+  .animate-marquee,
+  .mobile-fade-up-1,
+  .mobile-fade-up-2,
+  .mobile-fade-up-3,
+  .mobile-fade-up-4,
+  .animate-route-enter {
+    animation: none !important;
   }
 }

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     canonical: "https://artyx.digital/",
   },
   openGraph: {
-    title: "Artyx Digital | Build Better. Operate Smarter. Grow Faster.",
+    title: "Artyx Digital | Build. Launch. Grow.",
     description:
       "Web development, e-commerce, custom software, POS, Order Management System (OMS), branding, and SEO growth under one roof.",
     url: "https://artyx.digital/",
@@ -31,7 +31,10 @@ export default function HomePage() {
       <Hero />
       <StatsCounter />
       <ServicesGrid />
+
+      {/* Featured Products: Pinned End-to-End Order Story */}
       <FeaturedProducts />
+
       <PortfolioShowcase />
       <WhyAndProcess />
       <Testimonials />

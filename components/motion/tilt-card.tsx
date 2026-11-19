@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 interface TiltCardProps {
   children: React.ReactNode;
@@ -13,9 +13,10 @@ export function TiltCard({
   children,
   className = "",
   maxTilt = 8,
-  glowColor = "rgba(77, 124, 254, 0.15)",
+  glowColor = "rgba(127, 255, 0, 0.14)",
 }: TiltCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
+  const [canTilt, setCanTilt] = useState(false);
   const [transform, setTransform] = useState<string>(
     "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)"
   );
@@ -25,9 +26,19 @@ export function TiltCard({
     opacity: 0,
   });
 
+  useEffect(() => {
+    // Only enable interactive tilt on fine pointer desktop devices with motion enabled
+    const isFine = window.matchMedia("(pointer: fine)").matches;
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isWide = window.innerWidth >= 768;
+
+    if (isFine && !prefersReduced && isWide) {
+      setCanTilt(true);
+    }
+  }, []);
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!canTilt || !cardRef.current) return;
 
     const rect = cardRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -50,9 +61,18 @@ export function TiltCard({
   };
 
   const handleMouseLeave = () => {
+    if (!canTilt) return;
     setTransform("perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)");
     setGlowPos((prev) => ({ ...prev, opacity: 0 }));
   };
+
+  if (!canTilt) {
+    return (
+      <div className={`relative overflow-hidden ${className}`}>
+        {children}
+      </div>
+    );
+  }
 
   return (
     <div

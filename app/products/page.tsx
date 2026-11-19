@@ -47,26 +47,26 @@ export default function ProductsOverviewPage() {
   const oms = PRODUCTS_CONTENT.oms;
 
   return (
-    <div className="bg-[#070B18] text-white min-h-screen">
+    <div className="bg-bg text-text min-h-screen">
       {/* Dark Hero Section with 3D Preview */}
-      <section className="relative overflow-hidden bg-[#070B18] pt-28 pb-20 text-[#F8FAFC] lg:pt-36 lg:pb-24 border-b border-slate-800">
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/2 h-[500px] w-[750px] -translate-x-1/2 rounded-full bg-gradient-to-tr from-purple-500/15 via-cyan-500/15 to-transparent blur-[140px]" />
+      <section className="relative overflow-hidden bg-bg pt-28 pb-20 text-text lg:pt-36 lg:pb-24 border-b border-border">
+        <div className="pointer-events-none absolute inset-0 overflow-hidden dark:block hidden">
+          <div className="absolute top-1/4 left-1/2 h-[500px] w-[750px] -translate-x-1/2 rounded-full bg-gradient-to-tr from-surface-2/40 via-surface/40 to-transparent blur-[140px]" />
         </div>
 
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <Breadcrumbs items={[{ name: "Products", path: "/products/" }]} theme="dark" />
+          <Breadcrumbs items={[{ name: "Products", path: "/products/" }]} theme="light" />
 
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-10 mt-6">
             <div className="lg:col-span-7">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-wider text-purple-300">
-                <Sparkles className="h-3.5 w-3.5" />
+              <span className="eyebrow-pill">
+                <Sparkles className="h-3.5 w-3.5 text-accent-text" />
                 Business Technology Pillar
               </span>
-              <h1 className="mt-4 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+              <h1 className="mt-4 font-display text-4xl font-bold tracking-tight text-text sm:text-5xl lg:text-6xl">
                 Business Software Built for Everyday Operations.
               </h1>
-              <p className="mt-5 text-lg leading-relaxed text-[#CBD5E1] sm:text-xl">
+              <p className="mt-5 text-lg leading-relaxed text-text-muted sm:text-xl">
                 Explore Artyx Digital&apos;s business management products designed to help
                 retail and online sellers run sales, inventory, and orders with greater control.
               </p>
@@ -74,14 +74,14 @@ export default function ProductsOverviewPage() {
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <Link
                   href="/request-demo/"
-                  className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#0078D7] to-[#0099FF] px-7 py-4 text-base font-semibold text-white shadow-xl shadow-[#0078D7]/30 transition hover:shadow-cyan-500/25 hover:brightness-110"
+                  className="btn-primary inline-flex items-center gap-2 px-7 py-4 text-base font-bold"
                 >
                   <CalendarClock className="h-5 w-5" />
                   Request a Product Demo
                 </Link>
                 <Link
                   href="/services/custom-software/"
-                  className="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-[#0F172A] px-6 py-4 text-base font-semibold text-slate-200 transition hover:border-cyan-400/50 hover:text-white"
+                  className="btn-secondary inline-flex items-center gap-2 px-6 py-4 text-base font-semibold"
                 >
                   Need Custom Software Instead?
                   <ArrowRight className="h-4 w-4" />
@@ -91,17 +91,17 @@ export default function ProductsOverviewPage() {
 
             {/* 3D Visualizer on Hero */}
             <div className="lg:col-span-5">
-              <div className="rounded-3xl border border-slate-800 bg-[#0A1022]/90 p-4 shadow-2xl backdrop-blur-xl">
-                <div className="flex items-center justify-between border-b border-slate-800/80 pb-3">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-cyan-300">
+              <div className="rounded-3xl border border-border bg-surface p-4 shadow-2xl backdrop-blur-xl">
+                <div className="flex items-center justify-between border-b border-border pb-3">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-text-muted">
                     3D System Inspector
                   </span>
-                  <div className="inline-flex rounded-lg border border-slate-800 bg-[#060A16] p-0.5 text-xs">
+                  <div className="inline-flex rounded-lg border border-border bg-surface-2 p-0.5 text-xs">
                     <button
                       type="button"
                       onClick={() => setActive3DMode("pos")}
-                      className={`px-2.5 py-1 rounded font-medium ${
-                        active3DMode === "pos" ? "bg-purple-600 text-white" : "text-slate-400"
+                      className={`px-2.5 py-1 rounded font-medium transition ${
+                        active3DMode === "pos" ? "bg-surface text-text border border-border font-bold shadow-xs" : "text-text-muted hover:text-text"
                       }`}
                     >
                       POS
@@ -109,15 +109,15 @@ export default function ProductsOverviewPage() {
                     <button
                       type="button"
                       onClick={() => setActive3DMode("oms")}
-                      className={`px-2.5 py-1 rounded font-medium ${
-                        active3DMode === "oms" ? "bg-cyan-600 text-white" : "text-slate-400"
+                      className={`px-2.5 py-1 rounded font-medium transition ${
+                        active3DMode === "oms" ? "bg-surface text-text border border-border font-bold shadow-xs" : "text-text-muted hover:text-text"
                       }`}
                     >
                       OMS
                     </button>
                   </div>
                 </div>
-                <div className="relative h-[280px] w-full overflow-hidden rounded-xl bg-gradient-to-b from-[#060A16] to-[#0A1226] mt-3">
+                <div className="relative h-[280px] w-full overflow-hidden rounded-xl bg-surface-2 mt-3">
                   <ProductCanvas mode={active3DMode} />
                 </div>
               </div>
@@ -133,34 +133,34 @@ export default function ProductsOverviewPage() {
             {/* POS Card */}
             <TiltCard
               maxTilt={6}
-              glowColor="rgba(168, 85, 247, 0.18)"
-              className="product-card flex flex-col justify-between rounded-3xl border border-slate-800 bg-[#0C1326]/90 p-8 shadow-2xl backdrop-blur-md sm:p-10"
+              glowColor="rgba(79, 138, 30, 0.15)"
+              className="product-card flex flex-col justify-between rounded-3xl border border-border bg-surface p-8 shadow-2xl backdrop-blur-md sm:p-10"
             >
               <div>
-                <div className="inline-flex items-center gap-2 rounded-xl bg-purple-500/15 border border-purple-500/30 px-3.5 py-2 text-xs font-bold uppercase tracking-wider text-purple-300">
-                  <ShoppingCart className="h-4 w-4" />
+                <div className="inline-flex items-center gap-2 rounded-xl bg-surface-2 border border-border px-3.5 py-2 text-xs font-bold uppercase tracking-wider text-accent-text">
+                  <ShoppingCart className="h-4 w-4 text-accent-text" />
                   {pos.name}
                 </div>
-                <h2 className="mt-5 font-display text-3xl font-bold text-white">
+                <h2 className="mt-5 font-display text-3xl font-bold text-text">
                   {pos.homepageHeadline}
                 </h2>
-                <p className="mt-3 text-base leading-relaxed text-[#CBD5E1]">
+                <p className="mt-3 text-base leading-relaxed text-text-muted">
                   {pos.heroSupportingCopy}
                 </p>
 
                 <div className="mt-6">
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                    Verified Capabilities Available Today
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-text-muted">
+                    Core Product Capabilities
                   </h3>
                   <ul className="mt-3 space-y-2.5">
                     {pos.availableCapabilities.map((cap) => (
                       <li
                         key={cap.id}
-                        className="flex items-start gap-2.5 text-sm text-slate-200"
+                        className="flex items-start gap-2.5 text-sm text-text-muted"
                       >
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-purple-400" />
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent-text" />
                         <span>
-                          <strong className="text-white">{cap.featureName}:</strong>{" "}
+                          <strong className="text-text">{cap.featureName}:</strong>{" "}
                           {cap.approvedWording}
                         </span>
                       </li>
@@ -169,17 +169,17 @@ export default function ProductsOverviewPage() {
                 </div>
               </div>
 
-              <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-slate-800/80 pt-6">
+              <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-border pt-6">
                 <Link
                   href="/products/pos/"
-                  className="inline-flex items-center gap-2 rounded-xl bg-[#0078D7] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#3B82F6]"
+                  className="btn-primary inline-flex items-center gap-2 px-6 py-3.5 text-sm font-bold"
                 >
                   Explore POS Software
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
                   href="/request-demo/?product=pos"
-                  className="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-[#060A16] px-5 py-3.5 text-sm font-semibold text-slate-200 transition hover:border-purple-400/50 hover:text-white"
+                  className="btn-secondary inline-flex items-center gap-2 px-5 py-3.5 text-sm font-semibold"
                 >
                   Book POS Walkthrough
                 </Link>
@@ -189,34 +189,34 @@ export default function ProductsOverviewPage() {
             {/* OMS Card */}
             <TiltCard
               maxTilt={6}
-              glowColor="rgba(0, 229, 255, 0.18)"
-              className="product-card flex flex-col justify-between rounded-3xl border border-slate-800 bg-[#0C1326]/90 p-8 shadow-2xl backdrop-blur-md sm:p-10"
+              glowColor="rgba(79, 138, 30, 0.15)"
+              className="product-card flex flex-col justify-between rounded-3xl border border-border bg-surface p-8 shadow-2xl backdrop-blur-md sm:p-10"
             >
               <div>
-                <div className="inline-flex items-center gap-2 rounded-xl bg-cyan-500/15 border border-cyan-500/30 px-3.5 py-2 text-xs font-bold uppercase tracking-wider text-cyan-300">
-                  <PackageCheck className="h-4 w-4" />
+                <div className="inline-flex items-center gap-2 rounded-xl bg-surface-2 border border-border px-3.5 py-2 text-xs font-bold uppercase tracking-wider text-accent-text">
+                  <PackageCheck className="h-4 w-4 text-accent-text" />
                   {oms.name}
                 </div>
-                <h2 className="mt-5 font-display text-3xl font-bold text-white">
+                <h2 className="mt-5 font-display text-3xl font-bold text-text">
                   {oms.homepageHeadline}
                 </h2>
-                <p className="mt-3 text-base leading-relaxed text-[#CBD5E1]">
+                <p className="mt-3 text-base leading-relaxed text-text-muted">
                   {oms.heroSupportingCopy}
                 </p>
 
                 <div className="mt-6">
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                    Verified Capabilities Available Today
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-text-muted">
+                    Core Product Capabilities
                   </h3>
                   <ul className="mt-3 space-y-2.5">
                     {oms.availableCapabilities.map((cap) => (
                       <li
                         key={cap.id}
-                        className="flex items-start gap-2.5 text-sm text-slate-200"
+                        className="flex items-start gap-2.5 text-sm text-text-muted"
                       >
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-cyan-400" />
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent-text" />
                         <span>
-                          <strong className="text-white">{cap.featureName}:</strong>{" "}
+                          <strong className="text-text">{cap.featureName}:</strong>{" "}
                           {cap.approvedWording}
                         </span>
                       </li>
@@ -225,17 +225,17 @@ export default function ProductsOverviewPage() {
                 </div>
               </div>
 
-              <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-slate-800/80 pt-6">
+              <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-border pt-6">
                 <Link
                   href="/products/order-management/"
-                  className="inline-flex items-center gap-2 rounded-xl bg-[#0078D7] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#3B82F6]"
+                  className="btn-primary inline-flex items-center gap-2 px-6 py-3.5 text-sm font-bold"
                 >
                   Explore OMS Software
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
                   href="/request-demo/?product=oms"
-                  className="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-[#060A16] px-5 py-3.5 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/50 hover:text-white"
+                  className="btn-secondary inline-flex items-center gap-2 px-5 py-3.5 text-sm font-semibold"
                 >
                   Book OMS Walkthrough
                 </Link>
@@ -246,33 +246,33 @@ export default function ProductsOverviewPage() {
       </section>
 
       {/* Comparison Matrix: Which Product Fits Your Business? */}
-      <section className="border-y border-slate-800 bg-[#060A16] py-20">
+      <section className="border-y border-border bg-bg py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="font-display text-3xl font-bold text-white sm:text-4xl">
+            <h2 className="font-display text-3xl font-bold text-text sm:text-4xl">
               Which Product Fits Your Business Workflow?
             </h2>
-            <p className="mt-3 text-base text-[#94A3B8]">
+            <p className="mt-3 text-base text-text-muted">
               Compare how Artyx POS and Artyx OMS handle transactions, stock, and staff roles.
             </p>
           </div>
 
-          <div className="mt-12 overflow-x-auto rounded-3xl border border-slate-800 bg-[#0C1326]/90 shadow-2xl backdrop-blur-md">
+          <div className="mt-12 overflow-x-auto rounded-3xl border border-border bg-surface shadow-2xl backdrop-blur-md">
             <table className="w-full min-w-[640px] text-left text-sm">
-              <thead className="border-b border-slate-800 bg-[#080D1A] text-xs uppercase tracking-wider text-slate-400">
+              <thead className="border-b border-border bg-surface-2 text-xs uppercase tracking-wider text-text-muted">
                 <tr>
                   <th className="px-6 py-4 font-bold">Operational Dimension</th>
-                  <th className="px-6 py-4 font-bold text-purple-400">
+                  <th className="px-6 py-4 font-bold text-text">
                     Artyx POS Software
                   </th>
-                  <th className="px-6 py-4 font-bold text-cyan-400">
+                  <th className="px-6 py-4 font-bold text-text">
                     Artyx Order Management (OMS)
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800 text-slate-300">
+              <tbody className="divide-y divide-border text-text-muted">
                 <tr>
-                  <td className="px-6 py-4 font-semibold text-white">
+                  <td className="px-6 py-4 font-semibold text-text">
                     Primary Selling Channel
                   </td>
                   <td className="px-6 py-4">
@@ -283,7 +283,7 @@ export default function ProductsOverviewPage() {
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-6 py-4 font-semibold text-white">
+                  <td className="px-6 py-4 font-semibold text-text">
                     Transaction Flow
                   </td>
                   <td className="px-6 py-4">
@@ -294,7 +294,7 @@ export default function ProductsOverviewPage() {
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-6 py-4 font-semibold text-white">
+                  <td className="px-6 py-4 font-semibold text-text">
                     Inventory Deduction Timing
                   </td>
                   <td className="px-6 py-4">
@@ -305,7 +305,7 @@ export default function ProductsOverviewPage() {
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-6 py-4 font-semibold text-white">
+                  <td className="px-6 py-4 font-semibold text-text">
                     Primary Daily Users
                   </td>
                   <td className="px-6 py-4">
@@ -320,16 +320,16 @@ export default function ProductsOverviewPage() {
           </div>
 
           {/* Connected E-commerce Note */}
-          <div className="mt-10 flex flex-col items-start justify-between gap-6 rounded-2xl border border-cyan-500/30 bg-[#0C1326] p-7 sm:flex-row sm:items-center">
+          <div className="mt-10 flex flex-col items-start justify-between gap-6 rounded-2xl border border-border bg-surface p-7 sm:flex-row sm:items-center">
             <div className="flex items-start gap-4">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-cyan-500/20 text-cyan-400 border border-cyan-500/40">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-surface-2 text-accent-text border border-border">
                 <GitMerge className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="font-display text-lg font-bold text-white">
+                <h3 className="font-display text-lg font-bold text-text">
                   Connect Your Software with an Artyx E-commerce Website
                 </h3>
-                <p className="mt-1 text-sm text-[#94A3B8]">
+                <p className="mt-1 text-sm text-text-muted">
                   Need an online storefront that feeds orders directly into your
                   operational workflow? Our engineering team builds custom e-commerce
                   websites designed to work alongside Artyx POS and OMS.
@@ -338,7 +338,7 @@ export default function ProductsOverviewPage() {
             </div>
             <Link
               href="/services/ecommerce-website-development/"
-              className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-gradient-to-r from-[#0078D7] to-[#0099FF] px-5 py-3 text-xs font-semibold text-white transition hover:brightness-110"
+              className="btn-primary inline-flex shrink-0 items-center gap-2 px-5 py-3 text-xs font-bold"
             >
               Explore E-commerce Development
               <ArrowRight className="h-4 w-4" />
@@ -351,11 +351,11 @@ export default function ProductsOverviewPage() {
       <section className="py-20">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <div className="text-center">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-cyan-300">
-              <HelpCircle className="h-3.5 w-3.5" />
+            <span className="eyebrow-pill">
+              <HelpCircle className="h-3.5 w-3.5 text-accent-text" />
               Product FAQs
             </span>
-            <h2 className="mt-3 font-display text-3xl font-bold text-white">
+            <h2 className="mt-3 font-display text-3xl font-bold text-text">
               Common Questions About Artyx Software Products
             </h2>
           </div>
@@ -364,12 +364,12 @@ export default function ProductsOverviewPage() {
             {PRODUCT_COMPARISON_FAQS.map((faq) => (
               <div
                 key={faq.question}
-                className="rounded-2xl border border-slate-800 bg-[#0C1326] p-6 shadow-md"
+                className="rounded-2xl border border-border bg-surface p-6 shadow-md"
               >
-                <h3 className="font-display text-lg font-bold text-white">
+                <h3 className="font-display text-lg font-bold text-text">
                   {faq.question}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-[#94A3B8]">
+                <p className="mt-2 text-sm leading-relaxed text-text-muted">
                   {faq.answer}
                 </p>
               </div>

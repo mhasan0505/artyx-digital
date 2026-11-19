@@ -22,7 +22,7 @@ export function formatTelegramMessage(payload: Record<string, unknown>): string 
     `• Origin Path: ${sourcePath}`,
     `• Timestamp: ${createdAt}`,
     `• CRM Link: ${crmRecordUrl}`,
-    `SLA Reminder: Assign within 1 business hour; respond within 2 staffed business hours (Asia/Dhaka).`,
+    `Reminder: Assign and respond during staffed business hours (Asia/Dhaka).`,
   ].join("\n");
 }
 

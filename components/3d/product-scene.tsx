@@ -11,7 +11,11 @@ interface Product3DSceneProps {
   mode: ProductMode;
 }
 
-// 3D POS System Model
+const BRAND_LIME = "#7FFF00";
+const BRAND_GRAPHITE = "#333333";
+const BRAND_DARK = "#070B06";
+
+// 3D POS System Model (Clean Brand Palette: Lime + Graphite + Near-black + White)
 function Pos3DModel() {
   const terminalRef = useRef<THREE.Group>(null!);
   const scannerLaser = useRef<THREE.Mesh>(null!);
@@ -32,31 +36,31 @@ function Pos3DModel() {
         {/* Terminal Base */}
         <mesh position={[0, -0.6, 0]}>
           <boxGeometry args={[2.2, 0.2, 1.6]} />
-          <meshStandardMaterial color="#1E293B" roughness={0.3} metalness={0.8} />
+          <meshStandardMaterial color={BRAND_GRAPHITE} roughness={0.3} metalness={0.8} />
         </mesh>
 
         {/* Counter Display Screen */}
         <group position={[0, 0.3, -0.1]} rotation={[-Math.PI / 10, 0, 0]}>
           <mesh>
             <boxGeometry args={[2.0, 1.2, 0.12]} />
-            <meshStandardMaterial color="#0F172A" roughness={0.2} metalness={0.9} />
+            <meshStandardMaterial color="#11180E" roughness={0.2} metalness={0.9} />
           </mesh>
           {/* Screen Face */}
           <mesh position={[0, 0, 0.07]}>
             <planeGeometry args={[1.8, 1.0]} />
-            <meshBasicMaterial color="#1E1B4B" />
+            <meshBasicMaterial color={BRAND_DARK} />
           </mesh>
           <Html position={[0, 0, 0.08]} transform distanceFactor={4} className="pointer-events-none select-none">
-            <div className="w-[180px] rounded-lg bg-[#0B1020]/95 p-3 text-left font-mono border border-purple-500/40 shadow-xl">
-              <div className="flex items-center justify-between text-[9px] text-purple-300">
-                <span>ARTYX POS v2</span>
-                <span className="text-emerald-400">ONLINE</span>
+            <div className="w-[190px] rounded-lg bg-surface/95 p-3 text-left font-mono border border-border shadow-xl">
+              <div className="flex items-center justify-between text-[9px] text-accent-text">
+                <span>ARTYX POS TERMINAL</span>
+                <span className="font-bold">ONLINE</span>
               </div>
-              <div className="mt-1.5 text-[11px] font-bold text-white">SKU-77491-BD</div>
-              <div className="text-[10px] text-slate-300">Counter 01 · Shift Active</div>
-              <div className="mt-2 flex justify-between border-t border-slate-800 pt-1 text-[9px]">
-                <span className="text-slate-400">Barcode Speed:</span>
-                <span className="text-emerald-400 font-semibold">0.14s</span>
+              <div className="mt-1.5 text-[11px] font-bold text-text">Active Counter #01</div>
+              <div className="text-[10px] text-text-muted">Shift Active · Hardware Paired</div>
+              <div className="mt-2 flex justify-between border-t border-border pt-1 text-[9px]">
+                <span className="text-text-muted">Barcode Engine:</span>
+                <span className="text-accent-text font-semibold">Active</span>
               </div>
             </div>
           </Html>
@@ -66,21 +70,22 @@ function Pos3DModel() {
         <group position={[1.4, -0.3, 0.3]} rotation={[0, -Math.PI / 4, 0]}>
           <mesh>
             <cylinderGeometry args={[0.15, 0.2, 0.6, 16]} />
-            <meshStandardMaterial color="#334155" roughness={0.4} metalness={0.6} />
+            <meshStandardMaterial color={BRAND_GRAPHITE} roughness={0.4} metalness={0.6} />
           </mesh>
-          {/* Laser beam */}
+          {/* Laser beam in Brand Lime */}
           <mesh ref={scannerLaser} position={[-0.6, 0.1, 0]} rotation={[0, 0, Math.PI / 2]}>
             <cylinderGeometry args={[0.015, 0.015, 1.2, 8]} />
-            <meshBasicMaterial color="#A855F7" transparent opacity={0.6} />
+            <meshBasicMaterial color={BRAND_LIME} transparent opacity={0.7} />
           </mesh>
         </group>
 
-        {/* Floating Stock Ledger Data Cube */}
+        {/* Floating Stock Ledger Data Cube in Lime Wireframe */}
         <mesh position={[-1.4, 0.4, 0.2]}>
           <boxGeometry args={[0.7, 0.7, 0.7]} />
           <meshStandardMaterial
-            color="#6B21A8"
-            emissive="#581C87"
+            color={BRAND_GRAPHITE}
+            emissive={BRAND_LIME}
+            emissiveIntensity={0.8}
             wireframe
             roughness={0.2}
             metalness={0.8}
@@ -91,7 +96,7 @@ function Pos3DModel() {
   );
 }
 
-// 3D OMS 5-Stage Pipeline Model
+// 3D OMS 5-Stage Pipeline Model (Clean Brand Palette: Lime + Graphite)
 function Oms3DModel() {
   const pipelineRef = useRef<THREE.Group>(null!);
 
@@ -101,11 +106,11 @@ function Oms3DModel() {
   });
 
   const stages = [
-    { name: "Inbound", color: "#38BDF8", pos: [-1.8, 0, 0] },
-    { name: "Stock Lock", color: "#818CF8", pos: [-0.9, 0.4, 0.2] },
-    { name: "Packing", color: "#A78BFA", pos: [0, 0, 0] },
-    { name: "Dispatch", color: "#34D399", pos: [0.9, 0.4, -0.2] },
-    { name: "Delivered", color: "#10B981", pos: [1.8, 0, 0] },
+    { name: "Inbound", pos: [-1.8, 0, 0] },
+    { name: "Stock Lock", pos: [-0.9, 0.4, 0.2] },
+    { name: "Packing", pos: [0, 0, 0] },
+    { name: "Dispatch", pos: [0.9, 0.4, -0.2] },
+    { name: "Delivered", pos: [1.8, 0, 0] },
   ];
 
   return (
@@ -115,32 +120,33 @@ function Oms3DModel() {
         <mesh rotation={[0, 0, Math.PI / 2]}>
           <cylinderGeometry args={[0.06, 0.06, 4.0, 16]} />
           <meshStandardMaterial
-            color="#0284C7"
-            emissive="#0369A1"
+            color={BRAND_GRAPHITE}
+            emissive={BRAND_LIME}
+            emissiveIntensity={0.9}
             roughness={0.3}
             metalness={0.8}
           />
         </mesh>
 
-        {/* 5 Stage Nodes */}
+        {/* 5 Geometric Gates */}
         {stages.map((stage, idx) => (
           <group key={idx} position={stage.pos as [number, number, number]}>
             <mesh>
-              <sphereGeometry args={[0.32, 24, 24]} />
+              <boxGeometry args={[0.42, 0.42, 0.42]} />
               <meshStandardMaterial
-                color={stage.color}
-                emissive={stage.color}
-                emissiveIntensity={0.4}
+                color={BRAND_GRAPHITE}
+                emissive={BRAND_LIME}
+                emissiveIntensity={0.7}
                 roughness={0.2}
                 metalness={0.8}
               />
             </mesh>
             <mesh>
               <torusGeometry args={[0.45, 0.02, 16, 32]} />
-              <meshBasicMaterial color={stage.color} wireframe transparent opacity={0.6} />
+              <meshBasicMaterial color={BRAND_LIME} wireframe transparent opacity={0.6} />
             </mesh>
             <Html position={[0, -0.65, 0]} center distanceFactor={7} className="pointer-events-none select-none">
-              <div className="rounded-md border border-cyan-500/40 bg-[#0B1020]/90 px-2 py-0.5 text-[9px] font-bold text-white shadow-md whitespace-nowrap backdrop-blur-md">
+              <div className="rounded-md border border-border bg-surface/95 px-2.5 py-0.5 text-[9px] font-bold text-accent-text shadow-md whitespace-nowrap backdrop-blur-md">
                 {stage.name}
               </div>
             </Html>
@@ -149,8 +155,8 @@ function Oms3DModel() {
 
         {/* Floating Dispatch Badge */}
         <Html position={[0, 1.2, 0]} center distanceFactor={7} className="pointer-events-none select-none">
-          <div className="rounded-full border border-emerald-500/50 bg-[#0B1020]/95 px-3 py-1 text-[11px] font-semibold text-emerald-300 shadow-xl shadow-emerald-500/20 backdrop-blur-md">
-            5-Stage Live Order Pipeline
+          <div className="rounded-full border border-border bg-surface/95 px-3 py-1 text-[11px] font-semibold text-accent-text shadow-xl backdrop-blur-md">
+            Live Order Pipeline
           </div>
         </Html>
       </Float>
@@ -169,13 +175,11 @@ export function Product3DScene({ mode }: Product3DSceneProps) {
       polar={[-Math.PI / 6, Math.PI / 6]}
       azimuth={[-Math.PI / 4, Math.PI / 4]}
     >
-      <ambientLight intensity={0.8} />
+      <ambientLight intensity={0.6} />
       <directionalLight position={[4, 5, 4]} intensity={1.5} color="#FFFFFF" />
-      <pointLight position={[-3, 2, 2]} intensity={2.5} color={mode === "pos" ? "#A855F7" : "#00E5FF"} />
-      <pointLight position={[3, 2, 2]} intensity={2.0} color={mode === "pos" ? "#6366F1" : "#10B981"} />
+      <directionalLight position={[-3, 2, 2]} intensity={0.5} color="#D8E4FF" />
 
       {mode === "pos" ? <Pos3DModel /> : <Oms3DModel />}
     </PresentationControls>
   );
 }
-

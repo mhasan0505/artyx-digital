@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="bg-[#0B1020] text-[#F8FAFC]">
+    <div className="bg-bg text-text min-h-screen">
       <section className="pt-28 pb-24 lg:pt-36 lg:pb-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <Breadcrumbs items={[{ name: "Contact", path: "/contact/" }]} theme="dark" />
@@ -40,13 +40,13 @@ export default function ContactPage() {
           <div className="grid gap-12 lg:grid-cols-12">
             {/* Left Column: Context, Direct Paths & Contact Info */}
             <div className="lg:col-span-5">
-              <span className="inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-wider text-blue-300">
+              <span className="eyebrow-pill">
                 Get in Touch
               </span>
-              <h1 className="mt-4 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
+              <h1 className="mt-4 font-display text-4xl font-bold tracking-tight text-text sm:text-5xl">
                 Let&apos;s Talk About What You Want to Build.
               </h1>
-              <p className="mt-4 text-base leading-relaxed text-[#CBD5E1]">
+              <p className="mt-4 text-base leading-relaxed text-text-muted">
                 Share your project, product interest or business goal. Our team will
                 guide you toward the next step.
               </p>
@@ -55,54 +55,54 @@ export default function ContactPage() {
               <div className="mt-8 space-y-3">
                 <Link
                   href="/start-a-project/"
-                  className="flex items-center justify-between rounded-2xl border border-slate-800 bg-[#121A30] p-4 transition hover:border-blue-500/50"
+                  className="flex items-center justify-between rounded-2xl border border-border bg-surface p-4 transition hover:border-accent-text"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/15 text-blue-400">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-surface-2 text-accent-text">
                       <Briefcase className="h-5 w-5" />
                     </div>
                     <div>
-                      <div className="text-sm font-bold text-white">
+                      <div className="text-sm font-bold text-text">
                         Starting an Agency Project?
                       </div>
-                      <div className="text-xs text-slate-400">
+                      <div className="text-xs text-text-muted">
                         Use our structured project scope &amp; budget planner
                       </div>
                     </div>
                   </div>
-                  <ArrowRight className="h-4 w-4 text-blue-400" />
+                  <ArrowRight className="h-4 w-4 text-accent-text" />
                 </Link>
 
                 <Link
                   href="/request-demo/"
-                  className="flex items-center justify-between rounded-2xl border border-slate-800 bg-[#121A30] p-4 transition hover:border-purple-500/50"
+                  className="flex items-center justify-between rounded-2xl border border-border bg-surface p-4 transition hover:border-accent-text"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-500/15 text-purple-400">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-surface-2 text-accent-text">
                       <CalendarClock className="h-5 w-5" />
                     </div>
                     <div>
-                      <div className="text-sm font-bold text-white">
+                      <div className="text-sm font-bold text-text">
                         Evaluating Artyx POS or OMS?
                       </div>
-                      <div className="text-xs text-slate-400">
+                      <div className="text-xs text-text-muted">
                         Request a tailored product walkthrough call
                       </div>
                     </div>
                   </div>
-                  <ArrowRight className="h-4 w-4 text-purple-400" />
+                  <ArrowRight className="h-4 w-4 text-accent-text" />
                 </Link>
               </div>
 
               {/* Verified Contact Channels */}
-              <div className="mt-8 space-y-4 rounded-2xl border border-slate-800 bg-[#121A30]/70 p-6 text-sm">
+              <div className="mt-8 space-y-4 rounded-2xl border border-border bg-surface/70 p-6 text-sm">
                 <div className="flex items-start gap-3">
-                  <Mail className="mt-0.5 h-4 w-4 shrink-0 text-blue-400" />
+                  <Mail className="mt-0.5 h-4 w-4 shrink-0 text-accent-text" />
                   <div>
-                    <div className="text-xs text-slate-400">Email</div>
+                    <div className="text-xs text-text-muted">Email</div>
                     <a
                       href={`mailto:${COMPANY_ENTITY.email}`}
-                      className="font-semibold text-white hover:text-blue-300"
+                      className="font-semibold text-text hover:text-blue-300"
                     >
                       {COMPANY_ENTITY.email}
                     </a>
@@ -110,12 +110,12 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-blue-400" />
+                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-accent-text" />
                   <div>
-                    <div className="text-xs text-slate-400">Phone (Bangladesh &amp; Global)</div>
+                    <div className="text-xs text-text-muted">Phone (Bangladesh &amp; Global)</div>
                     <a
                       href={`tel:${COMPANY_ENTITY.phoneE164}`}
-                      className="font-semibold text-white hover:text-blue-300"
+                      className="font-semibold text-text hover:text-blue-300"
                     >
                       {COMPANY_ENTITY.phoneDisplay}
                     </a>
@@ -123,9 +123,9 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <MessageSquare className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400" />
+                  <MessageSquare className="mt-0.5 h-4 w-4 shrink-0 text-accent-text" />
                   <div>
-                    <div className="text-xs text-slate-400">WhatsApp Business</div>
+                    <div className="text-xs text-text-muted">WhatsApp Business</div>
                     <a
                       href={COMPANY_ENTITY.whatsappUrl}
                       target="_blank"
@@ -138,22 +138,22 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-blue-400" />
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent-text" />
                   <div>
-                    <div className="text-xs text-slate-400">Dhaka Office</div>
-                    <div className="text-slate-200">
+                    <div className="text-xs text-text-muted">Dhaka Office</div>
+                    <div className="text-text">
                       {COMPANY_ENTITY.address.fullDisplay}
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3 border-t border-slate-800 pt-4">
+                <div className="flex items-start gap-3 border-t border-border pt-4">
                   <Clock className="mt-0.5 h-4 w-4 shrink-0 text-amber-400" />
                   <div>
-                    <div className="text-xs font-semibold text-white">
+                    <div className="text-xs font-semibold text-text">
                       {COMPANY_ENTITY.operatingHoursDisplay}
                     </div>
-                    <div className="mt-0.5 text-xs text-slate-400">
+                    <div className="mt-0.5 text-xs text-text-muted">
                       {COMPANY_ENTITY.responseSlaStatement}
                     </div>
                   </div>

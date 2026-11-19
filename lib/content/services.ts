@@ -103,7 +103,7 @@ export const SERVICES_CONTENT: Record<ServiceSlug, ServiceContentRecord> = {
       {
         title: "Maintenance & Performance Care",
         description:
-          "Optional post-launch security patching, uptime monitoring, backups, and Core Web Vitals optimization.",
+          "Optional post-launch security patching, performance monitoring, backups, and Core Web Vitals optimization.",
       },
     ],
     technicalCapabilities: [
@@ -206,7 +206,7 @@ export const SERVICES_CONTENT: Record<ServiceSlug, ServiceContentRecord> = {
       {
         question: "Is website maintenance necessary after launch?",
         answer:
-          "Yes. Regular dependency updates, uptime monitoring, backup verification, and periodic content/performance checks keep your site secure and fast. We offer structured maintenance arrangements or can hand over documentation to your internal team.",
+          "Yes. Regular dependency updates, performance monitoring, backup verification, and periodic content/performance checks keep your site secure and fast. We offer structured maintenance arrangements or can hand over documentation to your internal team.",
       },
     ],
     relatedWorkSlugs: ["metisse-restaurant"],
@@ -621,7 +621,7 @@ export const SERVICES_CONTENT: Record<ServiceSlug, ServiceContentRecord> = {
       {
         step: "6. Agreed Maintenance & Evolution",
         description:
-          "We provide post-launch support and iterative feature enhancements under an agreed SLA.",
+          "We provide post-launch support and iterative feature enhancements under an agreed support plan.",
       },
     ],
     techStack: [

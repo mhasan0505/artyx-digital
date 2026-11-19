@@ -8,31 +8,37 @@ import {
 } from "@/lib/content/insights";
 import { TiltCard } from "@/components/motion/tilt-card";
 import { StaggerReveal } from "@/components/motion/stagger-reveal";
+import { SplitText } from "@/components/motion/split-text";
 
 export function InsightsPreview() {
   const articles = getAllPublishedArticles().slice(0, 3);
 
   return (
-    <section className="bg-[#070B18] py-24 text-white lg:py-28 relative overflow-hidden border-t border-slate-800">
+    <section className="relative overflow-hidden border-t border-border bg-bg py-24 text-text lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="flex flex-col justify-between gap-6 border-b border-slate-800 pb-10 sm:flex-row sm:items-end">
+        <div className="flex flex-col justify-between gap-6 border-b border-border pb-10 sm:flex-row sm:items-end">
           <div>
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-wider text-cyan-300">
-              <BookOpen className="h-3.5 w-3.5" />
-              Practical Guides &amp; Insights
-            </span>
-            <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-              Operational &amp; Digital Growth Playbooks
-            </h2>
-            <p className="mt-2.5 max-w-2xl text-base text-[#94A3B8]">
+            {/* Rule 4: Eyebrow pill */}
+            <div className="eyebrow-pill">
+              <span className="pill-dot" />
+              <span>Practical Guides &amp; Insights</span>
+            </div>
+            <SplitText
+              text="Operational & Digital Growth Playbooks"
+              as="h2"
+              className="mt-4 font-display text-3xl font-bold tracking-tight text-text sm:text-4xl lg:text-5xl"
+            />
+            <p className="mt-2.5 max-w-2xl text-base text-text-muted">
               Decision guides on retail POS systems, social-commerce order management,
               business websites, and technical search visibility.
             </p>
           </div>
 
+          {/* Rule 3: Secondary button */}
           <Link
             href="/insights/"
-            className="inline-flex items-center gap-2 self-start rounded-xl border border-slate-700 bg-[#0F172A] px-5 py-3 text-sm font-semibold text-white transition hover:border-cyan-400 hover:text-cyan-300"
+            prefetch={false}
+            className="btn-secondary inline-flex items-center gap-2 self-start px-5 py-3 text-sm"
           >
             Browse All Insights
             <ArrowRight className="h-4 w-4" />
@@ -46,36 +52,36 @@ export function InsightsPreview() {
               <TiltCard
                 key={article.slug}
                 maxTilt={6}
-                glowColor="rgba(0, 229, 255, 0.15)"
-                className="insight-card rounded-3xl border border-slate-800 bg-[#0C1326]/90 p-7 shadow-xl backdrop-blur-md transition hover:border-slate-700"
+                className="insight-card rounded-3xl border border-border bg-surface p-7 shadow-xl backdrop-blur-md transition hover:border-accent-text"
               >
                 <Link
                   href={article.canonicalPath}
+                  prefetch={false}
                   className="group flex flex-col justify-between h-full"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-2 text-xs">
-                      <span className="rounded-full bg-cyan-500/15 border border-cyan-500/30 px-3 py-1 font-semibold text-cyan-300">
+                      <span className="rounded-full bg-surface-2 border border-border px-3 py-1 font-semibold text-text-muted">
                         {category?.shortName || "Insight"}
                       </span>
-                      <span className="inline-flex items-center gap-1 text-slate-400">
+                      <span className="inline-flex items-center gap-1 text-text-muted">
                         <Clock className="h-3.5 w-3.5" />
                         {article.readingTimeMinutes} min read
                       </span>
                     </div>
 
-                    <h3 className="mt-4 font-display text-xl font-bold leading-snug text-white transition group-hover:text-cyan-300">
+                    <h3 className="mt-4 font-heading text-xl font-bold leading-snug text-text transition group-hover:text-accent-text">
                       {article.title}
                     </h3>
 
-                    <p className="mt-3 text-sm leading-relaxed text-[#94A3B8]">
+                    <p className="mt-3 text-sm leading-relaxed text-text-muted">
                       {article.excerpt}
                     </p>
                   </div>
 
-                  <div className="mt-6 flex items-center justify-between border-t border-slate-800/80 pt-4 text-xs font-semibold text-cyan-400">
+                  <div className="mt-6 flex items-center justify-between border-t border-border pt-4 text-xs font-semibold text-text transition group-hover:text-accent-text">
                     <span>Read Guide</span>
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 text-accent-text" />
                   </div>
                 </Link>
               </TiltCard>

@@ -27,6 +27,7 @@ export function StaggerReveal({
     () => {
       if (!containerRef.current) return;
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      if (window.innerWidth < 768) return;
 
       const items = containerRef.current.querySelectorAll(itemSelector);
       if (items.length === 0) return;

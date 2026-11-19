@@ -1,0 +1,45 @@
+{
+  "methodology": {
+    "formula": "G > 80 && G > R * 1.15 && G > B * 1.40",
+    "hslEquivalent": "Hue 70°-140°, Saturation >= 0.35, Lightness >= 0.30",
+    "target": "Accent only, strictly < 10% per viewport (60/30/10 Rule)"
+  },
+  "sections": {
+    "hero": {
+      "beforeLimePct": 1.47,
+      "afterLimePct": 2.09,
+      "beforeLimePixels": 19051,
+      "afterLimePixels": 42400,
+      "totalPixels": 2025000,
+      "delta": 0.62,
+      "compliance": true
+    },
+    "services": {
+      "beforeLimePct": 2.53,
+      "afterLimePct": 0.87,
+      "beforeLimePixels": 32852,
+      "afterLimePixels": 17572,
+      "totalPixels": 2025000,
+      "delta": -1.66,
+      "compliance": true
+    },
+    "products": {
+      "beforeLimePct": 6.1,
+      "afterLimePct": 0.45,
+      "beforeLimePixels": 79100,
+      "afterLimePixels": 9146,
+      "totalPixels": 2025000,
+      "delta": -5.65,
+      "compliance": true
+    },
+    "footer": {
+      "beforeLimePct": 1.83,
+      "afterLimePct": 1.71,
+      "beforeLimePixels": 37003,
+      "afterLimePixels": 34630,
+      "totalPixels": 2025000,
+      "delta": -0.12,
+      "compliance": true
+    }
+  }
+}

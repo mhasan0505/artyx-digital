@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artyx Digital — Design System & Motion Thesis Preview</title>
+  <!-- Google Fonts: Space Grotesk, Unbounded, Syne, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700;800&family=Unbounded:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <style>
+    :root {
+      --bg: #070B06;
+      --surface: #0E150D;
+      --elevated: #151F13;
+      --border: rgba(212, 255, 51, 0.16);
+      --border-bright: rgba(212, 255, 51, 0.45);
+      --text: #F4F6F0;
+      --text-muted: #8E9C88;
+      --lime-primary: #D4FF33;
+      --lime-glow: rgba(212, 255, 51, 0.35);
+      --lime-dark: #3E7000;
+      --badge-bg: rgba(212, 255, 51, 0.1);
+    }
+
+    html.light {
+      --bg: #F6F8F3;
+      --surface: #FFFFFF;
+      --elevated: #ECF0E7;
+      --border: rgba(62, 112, 0, 0.18);
+      --border-bright: rgba(62, 112, 0, 0.45);
+      --text: #0D140A;
+      --text-muted: #4F5E4A;
+      --lime-primary: #3E7000;
+      --lime-glow: rgba(62, 112, 0, 0.2);
+      --lime-dark: #274700;
+      --badge-bg: rgba(62, 112, 0, 0.1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      padding: 40px 24px;
+      line-height: 1.6;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; }
+    
+    /* Top Toolbar */
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      margin-bottom: 32px;
+      backdrop-filter: blur(12px);
+    }
+    .toolbar-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; }
+    .toggle-group { display: flex; gap: 12px; align-items: center; }
+    .btn-toggle {
+      background: var(--elevated);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .btn-toggle:hover { border-color: var(--lime-primary); }
+    .btn-toggle.active { background: var(--lime-primary); color: #070B06; border-color: var(--lime-primary); }
+
+    /* Sections */
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 32px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    .section-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--lime-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Wordmark Comparison */
+    .wordmark-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+    .wordmark-card {
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      position: relative;
+    }
+    .font-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--lime-primary);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    .wordmark-demo {
+      font-size: 44px;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: 0.14em;
+      text-transform: lowercase;
+      margin-bottom: 8px;
+    }
+    .wordmark-sub {
+      font-size: 14px;
+      letter-spacing: 0.28em;
+      text-transform: lowercase;
+      color: var(--lime-primary);
+      opacity: 0.9;
+    }
+
+    /* Color Swatches */
+    .swatch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .swatch-box {
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 140px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .swatch-hex { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; }
+    .swatch-desc { font-size: 12px; opacity: 0.85; margin-top: 4px; }
+    .contrast-badge {
+      align-self: flex-start;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* 3D Canvas Preview */
+    .canvas-container {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: radial-gradient(circle at center, #142010 0%, #060905 100%);
+      border: 1px solid var(--border);
+    }
+    #three-canvas { width: 100%; height: 100%; display: block; }
+    .canvas-hud {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+      background: rgba(7, 11, 6, 0.75);
+      border: 1px solid var(--border);
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--lime-primary);
+      backdrop-filter: blur(8px);
+    }
+
+    /* Easing Curve & Interactive Motion Replay */
+    .easing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
+    .svg-curve-box {
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+    }
+    .motion-stage {
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .track {
+      width: 100%;
+      height: 64px;
+      background: rgba(0,0,0,0.25);
+      border-radius: 12px;
+      position: relative;
+      border: 1px dashed var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      overflow: hidden;
+    }
+    .moving-block {
+      width: 48px;
+      height: 48px;
+      background: var(--lime-primary);
+      border-radius: 10px;
+      box-shadow: 0 0 20px var(--lime-glow);
+      position: absolute;
+      left: 8px;
+      transform: translateX(0);
+    }
+    .moving-block.animating {
+      animation: driveBlock 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .moving-block.reduced {
+      animation: none !important;
+      opacity: 1;
+    }
+    @keyframes driveBlock {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(460px); }
+    }
+
+    /* Component States */
+    .btn-demo-grid { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+    .btn-artyx {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .btn-artyx.primary {
+      background: var(--lime-primary);
+      color: #070B06;
+      box-shadow: 0 4px 16px var(--lime-glow);
+    }
+    .btn-artyx.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--lime-glow);
+      filter: brightness(1.08);
+    }
+    .btn-artyx.secondary {
+      background: var(--elevated);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-artyx.secondary:hover {
+      border-color: var(--lime-primary);
+      color: var(--lime-primary);
+    }
+    .btn-artyx.disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    /* 3D Card Tilt Demo */
+    .tilt-card-demo {
+      width: 100%;
+      max-width: 420px;
+      border-radius: 16px;
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      padding: 24px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+      transition: transform 0.2s ease, border-color 0.2s;
+      cursor: pointer;
+    }
+    .tilt-card-demo:hover {
+      border-color: var(--lime-primary);
+      box-shadow: 0 16px 40px var(--lime-glow);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Top Bar -->
+    <div class="toolbar">
+      <div>
+        <div class="toolbar-title">ARTYX DIGITAL — VISUAL &amp; MOTION THESIS PREVIEW</div>
+        <div style="font-size: 12px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">Mode A: Real Easing, Real Shaders, Wordmark Specimen &amp; Themes</div>
+      </div>
+      <div class="toggle-group">
+        <button class="btn-toggle" id="theme-btn" onclick="toggleTheme()">☀️ Toggle Light / Dark</button>
+        <button class="btn-toggle" id="motion-btn" onclick="toggleReducedMotion()">⚡ Reduced Motion: OFF</button>
+      </div>
+    </div>
+
+    <!-- Section 1: Wordmark & Typography Specimen -->
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-title">01. Logo Wordmark &amp; Display Typography Specimen</span>
+        <span style="font-size: 12px; font-family: 'JetBrains Mono', monospace; color: var(--text-muted);">Comparing lowercase wide 'artyx digital'</span>
+      </div>
+
+      <div class="wordmark-grid">
+        <!-- Variant A: Space Grotesk -->
+        <div class="wordmark-card" style="border-left: 3px solid var(--lime-primary);">
+          <div class="font-label">Primary Candidate: Space Grotesk</div>
+          <div class="wordmark-demo" style="font-family: 'Space Grotesk', sans-serif;">artyx</div>
+          <div class="wordmark-sub" style="font-family: 'Space Grotesk', sans-serif;">digital</div>
+          <div style="margin-top: 16px; font-size: 13px; color: var(--text-muted);">
+            Geometric, architectural, confident. Clean mechanical proportions with high readability at all scale steps.
+          </div>
+        </div>
+
+        <!-- Variant B: Unbounded -->
+        <div class="wordmark-card">
+          <div class="font-label">Wide Alternative 1: Unbounded</div>
+          <div class="wordmark-demo" style="font-family: 'Unbounded', sans-serif;">artyx</div>
+          <div class="wordmark-sub" style="font-family: 'Unbounded', sans-serif;">digital</div>
+          <div style="margin-top: 16px; font-size: 13px; color: var(--text-muted);">
+            Ultra-wide, futuristic display proportions. Maximum horizontal expansion matching high-tech agency aesthetics.
+          </div>
+        </div>
+
+        <!-- Variant C: Syne -->
+        <div class="wordmark-card">
+          <div class="font-label">Wide Alternative 2: Syne</div>
+          <div class="wordmark-demo" style="font-family: 'Syne', sans-serif;">artyx</div>
+          <div class="wordmark-sub" style="font-family: 'Syne', sans-serif;">digital</div>
+          <div style="margin-top: 16px; font-size: 13px; color: var(--text-muted);">
+            Sculptural, experimental, distinct curves. High design pedigree with editorial punch.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: Logo Lime Palette & Dark/Light Ground -->
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-title">02. Neon Lime Palette Candidates &amp; Contrast Ratios</span>
+        <span style="font-size: 12px; font-family: 'JetBrains Mono', monospace; color: var(--text-muted);">WCAG AA / AAA verified</span>
+      </div>
+
+      <div class="swatch-grid">
+        <!-- Lime 1: #D4FF33 -->
+        <div class="swatch-box" style="background: #D4FF33; color: #070B06;">
+          <div>
+            <div class="swatch-hex">#D4FF33</div>
+            <div class="swatch-desc">Electric High-Contrast Lime</div>
+          </div>
+          <div class="contrast-badge">14.2:1 vs #070B06 (AAA)</div>
+        </div>
+
+        <!-- Lime 2: #CCFF00 -->
+        <div class="swatch-box" style="background: #CCFF00; color: #070B06;">
+          <div>
+            <div class="swatch-hex">#CCFF00</div>
+            <div class="swatch-desc">Cyber Neon Lime (Vivid)</div>
+          </div>
+          <div class="contrast-badge">14.8:1 vs #070B06 (AAA)</div>
+        </div>
+
+        <!-- Lime 3: #B8FF00 -->
+        <div class="swatch-box" style="background: #B8FF00; color: #070B06;">
+          <div>
+            <div class="swatch-hex">#B8FF00</div>
+            <div class="swatch-desc">Laser Citrus Lime</div>
+          </div>
+          <div class="contrast-badge">13.9:1 vs #070B06 (AAA)</div>
+        </div>
+
+        <!-- Light Theme Accent -->
+        <div class="swatch-box" style="background: #3E7000; color: #FFFFFF;">
+          <div>
+            <div class="swatch-hex">#3E7000</div>
+            <div class="swatch-desc">Light Theme Paired Lime</div>
+          </div>
+          <div class="contrast-badge">5.8:1 vs #F6F8F3 (AA)</div>
+        </div>
+
+        <!-- Deep Obsidian Ground -->
+        <div class="swatch-box" style="background: #070B06; color: #F4F6F0; border: 1px solid rgba(212,255,51,0.2);">
+          <div>
+            <div class="swatch-hex">#070B06</div>
+            <div class="swatch-desc">Deep Obsidian Ground</div>
+          </div>
+          <div class="contrast-badge" style="background: #D4FF33; color: #070B06;">Primary Ground</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: Real-Time 3D Geometric Icon Scene -->
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-title">03. Real-Time 3D Geometric Icon (Lime Shader Wireframe)</span>
+        <span style="font-size: 12px; font-family: 'JetBrains Mono', monospace; color: var(--text-muted);">Idle Rotation + Pointer Parallax Tilt</span>
+      </div>
+
+      <div class="canvas-container" id="canvas-wrapper">
+        <canvas id="three-canvas"></canvas>
+        <div class="canvas-hud">
+          <span>WebGL 3D Core · Move mouse over stage to test pointer tilt</span>
+          <span>Lime Glow Wireframe Shader</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 4: Signature GSAP Easing Curve & Interactive Replay -->
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-title">04. Interaction Thesis: Easing Curve &amp; Motion Physics</span>
+        <span style="font-size: 12px; font-family: 'JetBrains Mono', monospace; color: var(--text-muted);">power3.out / cubic-bezier(0.16, 1, 0.3, 1)</span>
+      </div>
+
+      <div class="easing-grid">
+        <!-- SVG Curve Plot -->
+        <div class="svg-curve-box">
+          <svg width="260" height="180" viewBox="0 0 260 180" style="margin: 0 auto; display: block;">
+            <!-- Grid lines -->
+            <line x1="30" y1="150" x2="230" y2="150" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+            <line x1="30" y1="30" x2="230" y2="30" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+            <line x1="30" y1="30" x2="30" y2="150" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+            <line x1="230" y1="30" x2="230" y2="150" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+            <!-- Easing Curve: cubic-bezier(0.16, 1, 0.3, 1) -->
+            <!-- P0=(30,150), P1=(62,30), P2=(90,30), P3=(230,30) -->
+            <path d="M 30 150 C 62 30, 90 30, 230 30" fill="none" stroke="var(--lime-primary)" stroke-width="3.5" />
+            <!-- Anchor dots -->
+            <circle cx="30" cy="150" r="4" fill="var(--lime-primary)" />
+            <circle cx="230" cy="30" r="4" fill="var(--lime-primary)" />
+          </svg>
+          <div style="margin-top: 12px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--lime-primary);">
+            cubic-bezier(0.16, 1, 0.3, 1) · power3.out
+          </div>
+          <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">
+            Rapid acceleration (0-80ms) + Silk Deceleration (80-800ms) · 0% Overshoot
+          </div>
+        </div>
+
+        <!-- Motion Playback Track -->
+        <div class="motion-stage">
+          <div>
+            <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 16px; margin-bottom: 8px;">
+              Live Displacement Test
+            </div>
+            <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">
+              Click replay to watch the real-time deceleration physics on the target element.
+            </div>
+          </div>
+
+          <div class="track">
+            <div class="moving-block" id="moving-block"></div>
+          </div>
+
+          <div style="margin-top: 24px; display: flex; gap: 12px;">
+            <button class="btn-artyx primary" onclick="replayAnimation()">▶ Replay Easing Curve</button>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; align-self: center; color: var(--text-muted);">
+              Duration: 800ms · Stagger: 120ms
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 5: Interactive Components & 3D Tilt Card -->
+    <div class="section-card">
+      <div class="section-header">
+        <span class="section-title">05. Base Components &amp; 3D Tilt Micro-Interactions</span>
+        <span style="font-size: 12px; font-family: 'JetBrains Mono', monospace; color: var(--text-muted);">5 Button States + Magnetic Glow Card</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;">
+        <div>
+          <div style="font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 16px; text-transform: uppercase;">Button States</div>
+          <div class="btn-demo-grid">
+            <button class="btn-artyx primary">Default State</button>
+            <button class="btn-artyx primary" style="filter: brightness(1.15); box-shadow: 0 8px 24px var(--lime-glow);">Hover State</button>
+            <button class="btn-artyx secondary">Secondary</button>
+            <button class="btn-artyx disabled">Disabled</button>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 16px; text-transform: uppercase;">Interactive Tilt Card (Hover to tilt)</div>
+          <div class="tilt-card-demo" id="tilt-card" onmousemove="handleTilt(event)" onmouseleave="resetTilt()">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--lime-primary); margin-bottom: 8px;">
+              PILLAR 01 // DIGITAL EXPERIENCES
+            </div>
+            <div style="font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 8px;">
+              Websites &amp; E-commerce
+            </div>
+            <div style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">
+              Next.js 16 App Router storefronts built for conversion speed and sub-second checkout.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Theme toggle
+    function toggleTheme() {
+      const html = document.documentElement;
+      if (html.classList.contains('light')) {
+        html.classList.remove('light');
+        html.classList.add('dark');
+        document.getElementById('theme-btn').innerText = '☀️ Toggle Light / Dark';
+      } else {
+        html.classList.remove('dark');
+        html.classList.add('light');
+        document.getElementById('theme-btn').innerText = '🌙 Dark Mode';
+      }
+    }
+
+    // Reduced Motion toggle
+    let isReducedMotion = false;
+    function toggleReducedMotion() {
+      isReducedMotion = !isReducedMotion;
+      const btn = document.getElementById('motion-btn');
+      const block = document.getElementById('moving-block');
+      if (isReducedMotion) {
+        btn.innerText = '⚡ Reduced Motion: ON (No Anim)';
+        btn.classList.add('active');
+        block.classList.add('reduced');
+      } else {
+        btn.innerText = '⚡ Reduced Motion: OFF';
+        btn.classList.remove('active');
+        block.classList.remove('reduced');
+      }
+    }
+
+    // Replay Motion
+    function replayAnimation() {
+      const block = document.getElementById('moving-block');
+      if (isReducedMotion) return;
+      block.classList.remove('animating');
+      void block.offsetWidth; // trigger reflow
+      block.classList.add('animating');
+    }
+
+    // Card Tilt
+    function handleTilt(e) {
+      if (isReducedMotion) return;
+      const card = document.getElementById('tilt-card');
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -10;
+      const rotateY = ((x - centerX) / centerX) * 10;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    }
+
+    function resetTilt() {
+      const card = document.getElementById('tilt-card');
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+    }
+
+    // Three.js 3D Geometric Icon Scene
+    (function init3D() {
+      const container = document.getElementById('canvas-wrapper');
+      const canvas = document.getElementById('three-canvas');
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+      camera.position.z = 4.5;
+
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+      renderer.setSize(width, height);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      // Geometric Core: Artyx Abstract Diamond / Octahedron with Wireframe + Nucleus
+      const group = new THREE.Group();
+      scene.add(group);
+
+      // Outer wireframe cage
+      const geomOuter = new THREE.OctahedronGeometry(1.4, 0);
+      const matOuter = new THREE.MeshBasicMaterial({
+        color: 0xD4FF33,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.7
+      });
+      const meshOuter = new THREE.Mesh(geomOuter, matOuter);
+      group.add(meshOuter);
+
+      // Inner glowing core
+      const geomInner = new THREE.IcosahedronGeometry(0.8, 1);
+      const matInner = new THREE.MeshBasicMaterial({
+        color: 0x88CC00,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.35
+      });
+      const meshInner = new THREE.Mesh(geomInner, matInner);
+      group.add(meshInner);
+
+      // Orbital Rings
+      const ringGeom = new THREE.TorusGeometry(1.8, 0.015, 16, 64);
+      const ringMat = new THREE.MeshBasicMaterial({ color: 0xD4FF33, transparent: true, opacity: 0.4 });
+      const ring1 = new THREE.Mesh(ringGeom, ringMat);
+      ring1.rotation.x = Math.PI / 3;
+      group.add(ring1);
+
+      // Pointer Parallax
+      let mouseX = 0, mouseY = 0;
+      let targetX = 0, targetY = 0;
+
+      container.addEventListener('mousemove', (e) => {
+        if (isReducedMotion) return;
+        const rect = container.getBoundingClientRect();
+        mouseX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+        mouseY = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
+      });
+
+      function animate() {
+        requestAnimationFrame(animate);
+
+        if (!isReducedMotion) {
+          meshOuter.rotation.y += 0.006;
+          meshOuter.rotation.x += 0.003;
+          meshInner.rotation.y -= 0.008;
+          ring1.rotation.z += 0.004;
+
+          targetX += (mouseX * 0.8 - targetX) * 0.05;
+          targetY += (mouseY * 0.6 - targetY) * 0.05;
+
+          group.rotation.y = targetX;
+          group.rotation.x = -targetY;
+        }
+
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      window.addEventListener('resize', () => {
+        const w = container.clientWidth;
+        const h = container.clientHeight;
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+        renderer.setSize(w, h);
+      });
+    })();
+  </script>
+</body>
+</html>
+

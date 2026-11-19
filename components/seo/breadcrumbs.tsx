@@ -19,8 +19,8 @@ export function Breadcrumbs({
     ...items,
   ];
 
-  const textMuted = theme === "dark" ? "text-[#A7B0C0]" : "text-slate-500";
-  const textCurrent = theme === "dark" ? "text-[#F8FAFC]" : "text-slate-900";
+  const textMuted = "text-text-muted";
+  const textCurrent = "text-text";
 
   return (
     <>
@@ -47,7 +47,7 @@ export function Breadcrumbs({
                 ) : (
                   <Link
                     href={item.path}
-                    className={`${textMuted} hover:text-[#4D7CFE] transition-colors`}
+                    className={`${textMuted} hover:text-accent-text transition-colors`}
                   >
                     {item.name}
                   </Link>

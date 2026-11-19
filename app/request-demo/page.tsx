@@ -61,7 +61,7 @@ export default async function RequestDemoPage({
   const initialMode = isOmsSelected ? "oms_demo" : "pos_demo";
 
   return (
-    <div className="bg-[#0B1020] text-[#F8FAFC]">
+    <div className="bg-bg text-text min-h-screen">
       <section className="pt-28 pb-24 lg:pt-36 lg:pb-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <Breadcrumbs
@@ -75,28 +75,28 @@ export default async function RequestDemoPage({
           <div className="grid gap-12 lg:grid-cols-12">
             {/* Left Column: Context, Honest Scheduling Policy & Product Summaries */}
             <div className="lg:col-span-5">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-wider text-purple-300">
+              <span className="eyebrow-pill">
                 <CalendarClock className="h-3.5 w-3.5" />
                 Live Product Walkthrough
               </span>
 
-              <h1 className="mt-4 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl lg:leading-[1.1]">
+              <h1 className="mt-4 font-display text-4xl font-bold tracking-tight text-text sm:text-5xl lg:leading-[1.1]">
                 See Artyx Software Running on Real Workflows.
               </h1>
 
-              <p className="mt-4 text-base leading-relaxed text-[#CBD5E1]">
+              <p className="mt-4 text-base leading-relaxed text-text-muted">
                 Request a dedicated walkthrough of Artyx POS or Artyx Order Management
                 System (OMS). Our team demonstrates live features, answers workflow
                 questions, and reviews device compatibility.
               </p>
 
               {/* Honest Scheduling Notice per Draft v2 Section 2.2 & 13.1 */}
-              <div className="mt-6 rounded-2xl border border-blue-500/30 bg-[#121A30] p-5 text-xs text-blue-200">
-                <div className="flex items-center gap-2 font-bold text-white">
-                  <Clock className="h-4 w-4 text-blue-400" />
+              <div className="mt-6 rounded-2xl border border-blue-500/30 bg-surface p-5 text-xs text-blue-200">
+                <div className="flex items-center gap-2 font-bold text-text">
+                  <Clock className="h-4 w-4 text-accent-text" />
                   Scheduling &amp; Response Notice
                 </div>
-                <p className="mt-1.5 leading-relaxed text-slate-300">
+                <p className="mt-1.5 leading-relaxed text-text-muted">
                   Submitting this form initiates a demo consultation request with our
                   product team. We will contact you via your chosen channel within 1
                   business day (Sun–Thu, 10:00 AM – 7:00 PM Dhaka GMT+6) to agree on a
@@ -106,15 +106,15 @@ export default async function RequestDemoPage({
 
               {/* Product Comparison Summary Cards */}
               <div className="mt-6 space-y-3.5">
-                <div className="rounded-2xl border border-slate-800 bg-[#121A30]/80 p-4">
+                <div className="rounded-2xl border border-border bg-surface p-4">
                   <div className="flex items-center justify-between">
-                    <span className="flex items-center gap-2 font-bold text-white">
-                      <ShoppingCart className="h-4 w-4 text-purple-400" />
+                    <span className="flex items-center gap-2 font-bold text-text">
+                      <ShoppingCart className="h-4 w-4 text-accent-text" />
                       Artyx POS Software
                     </span>
-                    <span className="text-[11px] text-slate-400">Physical Stores</span>
+                    <span className="text-[11px] text-text-muted">Physical Stores</span>
                   </div>
-                  <p className="mt-1.5 text-xs leading-relaxed text-slate-300">
+                  <p className="mt-1.5 text-xs leading-relaxed text-text-muted">
                     Counter barcode checkout, SKU stock balances, low-stock alerts, and
                     cashier shift closure reconciliation.
                   </p>
@@ -126,15 +126,15 @@ export default async function RequestDemoPage({
                   </Link>
                 </div>
 
-                <div className="rounded-2xl border border-slate-800 bg-[#121A30]/80 p-4">
+                <div className="rounded-2xl border border-border bg-surface p-4">
                   <div className="flex items-center justify-between">
-                    <span className="flex items-center gap-2 font-bold text-white">
+                    <span className="flex items-center gap-2 font-bold text-text">
                       <PackageCheck className="h-4 w-4 text-cyan-400" />
                       Artyx Order Management (OMS)
                     </span>
-                    <span className="text-[11px] text-slate-400">Social &amp; Online</span>
+                    <span className="text-[11px] text-text-muted">Social &amp; Online</span>
                   </div>
-                  <p className="mt-1.5 text-xs leading-relaxed text-slate-300">
+                  <p className="mt-1.5 text-xs leading-relaxed text-text-muted">
                     Centralized Facebook, Instagram &amp; web order intake, automatic SKU
                     stock reservation, packing queues, and courier dispatch tracking.
                   </p>
@@ -161,13 +161,13 @@ export default async function RequestDemoPage({
           </div>
 
           {/* Demo Preparation FAQs */}
-          <div className="mt-24 border-t border-slate-800 pt-16">
+          <div className="mt-24 border-t border-border pt-16">
             <div className="mx-auto max-w-3xl text-center">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-700 bg-[#121A30] px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-slate-300">
-                <HelpCircle className="h-3.5 w-3.5 text-blue-400" />
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-text-muted">
+                <HelpCircle className="h-3.5 w-3.5 text-accent-text" />
                 Demo Preparation &amp; Expectations
               </span>
-              <h2 className="mt-3 font-display text-2xl font-bold text-white sm:text-3xl">
+              <h2 className="mt-3 font-display text-2xl font-bold text-text sm:text-3xl">
                 What to Expect from Your Walkthrough
               </h2>
             </div>
@@ -176,10 +176,10 @@ export default async function RequestDemoPage({
               {DEMO_FAQS.map((faq) => (
                 <div
                   key={faq.question}
-                  className="rounded-2xl border border-slate-800 bg-[#121A30] p-6 text-sm"
+                  className="rounded-2xl border border-border bg-surface p-6 text-sm"
                 >
-                  <h3 className="font-display font-bold text-white">{faq.question}</h3>
-                  <p className="mt-2 leading-relaxed text-slate-300">{faq.answer}</p>
+                  <h3 className="font-display font-bold text-text">{faq.question}</h3>
+                  <p className="mt-2 leading-relaxed text-text-muted">{faq.answer}</p>
                 </div>
               ))}
             </div>

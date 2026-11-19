@@ -14,7 +14,7 @@ export function CookiePreferencesButton() {
     <button
       type="button"
       onClick={openPreferences}
-      className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-xs font-semibold text-white shadow-md transition hover:bg-blue-500 cursor-pointer"
+      className="btn-primary inline-flex items-center gap-2 px-5 py-3 text-xs font-semibold cursor-pointer"
     >
       <SlidersHorizontal className="h-4 w-4" />
       Customize Cookie Preferences
@@ -37,7 +37,7 @@ export function CookiePreferencesTextButton({
     <button
       type="button"
       onClick={openPreferences}
-      className="font-semibold text-[#0078D7] underline hover:text-blue-700 cursor-pointer"
+      className="font-semibold text-accent-text underline hover:text-text cursor-pointer"
     >
       {children}
     </button>

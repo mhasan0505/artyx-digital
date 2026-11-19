@@ -5,7 +5,7 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 
 interface ParallaxLayerProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   speed?: number; // e.g. -0.2 (moves slower/opposite), 0.3 (moves faster)
   className?: string;
 }
@@ -21,6 +21,7 @@ export function ParallaxLayer({
     () => {
       if (!targetRef.current) return;
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      if (window.innerWidth < 768) return;
 
       const movement = speed * 150;
 

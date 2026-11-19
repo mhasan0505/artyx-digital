@@ -11,7 +11,7 @@ export function StatsCounter() {
   return (
     <section
       aria-label="Verified capability and service commitments"
-      className="border-y border-slate-800/80 bg-[#060A16] py-14 text-white relative overflow-hidden"
+      className="relative overflow-hidden border-y border-border bg-transparent py-14 text-text"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <StaggerReveal className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4" itemSelector=".stat-item">
@@ -21,21 +21,21 @@ export function StatsCounter() {
               <TiltCard
                 key={item.label}
                 maxTilt={6}
-                glowColor="rgba(0, 229, 255, 0.12)"
-                className="stat-item flex flex-col justify-between rounded-2xl border border-slate-800/80 bg-[#0C1326]/80 p-6 shadow-xl backdrop-blur-md transition hover:border-cyan-500/30"
+                className="stat-item flex flex-col justify-between rounded-2xl border border-border bg-surface p-6 shadow-xl backdrop-blur-md transition hover:border-accent-text"
               >
                 <div>
-                  <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-500/15 text-cyan-400">
+                  {/* Semantic Icon Container: var(--surface-2) with var(--accent-text) icon */}
+                  <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-2 text-accent-text">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                  <div className="text-xs font-semibold uppercase tracking-wider text-text-muted">
                     {item.label}
                   </div>
-                  <div className="mt-1 font-display text-xl font-bold text-white">
+                  <div className="mt-1 font-heading text-xl font-bold text-text">
                     {item.value}
                   </div>
                 </div>
-                <p className="mt-2.5 text-xs leading-relaxed text-[#94A3B8]">
+                <p className="mt-2.5 text-xs leading-relaxed text-text-muted">
                   {item.detail}
                 </p>
               </TiltCard>

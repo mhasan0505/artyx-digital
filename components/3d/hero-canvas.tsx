@@ -1,7 +1,9 @@
 "use client";
 
-import { Suspense, useSyncExternalStore } from "react";
+import { Suspense, useState, useEffect, useSyncExternalStore } from "react";
 import { Canvas } from "@react-three/fiber";
+import * as THREE from "three";
+import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import { Hero3DScene } from "./hero-scene";
 
 function subscribe() {
@@ -16,38 +18,71 @@ function useIsClient() {
   );
 }
 
-function Hero3DFallback() {
-  return (
-    <div className="relative flex h-full w-full items-center justify-center">
-      <div className="absolute h-48 w-48 rounded-full bg-gradient-to-tr from-cyan-500/20 via-purple-500/20 to-emerald-500/20 blur-2xl animate-pulse" />
-      <div className="relative flex flex-col items-center gap-2">
-        <div className="h-10 w-10 rounded-xl border border-cyan-500/40 bg-cyan-500/10 animate-spin" />
-        <span className="text-xs font-medium text-slate-400">Loading 3D Engine...</span>
-      </div>
-    </div>
-  );
-}
-
 export function HeroCanvas() {
   const isClient = useIsClient();
+  const [shouldRender3D, setShouldRender3D] = useState(false);
 
-  if (!isClient) {
-    return <Hero3DFallback />;
+  useEffect(() => {
+    // Check if mobile or reduced motion (desktop only for WebGL)
+    const isMobile = window.innerWidth < 1024;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (isMobile || reducedMotion) {
+      setShouldRender3D(false);
+      return;
+    }
+
+    // Defer 3D Canvas mount until first user interaction or after initial idle
+    const activate = () => {
+      setShouldRender3D(true);
+      window.removeEventListener("scroll", activate);
+      window.removeEventListener("mousemove", activate);
+      window.removeEventListener("touchstart", activate);
+    };
+
+    window.addEventListener("scroll", activate, { passive: true, once: true });
+    window.addEventListener("mousemove", activate, { passive: true, once: true });
+    window.addEventListener("touchstart", activate, { passive: true, once: true });
+
+    const timer = setTimeout(activate, 150);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("scroll", activate);
+      window.removeEventListener("mousemove", activate);
+      window.removeEventListener("touchstart", activate);
+    };
+  }, []);
+
+  if (!isClient || !shouldRender3D) {
+    return null;
   }
 
   return (
-    <div className="relative h-full w-full min-h-[360px] lg:min-h-[460px] cursor-grab active:cursor-grabbing">
+    <div className="relative h-full w-full cursor-grab active:cursor-grabbing">
       <Canvas
-        camera={{ position: [0, 0, 5.6], fov: 46 }}
+        camera={{ position: [0, 0, 6.4], fov: 44 }}
         dpr={[1, 1.5]}
         gl={{
           antialias: true,
           alpha: true,
           powerPreference: "high-performance",
         }}
+        onCreated={({ gl }) => {
+          gl.toneMapping = THREE.ACESFilmicToneMapping;
+          gl.toneMappingExposure = 1.0;
+        }}
       >
         <Suspense fallback={null}>
           <Hero3DScene />
+          <EffectComposer multisampling={0}>
+            <Bloom
+              mipmapBlur
+              intensity={0.3}
+              luminanceThreshold={0.88}
+              luminanceSmoothing={0.12}
+            />
+          </EffectComposer>
         </Suspense>
       </Canvas>
     </div>
