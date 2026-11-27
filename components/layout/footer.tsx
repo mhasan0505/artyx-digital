@@ -1,14 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
 import github from "@/public/github-sign.png";
 import instagram from "@/public/instagram.png";
 import linkedin from "@/public/linkedin.png";
 import facebook from "@/public/social.png";
-
+import { motion } from "framer-motion";
+import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 const footerLinks = {
   services: [
@@ -46,19 +45,14 @@ export function Footer() {
         <div className="py-16 grid grid-cols-1 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr] gap-12 lg:gap-8">
           {/* Brand Column */}
           <div className="space-y-6">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10">
-                <Image
-                  src="/logo.png"
-                  alt="Artyx Digital"
-                  width={40}
-                  height={40}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <span className="text-xl font-semibold text-gray-900">
-                Artyx<span className="text-artyx-brand">Digital</span>
-              </span>
+            <Link href="/" className="inline-flex items-center">
+              <Image
+                src="/logo.webp"
+                alt="Artyx Digital"
+                width={817}
+                height={109}
+                className="h-7 w-auto object-contain"
+              />
             </Link>
             <p className="text-gray-600 text-sm leading-relaxed max-w-xs">
               We build digital empires. From stunning websites to powerful SaaS

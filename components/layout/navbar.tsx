@@ -42,24 +42,21 @@ export function Navbar() {
             {/* Logo */}
             <Link
               href="/"
-              className="relative z-50 flex items-center gap-3 group"
+              className="relative z-50 inline-flex items-center group"
             >
               <motion.div
-                whileHover={{ rotate: 180, scale: 1.1 }}
-                transition={{ duration: 0.4 }}
-                className="w-10 h-10"
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.2 }}
               >
                 <Image
-                  src="/logo.png"
+                  src="/logo.webp"
                   alt="Artyx Digital"
-                  width={40}
-                  height={40}
-                  className="w-full h-full object-contain"
+                  width={817}
+                  height={109}
+                  priority
+                  className="h-6 sm:h-7 w-auto object-contain"
                 />
               </motion.div>
-              <span className="text-xl font-semibold text-gray-900 tracking-tight">
-                Artyx<span className="text-artyx-brand">Digital</span>
-              </span>
             </Link>
 
             {/* Desktop Nav */}
