@@ -1,93 +1,45 @@
-import { CookieConsentBanner } from "@/components/consent/cookie-consent-banner";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
-import { SmoothScrollProvider } from "@/components/providers/smooth-scroll-provider";
-import { ThemeProvider } from "@/components/theme/theme-provider";
-import { CustomCursor } from "@/components/ui/custom-cursor";
-import { Preloader } from "@/components/ui/preloader";
-import {
-  buildOrganizationAndWebsiteSchema,
-  JsonLd,
-} from "@/components/seo/json-ld";
-import { COMPANY_ENTITY } from "@/lib/content/company";
-import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import {
-  Geist_Mono,
-  Hind_Siliguri,
-  Inter,
-  Space_Grotesk,
-  Unbounded,
-} from "next/font/google";
+import { Inter, Syne } from "next/font/google";
 import "./globals.css";
+
+const syne = Syne({
+  subsets: ["latin"],
+  variable: "--font-syne",
+  display: "swap",
+  preload: true,
+});
 
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-inter",
   display: "swap",
   preload: true,
-});
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-heading",
-  display: "swap",
-  preload: true,
-});
-
-const unbounded = Unbounded({
-  subsets: ["latin"],
-  variable: "--font-unbounded",
-  display: "swap",
-  preload: true,
-});
-
-const hindSiliguri = Hind_Siliguri({
-  subsets: ["bengali", "latin"],
-  variable: "--font-bengali",
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-  preload: false,
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap",
-  preload: false,
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(COMPANY_ENTITY.url),
-  title: {
-    default:
-      "Artyx Digital | Digital Agency in Bangladesh — Websites, Software & Growth",
-    template: "%s",
-  },
+  metadataBase: new URL("https://artyx.digital/"),
+  title:
+    "Artyx Digital | Software & Digital Marketing Agency in Dhaka — Build. Launch. Grow.",
   description:
-    "Artyx Digital helps businesses build websites, e-commerce experiences, and custom software, manage operations with POS and OMS solutions, and grow through digital marketing.",
+    "Artyx Digital is a 360° creative and software agency in Dhaka — turning ideas into websites, brand identities, POS & OMS software, and digital growth.",
   alternates: {
     canonical: "/",
   },
   icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon-badge-32.png", sizes: "32x32", type: "image/png" },
-      { url: "/icon-badge-48.png", sizes: "48x48", type: "image/png" },
-    ],
-    apple: [
-      { url: "/icon-badge-180.png", sizes: "180x180", type: "image/png" },
-    ],
+    icon: [{ url: "/logo.webp", type: "image/webp" }],
+    apple: [{ url: "/logo.webp", type: "image/webp" }],
   },
   manifest: "/manifest.json",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: COMPANY_ENTITY.url,
-    siteName: COMPANY_ENTITY.name,
-    title:
-      "Artyx Digital | Digital Agency in Bangladesh — Websites, Software & Growth",
-    description: COMPANY_ENTITY.consistentDescription,
+    url: "https://artyx.digital/",
+    siteName: "Artyx Digital",
+    title: "Artyx Digital | We Build Brands That Mean Business",
+    description:
+      "Artyx Digital is a Dhaka-based software and digital marketing agency offering brand identity, web & app development, POS & OMS software, and SEO growth.",
     images: [
       {
         url: "/og-image.png",
@@ -100,13 +52,14 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Artyx Digital | Build. Launch. Grow.",
-    description: COMPANY_ENTITY.consistentDescription,
+    description:
+      "360° creative and software agency in Dhaka — websites, brand identity, business software, and digital marketing.",
     images: ["/og-image.png"],
   },
 };
 
 export const viewport = {
-  themeColor: "#070B06",
+  themeColor: "#05091A",
 };
 
 export default function RootLayout({
@@ -117,24 +70,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-theme="dark"
       suppressHydrationWarning
-      className={cn(
-        "h-full",
-        "antialiased",
-        inter.variable,
-        spaceGrotesk.variable,
-        unbounded.variable,
-        hindSiliguri.variable,
-        geistMono.variable,
-        "font-sans",
-      )}
+      className={`dark h-full antialiased font-sans ${syne.variable} ${inter.variable}`}
     >
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var s=localStorage.getItem('artyx_theme');var t=(s==='light'||s==='dark')?s:'dark';var d=document.documentElement;d.classList.remove('light','dark');d.classList.add(t);d.setAttribute('data-theme',t);}catch(e){}})();`,
-          }}
-        />
         <meta
           name="google-site-verification"
           content="nga5AcPIwkGznF1KLfPLcL_MJhGJJrJwjzjRKpP1CAQ"
@@ -142,31 +82,23 @@ export default function RootLayout({
         <link
           rel="preload"
           as="image"
-          href="/logo-compact-for-dark-bg.webp"
+          href="/logo-dark.webp"
           type="image/webp"
           fetchPriority="high"
         />
-        <JsonLd data={buildOrganizationAndWebsiteSchema()} />
       </head>
-      <body className="min-h-full flex flex-col bg-bg text-text antialiased">
-        <ThemeProvider>
-          <Preloader />
-          <CustomCursor />
-          <a
-            href="#main-content"
-            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:px-4 focus:py-2 focus:rounded-lg focus:bg-btn-primary-bg focus:text-btn-primary-fg focus:font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-text"
-          >
-            Skip to main content
-          </a>
-          <Navbar />
-          <SmoothScrollProvider>
-            <main id="main-content" className="flex-1">
-              {children}
-            </main>
-          </SmoothScrollProvider>
-          <Footer />
-          <CookieConsentBanner />
-        </ThemeProvider>
+      <body className="min-h-full flex flex-col bg-[#05091A] text-white antialiased">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:px-4 focus:py-2 focus:rounded-lg focus:bg-[#1A56DB] focus:text-white focus:font-semibold"
+        >
+          Skip to main content
+        </a>
+        <Navbar />
+        <main id="main-content" className="flex-1">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
