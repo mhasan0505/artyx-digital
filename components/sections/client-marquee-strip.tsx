@@ -9,31 +9,59 @@ const PARTNER_BRANDS = [
   "Artyx OMS",
 ];
 
+const PARTNER_BRANDS_REVERSED = [
+  "Artyx OMS",
+  "Best Laptop Gallery",
+  "Tech Drive",
+  "Natural Foods",
+  "Mètisse Restaurant",
+  "Sansli by Zebin",
+  "Laptop Point BD",
+  "Artyx POS",
+];
+
 export function ClientMarqueeStrip() {
   return (
     <section
-      aria-label="Brands and products built by Artyx Digital"
-      className="w-full overflow-hidden border-y border-[#1E2D5A] bg-[#0D1333] py-6"
+      aria-label="Clients and platforms built by Artyx Digital"
+      className="w-full overflow-hidden border-b border-[#DDE3F5] bg-[#F5F7FF] py-7"
     >
-      <div className="animate-logo-marquee flex items-center">
+      {/* Row 1 — Scrolling Left */}
+      <div className="animate-marquee-left flex items-center">
         {[0, 1].map((trackIdx) => (
           <div
-            key={trackIdx}
+            key={`l-${trackIdx}`}
             aria-hidden={trackIdx === 1}
             className="flex shrink-0 items-center"
           >
             {PARTNER_BRANDS.map((brand) => (
-              <div
-                key={`${trackIdx}-${brand}`}
-                className="flex items-center"
-              >
-                <span className="font-display px-7 text-base font-bold tracking-[0.06em] text-[#8A9BC4] transition-colors duration-200 hover:text-white sm:px-10 sm:text-lg">
+              <div key={`l-${trackIdx}-${brand}`} className="flex items-center">
+                <span className="px-7 text-sm font-semibold tracking-wide text-[#3D4A6B] transition-colors duration-200 hover:text-[#1A56DB] sm:px-9 sm:text-base">
                   {brand}
                 </span>
-                <span
-                  aria-hidden="true"
-                  className="text-lg font-bold text-[#00C2FF]/60"
-                >
+                <span aria-hidden="true" className="text-[#DDE3F5]">
+                  /
+                </span>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+
+      {/* Row 2 — Scrolling Right (Both Directions) */}
+      <div className="animate-marquee-right mt-3 flex items-center">
+        {[0, 1].map((trackIdx) => (
+          <div
+            key={`r-${trackIdx}`}
+            aria-hidden={trackIdx === 1}
+            className="flex shrink-0 items-center"
+          >
+            {PARTNER_BRANDS_REVERSED.map((brand) => (
+              <div key={`r-${trackIdx}-${brand}`} className="flex items-center">
+                <span className="px-7 text-sm font-semibold tracking-wide text-[#8A9BC4] transition-colors duration-200 hover:text-[#1A56DB] sm:px-9 sm:text-base">
+                  {brand}
+                </span>
+                <span aria-hidden="true" className="text-[#DDE3F5]">
                   ·
                 </span>
               </div>

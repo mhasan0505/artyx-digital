@@ -5,7 +5,6 @@ interface ServiceItem {
   title: string;
   description: string;
   tag: string;
-  href: string;
   icon: React.ReactNode;
 }
 
@@ -15,22 +14,23 @@ const SERVICES: ServiceItem[] = [
     description:
       "Data-driven campaigns across Meta, Google & beyond that convert targeted attention into measurable revenue.",
     tag: "Strategy",
-    href: "/services/digital-marketing/",
     icon: (
       <svg
-        width="28"
-        height="28"
-        viewBox="0 0 28 28"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
         fill="none"
-        stroke="#00C2FF"
-        strokeWidth="1.75"
+        stroke="#1A56DB"
+        strokeWidth="1.9"
         strokeLinecap="round"
         strokeLinejoin="round"
         aria-hidden="true"
       >
-        <polyline points="4 20 11 13 16 17 24 8" />
-        <polyline points="18 8 24 8 24 14" />
-        <line x1="4" y1="24" x2="24" y2="24" />
+        <line x1="5" y1="20" x2="5" y2="14" />
+        <line x1="10" y1="20" x2="10" y2="10" />
+        <line x1="15" y1="20" x2="15" y2="12" />
+        <line x1="20" y1="20" x2="20" y2="5" />
+        <polyline points="4 10 10 5 15 8 20 3" />
       </svg>
     ),
   },
@@ -39,119 +39,109 @@ const SERVICES: ServiceItem[] = [
     description:
       "Logo, visual language, typography and brand guidelines — everything you need to look credible from day one.",
     tag: "Identity",
-    href: "/services/branding/",
     icon: (
       <svg
-        width="28"
-        height="28"
-        viewBox="0 0 28 28"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
         fill="none"
-        stroke="#00C2FF"
-        strokeWidth="1.75"
+        stroke="#1A56DB"
+        strokeWidth="1.9"
         strokeLinecap="round"
         strokeLinejoin="round"
         aria-hidden="true"
       >
-        <polygon points="14 3 24 11 14 25 4 11 14 3" />
-        <line x1="4" y1="11" x2="24" y2="11" />
-        <polyline points="14 3 10 11 14 25 18 11 14 3" />
+        <polygon points="12 2 21 9 12 22 3 9 12 2" />
+        <line x1="3" y1="9" x2="21" y2="9" />
+        <polyline points="12 2 8.5 9 12 22 15.5 9 12 2" />
       </svg>
     ),
   },
   {
     title: "Web & App Development",
     description:
-      "Custom websites, e-commerce storefronts, POS & OMS systems, and full-stack web apps built on modern stacks.",
+      "Custom websites, e-commerce storefronts, POS & OMS systems, and web apps built on modern engineering stacks.",
     tag: "Engineering",
-    href: "/services/web-development/",
     icon: (
       <svg
-        width="28"
-        height="28"
-        viewBox="0 0 28 28"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
         fill="none"
-        stroke="#00C2FF"
-        strokeWidth="1.75"
+        stroke="#1A56DB"
+        strokeWidth="1.9"
         strokeLinecap="round"
         strokeLinejoin="round"
         aria-hidden="true"
       >
-        <polyline points="9 8 3 14 9 20" />
-        <polyline points="19 8 25 14 19 20" />
-        <line x1="16" y1="5" x2="12" y2="23" />
+        <polyline points="8 7 3 12 8 17" />
+        <polyline points="16 7 21 12 16 17" />
+        <line x1="14" y1="4" x2="10" y2="20" />
       </svg>
     ),
   },
   {
-    title: "Social Media & E-commerce",
+    title: "Social Media Management",
     description:
-      "Content strategy, storefront design, social-commerce order flows and community management across platforms.",
-    tag: "Commerce",
-    href: "/services/ecommerce-website-development/",
+      "Content strategy, visual design, editorial scheduling and community management across Facebook, Instagram & LinkedIn.",
+    tag: "Social",
     icon: (
       <svg
-        width="28"
-        height="28"
-        viewBox="0 0 28 28"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
         fill="none"
-        stroke="#00C2FF"
-        strokeWidth="1.75"
+        stroke="#1A56DB"
+        strokeWidth="1.9"
         strokeLinecap="round"
         strokeLinejoin="round"
         aria-hidden="true"
       >
-        <rect x="3" y="4" width="10" height="9" rx="2" />
-        <rect x="15" y="4" width="10" height="9" rx="2" />
-        <rect x="3" y="15" width="10" height="9" rx="2" />
-        <path d="M15 17a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v5l-3-2h-5a2 2 0 0 1-2-2v-1z" />
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
       </svg>
     ),
   },
   {
-    title: "Custom Software & SaaS",
+    title: "Video Production",
     description:
-      "Tailored internal tools, Artyx POS & OMS deployments, inventory automation and multi-tenant SaaS platforms.",
-    tag: "Software",
-    href: "/services/custom-software/",
+      "Commercial videos, high-retention reels, motion graphics and product shoots crafted to stop the scroll.",
+    tag: "Production",
     icon: (
       <svg
-        width="28"
-        height="28"
-        viewBox="0 0 28 28"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
         fill="none"
-        stroke="#00C2FF"
-        strokeWidth="1.75"
+        stroke="#1A56DB"
+        strokeWidth="1.9"
         strokeLinecap="round"
         strokeLinejoin="round"
         aria-hidden="true"
       >
-        <polygon points="14 4 24 9.5 14 15 4 9.5 14 4" />
-        <polyline points="4 14.5 14 20 24 14.5" />
-        <polyline points="4 19.5 14 25 24 19.5" />
+        <circle cx="12" cy="12" r="9.5" />
+        <polygon points="10 8.5 16 12 10 15.5 10 8.5" />
       </svg>
     ),
   },
   {
     title: "SEO & Performance",
     description:
-      "Organic search growth, technical SEO audits and conversion optimization that compound month over month.",
+      "Organic search growth, technical SEO audits and conversion rate optimization that compound month after month.",
     tag: "Growth",
-    href: "/services/digital-marketing/",
     icon: (
       <svg
-        width="28"
-        height="28"
-        viewBox="0 0 28 28"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
         fill="none"
-        stroke="#00C2FF"
-        strokeWidth="1.75"
+        stroke="#1A56DB"
+        strokeWidth="1.9"
         strokeLinecap="round"
         strokeLinejoin="round"
         aria-hidden="true"
       >
-        <circle cx="12.5" cy="12.5" r="7.5" />
-        <circle cx="12.5" cy="12.5" r="3" />
-        <line x1="18" y1="18" x2="24" y2="24" />
+        <circle cx="11" cy="11" r="7" />
+        <line x1="21" y1="21" x2="16.65" y2="16.65" />
       </svg>
     ),
   },
@@ -159,48 +149,56 @@ const SERVICES: ServiceItem[] = [
 
 export function AgencyServices() {
   return (
-    <section id="services" className="bg-[#05091A] py-20 lg:py-28">
+    <section
+      id="services"
+      className="border-b border-[#DDE3F5] bg-[#F5F7FF] py-20 lg:py-28"
+    >
       <div className="mx-auto max-w-[1200px] px-5 sm:px-6 lg:px-8">
-        <ScrollReveal>
-          {/* Left-Aligned Section Header */}
-          <div className="max-w-2xl">
-            <p className="text-sm font-medium text-[#00C2FF]">What We Do</p>
-            <h2 className="font-display mt-3 text-3xl font-bold text-white sm:text-4xl lg:text-[48px] lg:leading-[1.1]">
-              Full-Service Agency, Zero Compromise
-            </h2>
-          </div>
+        {/* Left-Aligned Section Heading */}
+        <ScrollReveal variant="heading" className="max-w-2xl">
+          <p className="text-[13px] font-medium tracking-[0.08em] text-[#1A56DB]">
+            What We Do
+          </p>
+          <h2 className="font-display mt-3 text-3xl font-bold text-[#0D1333] sm:text-4xl lg:text-[48px] lg:leading-[1.1]">
+            Full-Service Agency,
+            <br />
+            Zero Compromise
+          </h2>
+        </ScrollReveal>
 
-          {/* 3-Column Glassmorphic Cards Grid */}
-          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {SERVICES.map((service) => (
-              <Link
-                key={service.title}
-                href="/#contact"
-                className="glass-card glass-card-hover group flex flex-col justify-between p-7"
-              >
-                <div>
-                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-[12px] border border-[#1E2D5A] bg-[#111B40]/80">
-                    {service.icon}
-                  </div>
-                  <h3 className="font-display mt-6 text-xl font-semibold text-white transition-colors group-hover:text-[#00C2FF]">
-                    {service.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-[#8A9BC4]">
-                    {service.description}
-                  </p>
+        {/* Staggered 3-Column Card Grid */}
+        <ScrollReveal
+          variant="grid"
+          className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+        >
+          {SERVICES.map((service) => (
+            <Link
+              key={service.title}
+              href="/#contact"
+              className="light-card light-card-hover group flex flex-col justify-between p-8"
+            >
+              <div>
+                <div className="inline-flex h-12 w-12 items-center justify-center rounded-[12px] bg-[#F5F7FF] transition-colors group-hover:bg-[#EEF2FF]">
+                  {service.icon}
                 </div>
+                <h3 className="font-display mt-6 text-[20px] font-semibold text-[#0D1333] transition-colors group-hover:text-[#1A56DB]">
+                  {service.title}
+                </h3>
+                <p className="mt-3 text-[15px] leading-[1.65] text-[#3D4A6B]">
+                  {service.description}
+                </p>
+              </div>
 
-                <div className="mt-6 flex items-center justify-between pt-2">
-                  <span className="inline-flex items-center rounded-full border border-[#1E2D5A] bg-[#111B40] px-3 py-1 text-xs font-medium text-[#00C2FF]">
-                    {service.tag}
-                  </span>
-                  <span className="text-xs font-medium text-[#8A9BC4] transition-transform duration-200 group-hover:translate-x-1 group-hover:text-[#00C2FF]">
-                    Explore →
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
+              <div className="mt-6 flex items-center justify-between pt-2">
+                <span className="inline-flex items-center rounded-full bg-[#F5F7FF] px-3 py-1 text-xs font-medium text-[#1A56DB]">
+                  {service.tag}
+                </span>
+                <span className="text-xs font-semibold text-[#8A9BC4] transition-all duration-200 group-hover:translate-x-1 group-hover:text-[#1A56DB]">
+                  Inquire →
+                </span>
+              </div>
+            </Link>
+          ))}
         </ScrollReveal>
       </div>
     </section>

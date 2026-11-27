@@ -4,10 +4,15 @@ import { useEffect, useRef, useState } from "react";
 
 interface ScrollRevealProps {
   children: React.ReactNode;
+  variant?: "heading" | "grid";
   className?: string;
 }
 
-export function ScrollReveal({ children, className = "" }: ScrollRevealProps) {
+export function ScrollReveal({
+  children,
+  variant = "heading",
+  className = "",
+}: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -32,17 +37,19 @@ export function ScrollReveal({ children, className = "" }: ScrollRevealProps) {
           }
         }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+      { threshold: 0.12, rootMargin: "0px 0px -30px 0px" },
     );
 
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
+  const baseClass = variant === "grid" ? "reveal-grid" : "reveal-heading";
+
   return (
     <div
       ref={ref}
-      className={`reveal-section ${visible ? "is-visible" : ""} ${className}`}
+      className={`${baseClass} ${visible ? "is-visible" : ""} ${className}`}
     >
       {children}
     </div>

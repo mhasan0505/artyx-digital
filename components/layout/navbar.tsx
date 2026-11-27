@@ -18,7 +18,7 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 80);
+    const handleScroll = () => setIsScrolled(window.scrollY > 12);
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -35,21 +35,19 @@ export function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-[#05091A]/85 backdrop-blur-[20px] border-b border-[#1E2D5A]/80 shadow-[0_8px_30px_rgba(0,0,0,0.35)]"
-            : "bg-transparent border-b border-transparent"
+        className={`fixed top-0 left-0 right-0 z-50 bg-[#FFFFFF] transition-shadow duration-200 ${
+          isScrolled ? "shadow-[0_1px_0_#DDE3F5]" : ""
         }`}
       >
         <div className="mx-auto max-w-[1200px] px-5 sm:px-6 lg:px-8">
           <div className="flex h-20 items-center justify-between gap-6">
-            {/* Left: Artyx Logo at 140px wide */}
+            {/* Left: Original logo.webp on white background */}
             <Link
               href="/"
-              className="relative z-50 inline-flex shrink-0 items-center transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#00C2FF]"
+              className="relative z-50 inline-flex shrink-0 items-center transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1A56DB]"
             >
               <img
-                src="/logo-dark.webp"
+                src="/logo.webp"
                 alt="Artyx Digital"
                 width={817}
                 height={109}
@@ -69,7 +67,7 @@ export function Navbar() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="text-sm font-medium text-[#8A9BC4] transition-colors duration-200 hover:text-[#00C2FF]"
+                  className="text-sm font-medium text-[#3D4A6B] transition-colors duration-200 hover:text-[#1A56DB]"
                 >
                   {item.label}
                 </Link>
@@ -94,7 +92,7 @@ export function Navbar() {
                 mobileOpen ? "Close navigation menu" : "Open navigation menu"
               }
               onClick={() => setMobileOpen((prev) => !prev)}
-              className="lg:hidden relative z-50 inline-flex h-10 w-10 items-center justify-center rounded-[8px] border border-[#1E2D5A] bg-[#0D1333]/80 text-white transition hover:border-[#00C2FF] hover:text-[#00C2FF]"
+              className="lg:hidden relative z-50 inline-flex h-10 w-10 items-center justify-center rounded-[8px] border border-[#DDE3F5] bg-[#FFFFFF] text-[#0D1333] transition hover:border-[#1A56DB] hover:text-[#1A56DB]"
             >
               {mobileOpen ? (
                 <svg

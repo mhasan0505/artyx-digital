@@ -2,15 +2,17 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <section className="flex min-h-[80vh] items-center justify-center bg-[#05091A] px-6 pt-28 pb-20 text-white">
+    <section className="flex min-h-[75vh] items-center justify-center bg-[#FFFFFF] px-6 pt-28 pb-20 text-[#0D1333]">
       <div className="mx-auto max-w-lg text-center">
-        <p className="text-sm font-medium text-[#00C2FF]">404 — Not Found</p>
-        <h1 className="font-display mt-3 text-4xl font-bold text-white sm:text-5xl">
+        <p className="text-sm font-medium tracking-[0.08em] text-[#1A56DB]">
+          404 — Not Found
+        </p>
+        <h1 className="font-display mt-3 text-4xl font-bold text-[#0D1333] sm:text-5xl">
           Page Not Found
         </h1>
-        <p className="mt-4 text-base text-[#8A9BC4]">
-          The page you are looking for doesn&apos;t exist. Head back to our
-          landing page or get in touch with our Dhaka team.
+        <p className="mt-4 text-base text-[#3D4A6B]">
+          The page you are looking for doesn&apos;t exist. Return to the
+          homepage or reach out to our Dhaka team.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <Link
@@ -21,9 +23,9 @@ export default function NotFound() {
           </Link>
           <Link
             href="/#contact"
-            className="btn-secondary inline-flex items-center justify-center px-6 py-3 text-sm"
+            className="text-sm font-semibold text-[#1A56DB] hover:underline"
           >
-            Contact Us
+            Talk to Us →
           </Link>
         </div>
       </div>

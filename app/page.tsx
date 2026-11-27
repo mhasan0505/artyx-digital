@@ -18,9 +18,9 @@ export const metadata: Metadata = {
     canonical: "https://artyx.digital/",
   },
   openGraph: {
-    title: "Artyx Digital | We Build Brands That Mean Business",
+    title: "Artyx Digital | We Build Digital Brands That Grow",
     description:
-      "360° creative and software agency in Dhaka — digital marketing, brand identity, web & app development, POS & OMS software, and SEO growth.",
+      "360° creative and software agency in Dhaka — digital marketing, brand identity, web & app development, social media, video production, and SEO growth.",
     url: "https://artyx.digital/",
     type: "website",
   },

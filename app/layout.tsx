@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   title:
     "Artyx Digital | Software & Digital Marketing Agency in Dhaka — Build. Launch. Grow.",
   description:
-    "Artyx Digital is a 360° creative and software agency in Dhaka — turning ideas into websites, brand identities, POS & OMS software, and digital growth.",
+    "360° creative and software agency in Dhaka — websites, brands, business software, and digital marketing that actually move the needle.",
   alternates: {
     canonical: "/",
   },
@@ -37,9 +37,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://artyx.digital/",
     siteName: "Artyx Digital",
-    title: "Artyx Digital | We Build Brands That Mean Business",
+    title: "Artyx Digital | We Build Digital Brands That Grow",
     description:
-      "Artyx Digital is a Dhaka-based software and digital marketing agency offering brand identity, web & app development, POS & OMS software, and SEO growth.",
+      "360° creative and software agency in Dhaka — websites, brand identity, POS & OMS software, and performance marketing.",
     images: [
       {
         url: "/og-image.png",
@@ -53,13 +53,13 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Artyx Digital | Build. Launch. Grow.",
     description:
-      "360° creative and software agency in Dhaka — websites, brand identity, business software, and digital marketing.",
+      "360° creative and software agency in Dhaka — websites, brands and marketing that actually move the needle.",
     images: ["/og-image.png"],
   },
 };
 
 export const viewport = {
-  themeColor: "#05091A",
+  themeColor: "#FFFFFF",
 };
 
 export default function RootLayout({
@@ -70,9 +70,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      data-theme="dark"
-      suppressHydrationWarning
-      className={`dark h-full antialiased font-sans ${syne.variable} ${inter.variable}`}
+      className={`h-full antialiased font-sans ${syne.variable} ${inter.variable}`}
     >
       <head>
         <meta
@@ -82,12 +80,12 @@ export default function RootLayout({
         <link
           rel="preload"
           as="image"
-          href="/logo-dark.webp"
+          href="/logo.webp"
           type="image/webp"
           fetchPriority="high"
         />
       </head>
-      <body className="min-h-full flex flex-col bg-[#05091A] text-white antialiased">
+      <body className="min-h-full flex flex-col bg-[#FFFFFF] text-[#0D1333] antialiased">
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:px-4 focus:py-2 focus:rounded-lg focus:bg-[#1A56DB] focus:text-white focus:font-semibold"

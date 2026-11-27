@@ -16,7 +16,7 @@ export function MobileNav({ isOpen, onClose, navLinks }: MobileNavProps) {
       role="dialog"
       aria-modal="true"
       aria-label="Mobile navigation menu"
-      className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-[#05091A]/98 px-6 backdrop-blur-xl lg:hidden"
+      className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-[#FFFFFF] px-6 lg:hidden"
     >
       <nav
         aria-label="Mobile navigation"
@@ -27,7 +27,7 @@ export function MobileNav({ isOpen, onClose, navLinks }: MobileNavProps) {
             key={item.label}
             href={item.href}
             onClick={onClose}
-            className="font-display text-3xl font-bold text-white transition-colors hover:text-[#00C2FF]"
+            className="font-display text-3xl font-bold text-[#0D1333] transition-colors hover:text-[#1A56DB]"
           >
             {item.label}
           </Link>
