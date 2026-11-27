@@ -1,18 +1,16 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { MobileNav } from "./mobile-nav";
 
-const navLinks = [
+const NAV_LINKS = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "Contact", href: "/contact" },
+  { label: "Services", href: "/#services" },
+  { label: "Work", href: "/#work" },
+  { label: "About", href: "/#about" },
+  { label: "Team", href: "/#team" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export function Navbar() {
@@ -20,119 +18,124 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 12);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileOpen(false);
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
   }, []);
 
   return (
     <>
-      <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
-            ? "bg-white/90 backdrop-blur-xl border-b border-gray-100 shadow-sm"
-            : "bg-transparent"
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 bg-[#FFFFFF] transition-shadow duration-200 ${
+          isScrolled ? "shadow-[0_1px_0_#DDE3F5]" : ""
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
-            {/* Logo */}
+        <div className="mx-auto max-w-[1200px] px-5 sm:px-6 lg:px-8">
+          <div className="flex h-20 items-center justify-between gap-6">
+            {/* Left: Original logo.webp on white background */}
             <Link
               href="/"
-              className="relative z-50 inline-flex items-center group"
+              className="relative z-50 inline-flex shrink-0 items-center transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1A56DB]"
             >
-              <motion.div
-                whileHover={{ scale: 1.03 }}
-                transition={{ duration: 0.2 }}
-              >
-                <Image
-                  src="/logo.webp"
-                  alt="Artyx Digital"
-                  width={817}
-                  height={109}
-                  priority
-                  className="h-6 sm:h-7 w-auto object-contain"
-                />
-              </motion.div>
+              <img
+                src="/logo.webp"
+                alt="Artyx Digital"
+                width={817}
+                height={109}
+                className="w-[140px] h-auto object-contain"
+                fetchPriority="high"
+                loading="eager"
+                decoding="async"
+              />
             </Link>
 
-            {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-1">
-              {navLinks.map((link, i) => (
-                <motion.div
-                  key={link.href}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 * i, duration: 0.4 }}
+            {/* Center: Section Anchor Links */}
+            <nav
+              aria-label="Primary navigation"
+              className="hidden lg:flex items-center gap-8"
+            >
+              {NAV_LINKS.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="text-sm font-medium text-[#3D4A6B] transition-colors duration-200 hover:text-[#1A56DB]"
                 >
-                  <Link
-                    href={link.href}
-                    className="relative px-4 py-2 text-sm font-medium text-gray-600 hover:text-artyx-brand transition-colors group"
-                  >
-                    {link.label}
-                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-linear-to-r from-artyx-brand to-artyx-secondary transition-all duration-300 group-hover:w-full" />
-                  </Link>
-                </motion.div>
+                  {item.label}
+                </Link>
               ))}
             </nav>
 
-            {/* CTA Button */}
-            <div className="hidden lg:block">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.5, duration: 0.4 }}
+            {/* Right: Get a Quote CTA */}
+            <div className="hidden lg:flex items-center">
+              <Link
+                href="/#contact"
+                className="btn-primary inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium"
               >
-                <Link
-                  href="/contact"
-                  className="relative inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-linear-to-r from-artyx-brand to-artyx-secondary text-white text-sm font-semibold hover:shadow-lg hover:shadow-artyx-brand/25 transition-all duration-300"
-                >
-                  Let's Talk
-                  <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                </Link>
-              </motion.div>
+                Get a Quote
+              </Link>
             </div>
 
-            {/* Mobile Menu Button */}
-            <motion.button
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden relative z-50 w-10 h-10 flex items-center justify-center text-gray-900"
+            {/* Mobile Hamburger Button */}
+            <button
+              type="button"
+              aria-expanded={mobileOpen}
+              aria-label={
+                mobileOpen ? "Close navigation menu" : "Open navigation menu"
+              }
+              onClick={() => setMobileOpen((prev) => !prev)}
+              className="lg:hidden relative z-50 inline-flex h-10 w-10 items-center justify-center rounded-[8px] border border-[#DDE3F5] bg-[#FFFFFF] text-[#0D1333] transition hover:border-[#1A56DB] hover:text-[#1A56DB]"
             >
-              <AnimatePresence mode="wait">
-                {mobileOpen ? (
-                  <motion.div
-                    key="close"
-                    initial={{ rotate: -90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: 90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <X className="w-6 h-6" />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="menu"
-                    initial={{ rotate: 90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: -90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Menu className="w-6 h-6" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.button>
+              {mobileOpen ? (
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              ) : (
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <line x1="3" y1="6" x2="21" y2="6" />
+                  <line x1="3" y1="12" x2="21" y2="12" />
+                  <line x1="3" y1="18" x2="21" y2="18" />
+                </svg>
+              )}
+            </button>
           </div>
         </div>
-      </motion.header>
+      </header>
 
-      <MobileNav isOpen={mobileOpen} onClose={() => setMobileOpen(false)} />
+      <MobileNav
+        isOpen={mobileOpen}
+        onClose={() => setMobileOpen(false)}
+        navLinks={NAV_LINKS}
+      />
     </>
   );
 }

@@ -3,23 +3,33 @@
     "slug": "laptop-point-bd",
     "title": "Laptop Point BD",
     "category": "Branding",
-    "description": "Bold geometric brand identity for Bangladesh's leading laptop retailer — combining trust, technology, and professionalism.",
+    "industry": "Electronics & Computer Retail",
+    "relationshipType": "In-House Venture / Affiliated Retail Brand",
+    "roleAndScope": "Visual Identity Design, Geometric Monogram System, Color & Typography Specification, and Brand Usage Guidelines",
+    "description": "Geometric brand identity and retail visual system created for Bangladesh laptop retailer Laptop Point BD.",
     "image": "/our_clients/e_commerce/laptop_point_bd.webp",
     "bg": "bg-white",
     "coverImage": "/our_clients/e_commerce/laptop_point_bd.webp",
     "coverBg": "bg-white",
-    "client": "Laptop Point BD",
+    "client": "Laptop Point BD (In-House / Affiliated Venture)",
     "year": "2025",
-    "duration": "2 months",
-    "challenge": "Laptop Point BD needed a professional, bold brand identity that would resonate with tech-savvy customers in the competitive Bangladesh electronics retail market. Their previous branding lacked consistency and failed to communicate the quality and trustworthiness of their products.",
-    "solution": "We created a strong geometric logo mark combining the initials 'L' and 'P' in a dynamic navy blue and red design. The dual-color scheme conveys professionalism (navy) and energy (red), while the bold typography establishes authority. Complete brand guidelines ensure consistent application across all touchpoints.",
+    "duration": "3 weeks (Identity & Brand Book)",
+    "challenge": "Laptop Point BD needed a recognizable, high-contrast visual identity suitable for both digital social-commerce channels and physical retail signage in Dhaka's electronics market.",
+    "solution": "Artyx Digital designed a geometric 'LP' monogram mark pairing deep navy blue with energetic red, accompanied by structured typography rules and a 4-part brand application guideline.",
+    "deliverables": [
+      "Primary Geometric 'LP' Logomark & Wordmark",
+      "Dual-Tone Retail Color System (Navy & Crimson)",
+      "Display and Body Typography Specification",
+      "4-Plate Brand Application & Signage Guideline"
+    ],
     "results": [
-      { "metric": "100%", "label": "Brand Consistency" },
-      { "metric": "2x", "label": "Brand Recognition Boost" },
-      { "metric": "40%", "label": "Increase in Customer Trust" },
-      { "metric": "3 wks", "label": "Delivery Time" }
+      { "metric": "4 Plates", "label": "Documented Brand System" },
+      { "metric": "Print + Web", "label": "Production Asset Formats" },
+      { "metric": "In-House", "label": "Affiliated Retail Venture" },
+      { "metric": "Dhaka, BD", "label": "Primary Retail Market" }
     ],
     "tech": ["Adobe Illustrator", "Adobe Photoshop", "Figma", "Adobe InDesign"],
+    "relatedServiceSlug": "branding",
     "images": [
       {
         "src": "/our_clients/branding/laptop_point__bd/laptop%20point%20logo_page-0001.jpg",
@@ -33,7 +43,7 @@
       },
       {
         "src": "/our_clients/branding/laptop_point__bd/laptop%20point%20logo_page-0003.jpg",
-        "label": "Typography",
+        "label": "Typography Specification",
         "bg": "bg-white"
       },
       {
@@ -47,32 +57,42 @@
     "slug": "sansli-by-zebin",
     "title": "Sansli by Zebin",
     "category": "Branding",
-    "description": "Elegant luxury fashion brand identity with a flowing monogram and sophisticated earthy gold palette.",
+    "industry": "Fashion & Artisanal Apparel",
+    "relationshipType": "Client Project (Brand Identity & Creative)",
+    "roleAndScope": "Monogram Identity Design, Warm Gold/Forest Palette, Typography System, and 5-Part Brand Presentation",
+    "description": "Refined monogram identity and brand guideline system for fashion label Sansli by Zebin.",
     "image": "/our_clients/e_commerce/sansli_by_zebin (2).webp",
     "bg": "bg-[#f0deb8]",
     "coverImage": "/our_clients/e_commerce/sansli_by_zebin (2).webp",
     "coverBg": "bg-[#f0deb8]",
     "client": "Sansli by Zebin",
     "year": "2025",
-    "duration": "3 months",
-    "challenge": "Sansli by Zebin required a luxury fashion brand identity that would appeal to discerning customers seeking premium artisanal clothing. The brand needed to communicate elegance, femininity, and exclusivity while remaining approachable and modern.",
-    "solution": "We designed a refined monogram-based logo featuring a flowing 'S' mark inspired by grace and movement. The warm earthy gold palette combined with deep forest green creates nature-infused luxury. The system includes custom typography, packaging concepts, and comprehensive social media brand guidelines.",
-    "results": [
-      { "metric": "Premium", "label": "Market Positioning" },
-      { "metric": "5★", "label": "Client Satisfaction" },
-      { "metric": "3x", "label": "Social Media Engagement" },
-      { "metric": "60%", "label": "Sales Growth Post-Launch" }
+    "duration": "4 weeks (Brand Identity Scope)",
+    "challenge": "Sansli by Zebin needed a cohesive visual identity that communicated artisanal clothing craftsmanship across garment tags, packaging, and social commerce profiles.",
+    "solution": "We crafted a flowing 'S' monogram paired with a warm earthy gold and deep forest green palette, documented across a 5-page brand system covering logo lockups, color tokens, typography, and packaging mockups.",
+    "deliverables": [
+      "Flowing 'S' Monogram & Primary Lockup",
+      "Earthy Gold & Forest Green Color System",
+      "Editorial & Display Typography Pairing",
+      "5-Page Brand Usage & Packaging Presentation"
     ],
-    "tech": ["Adobe Illustrator", "Figma", "Adobe InDesign", "Procreate", "Adobe Photoshop"],
+    "results": [
+      { "metric": "5 Plates", "label": "Brand Guideline Book" },
+      { "metric": "Vector + Web", "label": "Master Asset Package" },
+      { "metric": "Fashion", "label": "Apparel & Social Commerce" },
+      { "metric": "Identity", "label": "Delivered Artyx Scope" }
+    ],
+    "tech": ["Adobe Illustrator", "Figma", "Adobe InDesign", "Adobe Photoshop"],
+    "relatedServiceSlug": "branding",
     "images": [
       {
         "src": "/our_clients/branding/sansli_by_zebin/sansli%20logo%20branding_page-0001.jpg",
-        "label": "Primary Logo",
+        "label": "Primary Logo Lockup",
         "bg": "bg-[#f0deb8]"
       },
       {
         "src": "/our_clients/branding/sansli_by_zebin/sansli%20logo%20branding_page-0002.jpg",
-        "label": "Color Palette",
+        "label": "Color Palette Specification",
         "bg": "bg-[#f0deb8]"
       },
       {
@@ -82,13 +102,90 @@
       },
       {
         "src": "/our_clients/branding/sansli_by_zebin/sansli%20logo%20branding_page-0004.jpg",
-        "label": "Brand Usage",
+        "label": "Brand Usage Rules",
         "bg": "bg-[#f0deb8]"
       },
       {
         "src": "/our_clients/branding/sansli_by_zebin/sansli%20logo%20branding_page-0005.jpg",
-        "label": "Applications",
+        "label": "Packaging & Collateral Applications",
         "bg": "bg-[#f0deb8]"
+      }
+    ]
+  },
+  {
+    "slug": "metisse-restaurant",
+    "title": "Mètisse Restaurant",
+    "category": "Web Development",
+    "industry": "Hospitality & Fine Dining",
+    "relationshipType": "Client / Concept Web & Brand Showcase",
+    "roleAndScope": "Visual Presentation, Restaurant Digital Presence Design, and Menu/Reservation Experience Layout",
+    "description": "Hospitality digital experience and gold-accented brand showcase for Mètisse Restaurant — 'The Art of Culinary Blend'.",
+    "image": "/our_clients/web_development/metisse_restaurant.png",
+    "bg": "bg-white",
+    "coverImage": "/our_clients/web_development/metisse_restaurant.png",
+    "coverBg": "bg-white",
+    "client": "Mètisse Restaurant",
+    "year": "2025",
+    "duration": "Web & Identity Design",
+    "challenge": "Mètisse Restaurant required a refined digital presentation that reflected its culinary positioning ('The Art of Culinary Blend') while keeping menu discovery and table inquiries clear on mobile devices.",
+    "solution": "We designed an atmospheric web and brand presentation featuring warm gold typography, structured menu highlights, and clear reservation inquiry pathways.",
+    "deliverables": [
+      "Hospitality Brand & Web Interface Direction",
+      "Responsive Menu & Culinary Story Layout",
+      "Reservation & Contact Conversion Flow",
+      "Mobile-First Visual Presentation"
+    ],
+    "results": [
+      { "metric": "Hospitality", "label": "Industry Sector" },
+      { "metric": "Responsive", "label": "Mobile & Desktop Layout" },
+      { "metric": "Web + Brand", "label": "Delivered Scope" },
+      { "metric": "Menu + CTA", "label": "Core Visitor Journey" }
+    ],
+    "tech": ["Next.js", "React", "Tailwind CSS", "Framer Motion", "Figma"],
+    "relatedServiceSlug": "web-development",
+    "images": [
+      {
+        "src": "/our_clients/web_development/metisse_restaurant.png",
+        "label": "Mètisse Visual & Digital Identity",
+        "bg": "bg-white"
+      }
+    ]
+  },
+  {
+    "slug": "natural-foods",
+    "title": "Natural Foods",
+    "category": "E-commerce",
+    "industry": "Food, Cafe & Online Ordering",
+    "relationshipType": "Client / E-commerce Showcase",
+    "roleAndScope": "E-commerce & Cafe Visual Identity, Catalogue Presentation, and Online Ordering Interface Design",
+    "description": "Fresh green visual identity and online ordering experience concept for Natural Foods.",
+    "image": "/our_clients/e_commerce/natural_foods.png",
+    "bg": "bg-white",
+    "coverImage": "/our_clients/e_commerce/natural_foods.png",
+    "coverBg": "bg-white",
+    "client": "Natural Foods",
+    "year": "2025",
+    "duration": "Storefront & Brand Scope",
+    "challenge": "Natural Foods needed an approachable, nature-inspired visual identity and storefront structure to present fresh food items clearly for online and local customers.",
+    "solution": "We created a vibrant green brand mark and structured storefront layout designed around clear category browsing and mobile order placement.",
+    "deliverables": [
+      "Natural Foods Brand Mark & Color Palette",
+      "Product Category & Menu Presentation",
+      "Mobile-Friendly Ordering Flow Design"
+    ],
+    "results": [
+      { "metric": "Food & Retail", "label": "Industry Sector" },
+      { "metric": "E-commerce", "label": "Primary Category" },
+      { "metric": "Mobile-First", "label": "Catalogue & Order UX" },
+      { "metric": "Brand + Store", "label": "Delivered Scope" }
+    ],
+    "tech": ["Next.js", "React", "Tailwind CSS", "Figma"],
+    "relatedServiceSlug": "ecommerce-website-development",
+    "images": [
+      {
+        "src": "/our_clients/e_commerce/natural_foods.png",
+        "label": "Natural Foods Identity & Storefront",
+        "bg": "bg-white"
       }
     ]
   },
@@ -96,27 +193,36 @@
     "slug": "tech-drive",
     "title": "Tech Drive",
     "category": "Branding",
-    "description": "Dynamic tech retail brand with an energetic blue and gold color system conveying innovation and reliability.",
+    "industry": "Technology & Electronics Retail",
+    "relationshipType": "Client Project (Brand Identity & Social Creative)",
+    "roleAndScope": "Logo Mark Design, Blue & Amber Color System, and Retail Social Commerce Assets",
+    "description": "High-contrast blue and gold retail brand identity created for electronics seller Tech Drive.",
     "image": "/our_clients/e_commerce/tech_drive.webp",
     "bg": "bg-white",
     "coverImage": "/our_clients/e_commerce/tech_drive.webp",
     "coverBg": "bg-white",
     "client": "Tech Drive",
     "year": "2025",
-    "duration": "1 month",
-    "challenge": "Tech Drive needed a distinctive visual identity that would stand out in the competitive tech retail space. The brand had to communicate technological advancement, reliability, and an energetic, forward-moving spirit.",
-    "solution": "We developed a bold logomark combining a stylized monitor icon with a dynamic circular frame. The vibrant blue and orange combination creates high-energy contrast that commands attention in both digital and physical environments. The wordmark balances weight and modernity.",
+    "duration": "2 weeks (Logo & Retail Assets)",
+    "challenge": "Tech Drive needed a distinctive logomark that stood out in social-commerce feeds and communicated reliable computer and gadget retail.",
+    "solution": "We designed a stylized monitor emblem inside a circular badge using electric blue and warm orange-gold, optimized for social avatars, invoices, and storefront signage.",
+    "deliverables": [
+      "Circular Monitor Emblem & Wordmark",
+      "Blue & Gold Retail Color Specification",
+      "Social Commerce Profile & Banner Assets"
+    ],
     "results": [
-      { "metric": "Bold", "label": "Market Differentiation" },
-      { "metric": "100%", "label": "Client Approved" },
-      { "metric": "2 wks", "label": "Fast Turnaround" },
-      { "metric": "Multi", "label": "Platform Ready" }
+      { "metric": "Tech Retail", "label": "Industry Sector" },
+      { "metric": "Identity", "label": "Delivered Scope" },
+      { "metric": "Print + Social", "label": "Asset Formats" },
+      { "metric": "2 Weeks", "label": "Turnaround Window" }
     ],
     "tech": ["Adobe Illustrator", "Adobe Photoshop", "Figma"],
+    "relatedServiceSlug": "branding",
     "images": [
       {
         "src": "/our_clients/e_commerce/tech_drive.webp",
-        "label": "Brand Logo",
+        "label": "Tech Drive Brand Identity",
         "bg": "bg-white"
       }
     ]
@@ -125,84 +231,36 @@
     "slug": "best-laptop-gallery",
     "title": "Best Laptop Gallery",
     "category": "Branding",
-    "description": "Shield iconography brand identity for Bangladesh's exclusive laptop retail destination — bold, modern, and trustworthy.",
+    "industry": "Computer & Electronics Retail",
+    "relationshipType": "Client Project (Logo & Retail Identity)",
+    "roleAndScope": "Shield Logomark Design, Interlocking Monogram, and Retail Color Palette",
+    "description": "Shield-based geometric logomark and retail identity system for Best Laptop Gallery.",
     "image": "/our_clients/e_commerce/best_laptop.png",
     "bg": "bg-white",
     "coverImage": "/our_clients/e_commerce/best_laptop.png",
     "coverBg": "bg-white",
     "client": "Best Laptop Gallery",
     "year": "2025",
-    "duration": "2 months",
-    "challenge": "Best Laptop Gallery wanted to position itself as the premier exclusive laptop retailer in Bangladesh. They needed a brand identity that communicated expertise, exclusivity, and trustworthiness to both consumer and business customers.",
-    "solution": "We designed a distinctive shield-based logomark incorporating geometric letterforms in an interlocking pattern, using a bold blue and green color combination that signals reliability and growth. The identity conveys both technological authority and the approachability of a trusted local retailer.",
-    "results": [
-      { "metric": "#1", "label": "Brand Recall in Market" },
-      { "metric": "Strong", "label": "Professional Identity" },
-      { "metric": "2x", "label": "Footfall After Rebrand" },
-      { "metric": "4.9★", "label": "Client Rating" }
+    "duration": "3 weeks (Identity Design)",
+    "challenge": "Best Laptop Gallery wanted a shield-inspired emblem that signalled warranty confidence and professionalism to laptop buyers in Bangladesh.",
+    "solution": "We developed an interlocking geometric shield logomark in blue and emerald green, suitable for warranty stickers, retail bags, invoices, and Facebook commerce branding.",
+    "deliverables": [
+      "Geometric Shield Logomark & Lockups",
+      "Blue & Emerald Retail Color System",
+      "Vector Master Package for Signage & Packaging"
     ],
-    "tech": ["Adobe Illustrator", "Figma", "Adobe Photoshop", "Adobe InDesign"],
+    "results": [
+      { "metric": "Electronics", "label": "Industry Sector" },
+      { "metric": "Shield Mark", "label": "Core Visual Concept" },
+      { "metric": "Vector Suite", "label": "Deliverable Format" },
+      { "metric": "Branding", "label": "Delivered Scope" }
+    ],
+    "tech": ["Adobe Illustrator", "Figma", "Adobe Photoshop"],
+    "relatedServiceSlug": "branding",
     "images": [
       {
         "src": "/our_clients/e_commerce/best_laptop.png",
-        "label": "Brand Logo",
-        "bg": "bg-white"
-      }
-    ]
-  },
-  {
-    "slug": "metisse-restaurant",
-    "title": "Mètisse Restaurant",
-    "category": "Web Development",
-    "description": "Premium restaurant digital presence — The Art of Culinary Blend brought to life with an elegant gold identity.",
-    "image": "/our_clients/web_development/metisse_restaurant.png",
-    "bg": "bg-white",
-    "coverImage": "/our_clients/web_development/metisse_restaurant.png",
-    "coverBg": "bg-white",
-    "client": "Mètisse Restaurant",
-    "year": "2025",
-    "duration": "3 months",
-    "challenge": "Mètisse Restaurant, a premium fine-dining destination, needed a digital presence that matched the sophistication and artistry of their culinary experience. Their tagline 'The Art of Culinary Blend' required a website that felt luxurious, atmospheric, and inviting.",
-    "solution": "We designed and developed a premium restaurant website with rich gold typography, atmospheric imagery sections, online reservation integration, and a curated menu showcase. Smooth scroll animations create an immersive culinary journey that mirrors the dining experience.",
-    "results": [
-      { "metric": "3x", "label": "Online Reservations" },
-      { "metric": "180%", "label": "Website Engagement" },
-      { "metric": "95", "label": "PageSpeed Score" },
-      { "metric": "50%", "label": "Increase in Bookings" }
-    ],
-    "tech": ["Next.js", "React", "Tailwind CSS", "Framer Motion", "Sanity CMS", "Vercel"],
-    "images": [
-      {
-        "src": "/our_clients/web_development/metisse_restaurant.png",
-        "label": "Brand Identity",
-        "bg": "bg-white"
-      }
-    ]
-  },{
-    "slug": "natural-foods",
-    "title": "Natural Foods",
-    "category": "E-commerce",
-    "description": "Vibrant cafe website with a fresh green palette, dynamic animations, and seamless online ordering.",
-    "image": "/our_clients/e_commerce/natural_foods.png",
-    "bg": "bg-white",
-    "coverImage": "/our_clients/e_commerce/natural_foods.png",
-    "coverBg": "bg-white",
-    "client": "Natural Foods",
-    "year": "2025",
-    "duration": "2 months",
-    "challenge": "Natural Foods needed a vibrant and engaging website that reflected their fresh, urban vibe. They wanted to integrate an online ordering system while maintaining a visually appealing design that would attract both local customers and tourists.",
-    "solution": "We developed a dynamic website featuring a lively green color palette, interactive menu sections, and smooth animations. The site includes an integrated online ordering system for pickup and delivery, making it easy for customers to enjoy their offerings from anywhere.",
-    "results": [
-      { "metric": "2x", "label": "Online Orders" },
-      { "metric": "150%", "label": "Website Traffic" },
-      { "metric": "90", "label": "PageSpeed Score" },
-      { "metric": "30%", "label": "Increase in Customer Engagement" }
-    ],
-    "tech": ["Next.js", "React", "Tailwind CSS", "Framer Motion", "Sanity CMS", "Vercel"],
-    "images": [
-      {
-        "src": "/our_clients/e_commerce/natural_foods.png",
-        "label": "Website Design",
+        "label": "Best Laptop Gallery Identity",
         "bg": "bg-white"
       }
     ]

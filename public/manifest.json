@@ -1,0 +1,16 @@
+{
+  "name": "Artyx Digital",
+  "short_name": "Artyx",
+  "description": "Software & Digital Marketing Agency in Dhaka — Build. Launch. Grow.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#1A56DB",
+  "icons": [
+    {
+      "src": "/logo.webp",
+      "sizes": "817x109",
+      "type": "image/webp"
+    }
+  ]
+}
