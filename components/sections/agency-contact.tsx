@@ -153,7 +153,7 @@ export function AgencyContact() {
   };
 
   return (
-    <section id="contact" className="bg-[#F5F7FF] py-20 lg:py-28">
+    <section id="contact" className="section-pad bg-[#F5F7FF]">
       <div className="mx-auto max-w-[1200px] px-5 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-start lg:gap-12">
           {/* Left Column: Contact Info */}
@@ -314,18 +314,18 @@ export function AgencyContact() {
             </div>
           </div>
 
-          {/* Right Column: Clean White Contact Form Card */}
+          {/* Right Column: Clean Single-Column White Contact Form Card */}
           <div className="lg:col-span-7">
             <form
               onSubmit={handleSubmit}
               noValidate
               className="light-card p-6 sm:p-10"
             >
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+              <div className="space-y-5">
                 <div>
                   <label
                     htmlFor="contact-name"
-                    className="mb-2 block text-xs font-medium text-[#3D4A6B]"
+                    className="mb-2 block text-sm font-medium text-[#3D4A6B]"
                   >
                     Full Name *
                   </label>
@@ -344,7 +344,7 @@ export function AgencyContact() {
                 <div>
                   <label
                     htmlFor="contact-email"
-                    className="mb-2 block text-xs font-medium text-[#3D4A6B]"
+                    className="mb-2 block text-sm font-medium text-[#3D4A6B]"
                   >
                     Email *
                   </label>
@@ -363,7 +363,7 @@ export function AgencyContact() {
                 <div>
                   <label
                     htmlFor="contact-phone"
-                    className="mb-2 block text-xs font-medium text-[#3D4A6B]"
+                    className="mb-2 block text-sm font-medium text-[#3D4A6B]"
                   >
                     Phone (optional)
                   </label>
@@ -381,7 +381,7 @@ export function AgencyContact() {
                 <div>
                   <label
                     htmlFor="contact-service"
-                    className="mb-2 block text-xs font-medium text-[#3D4A6B]"
+                    className="mb-2 block text-sm font-medium text-[#3D4A6B]"
                   >
                     Service Needed
                   </label>
@@ -401,33 +401,33 @@ export function AgencyContact() {
                     ))}
                   </select>
                 </div>
+
+                <div>
+                  <label
+                    htmlFor="contact-message"
+                    className="mb-2 block text-sm font-medium text-[#3D4A6B]"
+                  >
+                    Message *
+                  </label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    rows={4}
+                    required
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    placeholder="Tell us about your brand, project goals, timeline, or software needs..."
+                    className="agency-input resize-y"
+                  />
+                </div>
               </div>
 
-              <div className="mt-5">
-                <label
-                  htmlFor="contact-message"
-                  className="mb-2 block text-xs font-medium text-[#3D4A6B]"
-                >
-                  Message *
-                </label>
-                <textarea
-                  id="contact-message"
-                  name="message"
-                  rows={4}
-                  required
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Tell us about your brand, project goals, timeline, or software needs..."
-                  className="agency-input resize-y"
-                />
-              </div>
-
-              <label className="mt-4 flex items-start gap-2.5 text-xs text-[#3D4A6B]">
+              <label className="mt-5 flex items-start gap-3 text-[13px] leading-[1.5] text-[#8A9BC4]">
                 <input
                   type="checkbox"
                   checked={privacyAccepted}
                   onChange={(e) => setPrivacyAccepted(e.target.checked)}
-                  className="mt-0.5 h-4 w-4 rounded border-[#DDE3F5] accent-[#1A56DB]"
+                  className="mt-0.5 h-4 w-4 shrink-0 rounded border-[#DDE3F5] accent-[#1A56DB]"
                 />
                 <span>
                   I agree that Artyx Digital may review and respond to this

@@ -40,7 +40,7 @@ export function AgencyPortfolio() {
   return (
     <section
       id="work"
-      className="border-b border-[#DDE3F5] bg-[#FFFFFF] py-20 lg:py-28"
+      className="section-pad border-b border-[#DDE3F5] bg-[#FFFFFF]"
     >
       <div className="mx-auto max-w-[1200px] px-5 sm:px-6 lg:px-8">
         {/* Right-Aligned Header + Filter Tabs */}
@@ -93,35 +93,35 @@ export function AgencyPortfolio() {
               key={project.slug}
               type="button"
               onClick={() => setSelectedProject(project)}
-              className="group flex cursor-pointer flex-col overflow-hidden rounded-[12px] border border-[#DDE3F5] bg-[#FFFFFF] text-left shadow-[0_2px_12px_rgba(26,86,219,0.06)] transition-all duration-250 hover:-translate-y-1 hover:border-[#1A56DB] hover:shadow-[0_8px_32px_rgba(26,86,219,0.14)]"
+              className="group flex translate-y-0 cursor-pointer flex-col overflow-hidden rounded-[12px] border border-[#DDE3F5] bg-[#FFFFFF] text-left shadow-[0_2px_12px_rgba(26,86,219,0.06)] transition-all duration-250 ease-in-out hover:-translate-y-[6px] hover:border-[#1A56DB] hover:shadow-[0_12px_40px_rgba(26,86,219,0.16)]"
             >
-              {/* Top 60% Image Area: --color-bg-soft resting -> --color-bg-dark on hover */}
-              <div className="relative flex h-[200px] w-full items-center justify-center bg-[#F5F7FF] p-6 transition-colors duration-300 group-hover:bg-[#05091A]">
+              {/* Top Image Area: #F5F7FF default -> #EEF2FF subtle hover */}
+              <div className="relative flex h-[180px] w-full items-center justify-center bg-[#F5F7FF] p-6 transition-colors duration-250 group-hover:bg-[#EEF2FF]">
                 <img
                   src={project.image}
                   alt={`${project.title} — ${project.category}`}
-                  className="max-h-[70%] max-w-[60%] object-contain transition-all duration-300 group-hover:opacity-80"
+                  className="max-h-[80px] max-w-[55%] object-contain"
                   loading="lazy"
                   decoding="async"
                 />
               </div>
 
-              {/* Bottom 40% White Info Strip */}
-              <div className="flex flex-1 flex-col justify-between border-t border-[#DDE3F5] bg-[#FFFFFF] px-5 py-4">
+              {/* Bottom White Info Strip — Static, Always Visible */}
+              <div className="flex flex-1 flex-col justify-between border-t border-[#DDE3F5] bg-[#FFFFFF] px-5 py-5">
                 <div>
-                  <span className="inline-flex items-center rounded-full bg-[#EEF2FF] px-2.5 py-0.5 text-[11px] font-medium text-[#1A56DB]">
+                  <span className="inline-flex items-center rounded-full bg-[#EEF2FF] px-3 py-1 text-xs font-medium text-[#1A56DB]">
                     {project.category}
                   </span>
-                  <h3 className="font-display mt-2 text-lg font-semibold text-[#0D1333] transition-colors group-hover:text-[#1A56DB]">
+                  <h3 className="font-display mt-2.5 text-lg font-semibold text-[#0D1333]">
                     {project.title}
                   </h3>
-                  <p className="mt-1 line-clamp-1 text-xs text-[#3D4A6B]">
+                  <p className="mt-1 line-clamp-1 text-sm text-[#3D4A6B]">
                     {project.industry}
                   </p>
                 </div>
 
-                <div className="mt-3 overflow-hidden pt-1">
-                  <span className="inline-flex translate-y-1 items-center gap-1 text-xs font-semibold text-[#1A56DB] opacity-80 transition-all duration-250 group-hover:translate-y-0 group-hover:opacity-100">
+                <div className="mt-3.5 pt-1">
+                  <span className="inline-flex items-center gap-1 text-sm font-semibold text-[#1A56DB] underline-offset-4 transition-colors duration-200 group-hover:text-[#1240B0] group-hover:underline">
                     <span>View</span>
                     <span aria-hidden="true">→</span>
                   </span>
@@ -131,15 +131,15 @@ export function AgencyPortfolio() {
           ))}
         </ScrollReveal>
 
-        {/* Centered "View all case studies ->" Link Below Grid */}
-        <div className="mt-12 text-center">
+        {/* Centered Button-Style "View all case studies ->" Link Below Grid */}
+        <div className="mt-10 text-center">
           <button
             type="button"
             onClick={() => {
               setActiveFilter("All");
               if (projectsData[0]) setSelectedProject(projectsData[0]);
             }}
-            className="cursor-pointer text-sm font-semibold text-[#1A56DB] underline-offset-4 transition-colors hover:text-[#1240B0] hover:underline"
+            className="inline-flex cursor-pointer items-center justify-center rounded-[8px] border border-[#1A56DB] px-7 py-3 text-[15px] font-medium text-[#1A56DB] transition-colors duration-200 hover:bg-[#1A56DB] hover:text-white"
           >
             View all case studies →
           </button>

@@ -28,7 +28,7 @@ export function AgencyTeam() {
   return (
     <section
       id="team"
-      className="border-b border-[#DDE3F5] bg-[#F5F7FF] py-20 lg:py-28"
+      className="section-pad border-b border-[#DDE3F5] bg-[#F5F7FF]"
     >
       <div className="mx-auto max-w-[1200px] px-5 sm:px-6 lg:px-8">
         {/* Left-Aligned Header */}
@@ -49,13 +49,14 @@ export function AgencyTeam() {
           {TEAM_MEMBERS.map((member) => (
             <article
               key={member.name}
-              className="light-card light-card-hover flex flex-col items-center p-8 text-center"
+              className="flex flex-col items-center rounded-[16px] border border-[#DDE3F5] bg-[#FFFFFF] p-9 text-center shadow-[0_4px_24px_rgba(26,86,219,0.10)] transition-all duration-250 hover:-translate-y-1 hover:shadow-[0_8px_40px_rgba(26,86,219,0.18)]"
             >
-              {/* 120px x 120px Circle Avatar Placeholder */}
+              {/* 96px x 96px Double-Ringed Circle Avatar */}
               <div
-                className="flex h-[120px] w-[120px] items-center justify-center rounded-full font-display text-[32px] font-bold text-white shadow-[0_8px_24px_rgba(26,86,219,0.2)]"
+                className="flex h-[96px] w-[96px] items-center justify-center rounded-full font-display text-[28px] font-bold text-white"
                 style={{
-                  background: "linear-gradient(135deg, #1A56DB, #00C2FF)",
+                  background: "linear-gradient(135deg, #1A56DB 0%, #00C2FF 100%)",
+                  boxShadow: "0 0 0 4px #EEF2FF, 0 0 0 6px #1A56DB",
                 }}
               >
                 {member.initials}

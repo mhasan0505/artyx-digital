@@ -28,7 +28,7 @@ export function AgencyTestimonials() {
   return (
     <section
       id="testimonials"
-      className="border-b border-[#DDE3F5] bg-[#FFFFFF] py-20 lg:py-28"
+      className="section-pad border-b border-[#DDE3F5] bg-[#FFFFFF]"
     >
       <div className="mx-auto max-w-[1200px] px-5 sm:px-6 lg:px-8">
         {/* Centered Header */}
@@ -49,13 +49,13 @@ export function AgencyTestimonials() {
           {TESTIMONIALS.map((item) => (
             <blockquote
               key={item.name}
-              className="light-card flex flex-col justify-between p-8"
+              className="flex flex-col justify-between rounded-[16px] border border-[#DDE3F5] bg-[#FFFFFF] p-9 shadow-[0_4px_24px_rgba(26,86,219,0.08)] transition-shadow duration-250 hover:shadow-[0_8px_32px_rgba(26,86,219,0.14)]"
             >
               <div>
-                {/* Syne 800, 72px, --color-primary, opacity 0.15 */}
+                {/* Syne 800, 80px, --color-primary, opacity 0.12, line-height 0.8 */}
                 <div
                   aria-hidden="true"
-                  className="font-display text-[72px] leading-[0.8] font-extrabold text-[#1A56DB] opacity-15 select-none"
+                  className="font-display text-[80px] leading-[0.8] font-extrabold text-[#1A56DB] opacity-[0.12] select-none"
                 >
                   &ldquo;
                 </div>

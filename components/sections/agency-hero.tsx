@@ -79,7 +79,7 @@ export function AgencyHero() {
       className="relative flex flex-col justify-between overflow-hidden bg-[#FFFFFF] pt-20"
     >
       {/* Main Hero Content: Left 55% Copy, Right 45% Abstract Geometric Visual */}
-      <div className="mx-auto w-full max-w-[1200px] px-5 pt-14 pb-16 sm:px-6 lg:px-8 lg:pt-20 lg:pb-20">
+      <div className="section-pad mx-auto w-full max-w-[1200px] px-5 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
           {/* Left 55% — Left-Aligned Headline, Subtext & CTAs */}
           <div className="lg:col-span-7">
@@ -87,7 +87,7 @@ export function AgencyHero() {
               className="font-display font-extrabold tracking-[-0.03em] text-[#0D1333]"
               style={{
                 fontSize: "clamp(42px, 5.4vw, 78px)",
-                lineHeight: 1.06,
+                lineHeight: 1.08,
               }}
             >
               We Build Digital
@@ -95,7 +95,7 @@ export function AgencyHero() {
               Brands That <span className="hero-grow-underline">Grow</span>
             </h1>
 
-            <p className="mt-6 max-w-[500px] text-base leading-relaxed text-[#3D4A6B] sm:text-[18px]">
+            <p className="mt-6 max-w-[520px] text-[16px] leading-[1.7] text-[#3D4A6B] md:text-[18px]">
               360° creative and software agency in Dhaka — websites, brands and
               marketing that actually move the needle.
             </p>
@@ -118,7 +118,7 @@ export function AgencyHero() {
             </div>
           </div>
 
-          {/* Right 45% — Subtle Overlapping Geometric Circles & Arcs SVG */}
+          {/* Right 45% — Crisp Overlapping Geometric Circles & Arcs SVG */}
           <div
             aria-hidden="true"
             className="relative flex items-center justify-center lg:col-span-5 lg:justify-end"
@@ -129,25 +129,36 @@ export function AgencyHero() {
               xmlns="http://www.w3.org/2000/svg"
               className="w-full max-w-[440px] h-auto select-none"
             >
-              {/* Soft outer geometric orbit */}
+              <defs>
+                <radialGradient
+                  id="heroCenterGlow"
+                  cx="50%"
+                  cy="50%"
+                  r="50%"
+                >
+                  <stop offset="0%" stopColor="#00C2FF" stopOpacity="0.15" />
+                  <stop offset="100%" stopColor="#00C2FF" stopOpacity="0" />
+                </radialGradient>
+              </defs>
+              {/* Outermost circle: #1A56DB at opacity 0.5 */}
               <circle
                 cx="245"
                 cy="195"
                 r="165"
                 stroke="#1A56DB"
-                strokeOpacity="0.18"
-                strokeWidth="1.5"
+                strokeOpacity="0.5"
+                strokeWidth="2"
               />
-              {/* Main overlapping royal blue filled circle */}
+              {/* Main overlapping royal blue circle */}
               <circle
                 cx="205"
                 cy="185"
                 r="128"
                 fill="#1A56DB"
-                fillOpacity="0.11"
+                fillOpacity="0.14"
                 stroke="#1A56DB"
-                strokeOpacity="0.38"
-                strokeWidth="2"
+                strokeOpacity="0.65"
+                strokeWidth="2.5"
               />
               {/* Overlapping cyan circle */}
               <circle
@@ -155,43 +166,42 @@ export function AgencyHero() {
                 cy="215"
                 r="108"
                 fill="#00C2FF"
-                fillOpacity="0.14"
+                fillOpacity="0.16"
                 stroke="#00C2FF"
-                strokeOpacity="0.42"
-                strokeWidth="2"
+                strokeOpacity="0.7"
+                strokeWidth="2.5"
               />
               {/* Precision intersecting upper arc */}
               <path
                 d="M112 128 A150 150 0 0 1 368 112"
                 stroke="#1A56DB"
-                strokeOpacity="0.4"
-                strokeWidth="2.5"
+                strokeOpacity="0.7"
+                strokeWidth="3"
                 strokeLinecap="round"
               />
-              {/* Lower counter-arc in cyan */}
+              {/* Inner accent arc in cyan at opacity 0.7 */}
               <path
                 d="M168 338 A140 140 0 0 0 388 265"
                 stroke="#00C2FF"
-                strokeOpacity="0.42"
-                strokeWidth="2.5"
+                strokeOpacity="0.7"
+                strokeWidth="3"
                 strokeLinecap="round"
               />
-              {/* Architectural inner circle */}
+              {/* Center circle with subtle radial cyan gradient fill */}
               <circle
                 cx="252"
                 cy="198"
-                r="58"
-                fill="#FFFFFF"
-                fillOpacity="0.72"
+                r="62"
+                fill="url(#heroCenterGlow)"
                 stroke="#1A56DB"
-                strokeOpacity="0.36"
-                strokeWidth="2"
+                strokeOpacity="0.65"
+                strokeWidth="2.5"
               />
-              {/* Small solid geometric anchor nodes */}
-              <circle cx="112" cy="128" r="5.5" fill="#1A56DB" fillOpacity="0.42" />
-              <circle cx="368" cy="112" r="5.5" fill="#00C2FF" fillOpacity="0.5" />
-              <circle cx="252" cy="198" r="7" fill="#1A56DB" fillOpacity="0.45" />
-              <circle cx="388" cy="265" r="5" fill="#00C2FF" fillOpacity="0.45" />
+              {/* Geometric anchor nodes */}
+              <circle cx="112" cy="128" r="6" fill="#1A56DB" fillOpacity="0.75" />
+              <circle cx="368" cy="112" r="6" fill="#00C2FF" fillOpacity="0.8" />
+              <circle cx="252" cy="198" r="8" fill="#1A56DB" fillOpacity="0.75" />
+              <circle cx="388" cy="265" r="5.5" fill="#00C2FF" fillOpacity="0.8" />
             </svg>
           </div>
         </div>

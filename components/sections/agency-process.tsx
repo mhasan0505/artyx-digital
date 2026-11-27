@@ -31,7 +31,7 @@ export function AgencyProcess() {
   return (
     <section
       id="process"
-      className="w-full border-b border-[#DDE3F5] bg-[#FFFFFF] py-24 lg:py-32"
+      className="section-pad w-full border-b border-[#DDE3F5] bg-[#FFFFFF]"
     >
       <div className="mx-auto max-w-[1200px] px-5 sm:px-6 lg:px-8">
         {/* Centered Header */}
@@ -46,15 +46,15 @@ export function AgencyProcess() {
 
         {/* Big 4-Step Horizontal Process Connected by Visible Blue Dashed Line */}
         <div className="relative mt-16 lg:mt-20">
-          {/* Horizontal Dashed Connector on Desktop (exact center of 64px circle = top-8) */}
+          {/* Horizontal Dashed Connector spanning between circles on desktop */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute top-8 right-[12%] left-[12%] hidden border-t-2 border-dashed border-[#1A56DB]/30 lg:block"
+            className="pointer-events-none absolute top-8 right-[12.5%] left-[12.5%] hidden border-t-2 border-dashed border-[#1A56DB] opacity-35 lg:block"
           />
           {/* Vertical Left Dashed Connector on Mobile */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute top-8 bottom-8 left-8 border-l-2 border-dashed border-[#1A56DB]/30 lg:hidden"
+            className="pointer-events-none absolute top-8 bottom-8 left-8 border-l-2 border-dashed border-[#1A56DB] opacity-35 lg:hidden"
           />
 
           <ScrollReveal
@@ -66,8 +66,8 @@ export function AgencyProcess() {
                 key={step.number}
                 className="relative flex items-start gap-6 lg:flex-col lg:items-center lg:text-center"
               >
-                {/* 64px Diameter Circle with 2px Royal Blue Border */}
-                <div className="relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-full border-2 border-[#1A56DB] bg-[#FFFFFF] font-display text-[24px] font-bold text-[#1A56DB] shadow-[0_4px_16px_rgba(26,86,219,0.1)]">
+                {/* 64px Diameter Circle with 2px Royal Blue Border & #EEF2FF Fill */}
+                <div className="relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-full border-2 border-[#1A56DB] bg-[#EEF2FF] font-display text-[24px] font-bold text-[#1A56DB] shadow-[0_4px_16px_rgba(26,86,219,0.12)]">
                   {step.number}
                 </div>
 

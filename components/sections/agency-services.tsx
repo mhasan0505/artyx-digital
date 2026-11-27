@@ -16,12 +16,12 @@ const SERVICES: ServiceItem[] = [
     tag: "Strategy",
     icon: (
       <svg
-        width="24"
-        height="24"
+        width="26"
+        height="26"
         viewBox="0 0 24 24"
         fill="none"
         stroke="#1A56DB"
-        strokeWidth="1.9"
+        strokeWidth="1.75"
         strokeLinecap="round"
         strokeLinejoin="round"
         aria-hidden="true"
@@ -41,12 +41,12 @@ const SERVICES: ServiceItem[] = [
     tag: "Identity",
     icon: (
       <svg
-        width="24"
-        height="24"
+        width="26"
+        height="26"
         viewBox="0 0 24 24"
         fill="none"
         stroke="#1A56DB"
-        strokeWidth="1.9"
+        strokeWidth="1.75"
         strokeLinecap="round"
         strokeLinejoin="round"
         aria-hidden="true"
@@ -64,12 +64,12 @@ const SERVICES: ServiceItem[] = [
     tag: "Engineering",
     icon: (
       <svg
-        width="24"
-        height="24"
+        width="26"
+        height="26"
         viewBox="0 0 24 24"
         fill="none"
         stroke="#1A56DB"
-        strokeWidth="1.9"
+        strokeWidth="1.75"
         strokeLinecap="round"
         strokeLinejoin="round"
         aria-hidden="true"
@@ -87,12 +87,12 @@ const SERVICES: ServiceItem[] = [
     tag: "Social",
     icon: (
       <svg
-        width="24"
-        height="24"
+        width="26"
+        height="26"
         viewBox="0 0 24 24"
         fill="none"
         stroke="#1A56DB"
-        strokeWidth="1.9"
+        strokeWidth="1.75"
         strokeLinecap="round"
         strokeLinejoin="round"
         aria-hidden="true"
@@ -108,12 +108,12 @@ const SERVICES: ServiceItem[] = [
     tag: "Production",
     icon: (
       <svg
-        width="24"
-        height="24"
+        width="26"
+        height="26"
         viewBox="0 0 24 24"
         fill="none"
         stroke="#1A56DB"
-        strokeWidth="1.9"
+        strokeWidth="1.75"
         strokeLinecap="round"
         strokeLinejoin="round"
         aria-hidden="true"
@@ -130,12 +130,12 @@ const SERVICES: ServiceItem[] = [
     tag: "Growth",
     icon: (
       <svg
-        width="24"
-        height="24"
+        width="26"
+        height="26"
         viewBox="0 0 24 24"
         fill="none"
         stroke="#1A56DB"
-        strokeWidth="1.9"
+        strokeWidth="1.75"
         strokeLinecap="round"
         strokeLinejoin="round"
         aria-hidden="true"
@@ -151,7 +151,7 @@ export function AgencyServices() {
   return (
     <section
       id="services"
-      className="border-b border-[#DDE3F5] bg-[#F5F7FF] py-20 lg:py-28"
+      className="section-pad border-b border-[#DDE3F5] bg-[#F5F7FF]"
     >
       <div className="mx-auto max-w-[1200px] px-5 sm:px-6 lg:px-8">
         {/* Left-Aligned Section Heading */}
@@ -175,10 +175,10 @@ export function AgencyServices() {
             <Link
               key={service.title}
               href="/#contact"
-              className="light-card light-card-hover group flex flex-col justify-between p-8"
+              className="light-card light-card-hover group flex min-h-[240px] flex-col justify-between p-9"
             >
               <div>
-                <div className="inline-flex h-12 w-12 items-center justify-center rounded-[12px] bg-[#F5F7FF] transition-colors group-hover:bg-[#EEF2FF]">
+                <div className="inline-flex h-[52px] w-[52px] items-center justify-center rounded-[12px] bg-[#EEF2FF]">
                   {service.icon}
                 </div>
                 <h3 className="font-display mt-6 text-[20px] font-semibold text-[#0D1333] transition-colors group-hover:text-[#1A56DB]">
@@ -189,11 +189,11 @@ export function AgencyServices() {
                 </p>
               </div>
 
-              <div className="mt-6 flex items-center justify-between pt-2">
-                <span className="inline-flex items-center rounded-full bg-[#F5F7FF] px-3 py-1 text-xs font-medium text-[#1A56DB]">
+              <div className="mt-7 flex items-center justify-between pt-2">
+                <span className="inline-flex items-center rounded-full bg-[#EEF2FF] px-3.5 py-1 text-xs font-semibold text-[#1A56DB]">
                   {service.tag}
                 </span>
-                <span className="text-xs font-semibold text-[#8A9BC4] transition-all duration-200 group-hover:translate-x-1 group-hover:text-[#1A56DB]">
+                <span className="text-sm font-semibold text-[#3D4A6B] transition-all duration-200 group-hover:translate-x-1 group-hover:text-[#1A56DB]">
                   Inquire →
                 </span>
               </div>
